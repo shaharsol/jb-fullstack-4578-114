@@ -1,4 +1,9 @@
 h2 {
     color: purple;
-    background-color: cyan;    
+    background-color: cyan;
+    margin: 0 10 30 40; /* margin orfer: top-right-bottom-left*/
+    margin: 0 10 30; /* margin orfer: top-right-bottom-left*/
+    margin: 0 10; /* margin orfer: top-right-bottom-left*/
+    margin: 0 auto; /* 0 margin on top and bottom, auto on right and left*/
+    padding: 0;    
 }
