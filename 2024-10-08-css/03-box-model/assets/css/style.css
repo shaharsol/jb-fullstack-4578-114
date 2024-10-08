@@ -1,0 +1,17 @@
+div {
+    text-align: center;
+    margin: 50px;
+    padding: 20px;
+    border: 10px solid blue;
+    height: 150px;
+    width: 300px;
+    /* box size will be: width/height + padding + border */
+    box-sizing: content-box;
+
+    /* 
+        box size will be: width/height - margin 
+        we will usually use this method when we
+        use css to position elements on a website
+    */
+    box-sizing: border-box;
+}

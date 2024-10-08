@@ -1,0 +1,65 @@
+@font-face {
+    font-family: Bartleen;
+    src: url("fonts/BartleenSANS.ttf") ;
+    src: url("/assets/fonts/BartleenSANS.ttf") 
+}
+
+h1 {
+    text-align: center;
+    font-family: Bartleen;
+    transition: 2s;
+    transform: rotate(-15deg) scale(0.5);
+}
+
+h1:hover {
+    color: green;
+    transform: rotate(15deg) scale(2);
+}
+
+@keyframes MyAnima {
+    from {
+        color: blue;
+        transform: scale(2)
+        
+    }
+    to {
+        color: red;
+        transform: scale(0.5);
+    }
+}
+
+@keyframes MyLongAnima {
+    0% {
+        color: blue;
+        transform: scale(2)
+        
+    }
+    50% {
+        color: green;
+        transform: scale(3);
+    }
+    100% {
+        color: red;
+        transform: scale(0.5);
+    }
+}
+
+
+p {
+    text-align: center;
+    margin-top: 100px;
+}
+
+p:hover {
+    animation: MyLongAnima 3s infinite alternate linear;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+@media (max-width: 600px) {
+    h2 {
+        font-size: 32px;
+    }
+}

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: Bartleen;
+    src: url("assets/fonts/BartleenSANS.ttf") 
+}
+
+h1 {
+    text-align: center;
+    font-family: Bartleen;
+}
