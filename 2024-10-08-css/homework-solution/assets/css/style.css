@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    /* padding: 0; */
+    direction: rtl;
+    border: 3px solid red;
+}
+
+h1 {
+    color: purple;
+    border: 1px solid grey;
+    /* margin: 0; */
+    /* margin: top right bottom left */
+
+    padding: 50px 40px 30px 20px;
+    padding-right: 200px;
+
+    margin-top: 50px;
+    margin: 0px;
+
+    color: blue;
+    color: red;
+    color: green;
+
+    /* padding-top: 50px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px; */
+
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+a {
+    /* padding: 0px 100px; */
+    margin: 0px 100px;
+    border: 1px solid
+
+}
+
+img {
+    height: 250px;
+    border: 1px solid;
+    padding: 50px;
+    margin: 50px;
+}
+
+#gallery {
+    margin: 0 auto;
+    text-align: center;
+}

@@ -1,0 +1,62 @@
+/* example 1 */
+/*
+h2 {
+    color: blue;
+}
+
+h2 {
+    color: red;
+} 
+
+*/
+
+/* example 2 */
+
+/* li > h2 {
+    color: blue;
+}
+
+h2 {
+    color: red;
+} */
+
+/* example 3 */
+
+/* #myDiv h2 {
+    font-style: italic;
+}
+
+div > div > div > ul > li > h2 {
+    font-style: normal;
+} */
+
+/* example4 */
+/* #myDiv h2 {
+    font-style: italic;
+}
+
+.myClass h2 {
+    font-style: normal;
+}
+
+div > div > div > ul > li > h2 {
+    font-style: oblique;
+} */
+
+/* example5 */
+/* 
+#myDiv h2 {
+    background-color: pink;
+}
+#container h2 {
+    background-color: green;
+} */
+
+
+h2 {
+    background-color: pink !important;
+}
+#container h2 {
+    background-color: green;
+}
+
