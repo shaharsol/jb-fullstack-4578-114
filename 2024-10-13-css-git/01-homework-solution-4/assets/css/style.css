@@ -1,0 +1,36 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height : 100%;
+}
+
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 2fr 1fr 6fr 1fr;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+
+main > div, .container > *, #cat3-plus-form > * {
+    border: 1px solid black
+}
+
+#cat3-plus-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#cat3-plus-form > * {
+    height: 100%;
+}
+
+#form {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 4;
+}
