@@ -1,0 +1,15 @@
+
+.row > div {
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: xx-large;    
+}
+
+.yossi {
+    color: green;
+}
+
+.yossi {
+    background-color: red;
+}
