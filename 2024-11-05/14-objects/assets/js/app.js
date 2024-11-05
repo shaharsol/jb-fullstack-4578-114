@@ -50,12 +50,26 @@ yoav.name = 'Yoav'
 
 // alert(mira) // [object Object]
 
-alert(mira.name)
-alert(mira['name'])
+// alert(mira.name)
+// alert(mira['name'])
 
 // for-in loop, a special loop to iterate objects
 for(const property in mira) {
     document.write(`mira ${property} is: ${mira[property]}<br>`)
+}
+
+const emp = {
+    name: 'beeri',
+    salary: 1000000
+}
+
+// works, even if emp is const
+emp.salary += 1000;
+alert(emp.salary)
+
+// won't work, can't re-assign to const
+emp = {
+    name: 'mira'
 }
 
 
