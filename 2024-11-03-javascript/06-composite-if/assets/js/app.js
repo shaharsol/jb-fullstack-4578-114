@@ -7,30 +7,30 @@ const grade = +prompt('enter a grade:');
 //     document.write('invalid')
 // }
 
-// if (grade < 0 || grade >100) {
-//     document.write('invalid')
-// } else {
-//     if(grade === 100) {
-//         document.write('perfect')
-//     } else {
-//         if(grade >= 60) {
-//             document.write('pass')
-//         } else {
-//             document.write('fail')
-//         }
-//     }
-// }
+if (grade < 0 || grade >100) {
+    document.write('invalid')
+} else {
+    if(grade === 100) {
+        document.write('perfect')
+    } else {
+        if(grade >= 60) {
+            document.write('pass')
+        } else {
+            document.write('fail')
+        }
+    }
+}
 
 // same code with else if
-// if (grade < 0 || grade >100) {
-//     document.write('invalid')
-// } else if(grade === 100) {
-//     document.write('perfect')
-// } else if(grade >= 60) {
-//     document.write('pass')
-// } else {
-//     document.write('fail')
-// }
+if (grade < 0 || grade >100) {
+    document.write('invalid')
+} else if(grade === 100) {
+    document.write('perfect')
+} else if(grade >= 60) {
+    document.write('pass')
+} else {
+    document.write('fail')
+}
     
 
 // same code with else if, shortened to the maximum

@@ -31,3 +31,16 @@ switch(num) {
     default:
         document.write('invalid input')
 }
+
+const firstName = prompt('enter your name')
+switch(firstName) {
+    case 'shahar':
+        
+    case 'tamir':
+
+}
+
+switch(true) {
+    case firstName === 'moshe':
+    case num < 0:    
+}
