@@ -35,4 +35,11 @@ console.log(`itay age is represented as ${typeof itay.age === 'number' ? 'number
 
 if (typeof itay.age !== 'number') itay.age = +itay.age
 
+const osherJSON = `{"name":"osher","age":22}`
+const osher = JSON.parse(osherJSON)
+for(const property in osher){
+    console.log(`osher has a property name ${property} of type ${typeof osher[property]}`)
+}
+
+
 
