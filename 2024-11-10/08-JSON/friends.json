@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "fisrtName": "mira",
+        "age": 22,
+        "city": "Petach Tiqwa",
+        "gender": "female",
+        "friends": [
+            {}, {}
+        ]
+    },
+    {
+        "id": 2,
+        "name": "yoav",
+        "age": 22,
+        "city": "Herzliya",
+        "gender": "male"
+    }
+
+]
