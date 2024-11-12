@@ -23,10 +23,10 @@ const osher = {
     name: 'Osher',
     age: 22,
     gender: 'male',
-    city: 'Givat Shmuel'
+    city: 'Givat Shmuel',
 }
 
-const grades = [100, 96, 55]
+const grades = [100, 96, 55, 77, 77, 78]
 const animals = ['dog', 'cat', 'fish']
 const friends = [mira, yoav ,beery, osher]
 
