@@ -37,8 +37,3 @@ while(userStillWantsToContinue(input)) {
     }
     input = getInputFromUser()
 }
-
-// 1. Layout the code in English
-// 2. data flow
-// 3. DRY
-
