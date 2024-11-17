@@ -6,11 +6,15 @@ function sayGoodbye() {
 }
 
 function saveName() {
-    const name = document.getElementById("nameInput").value
-    localStorage.setItem('username', name)
+    const username = ("nameInput").value
+    localStorage.setItem('username', username)
 }
 
 function restoreName() {
-    const name = localStorage.getItem('username')
-    document.getElementById('nameInput').value = name
+    const username = localStorage.getItem('username')
+    const inputElement = document.getElementById('nameInput')
+    inputElement.value = username
+    inputElement.style.width = '300px'
+    inputElement.style.backgroundColor = 'green'
+
 }
