@@ -6,5 +6,11 @@ function sayGoodbye() {
 }
 
 function saveName() {
-    console.log(document.getElementById("nameInput").value)
+    const name = document.getElementById("nameInput").value
+    localStorage.setItem('username', name)
+}
+
+function restoreName() {
+    const name = localStorage.getItem('username')
+    document.getElementById('nameInput').value = name
 }
