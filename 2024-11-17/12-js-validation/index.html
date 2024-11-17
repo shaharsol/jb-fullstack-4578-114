@@ -10,20 +10,26 @@
 <body>
     <h2>Login</h2>
 
-    <form action="save.html" method="GET">
+    <form action="save.html" method="GET" onsubmit="validate(event)">
         <label>email</label>
-        <input type="email" name="email" required>
+        <input id="email" type="email" name="email">
+        <br>
+        <div id="emailErrorMessage" class="error"></div>
         <br><br>
 
         <label>password</label>
-        <input type="password" name="password" required minlength="6">
+        <input id="password" type="password" name="password">
+        <br>
+        <div id="passwordErrorMessage" class="error"></div>
         <br><br>
 
         <label>age</label>
-        <input type="number" name="age" required min="13">
+        <input id="age" type="number" name="age">
+        <br>
+        <div id="ageErrorMessage" class="error"></div>
         <br><br>
 
-        <input type="submit" value="login">
+        <button>Login</button>
 
     </form>
 
