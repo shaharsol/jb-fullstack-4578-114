@@ -16,7 +16,8 @@ const shoppingCart = [
     }
 ]
 // save the data as JSON in local storage
-localStorage.setItem('products', JSON.stringify(shoppingCart))
+const jsonToSave = JSON.stringify(shoppingCart)
+localStorage.setItem('products', jsonToSave)
 
 // retrieve the data and parse back to object
 const info = JSON.parse(localStorage.getItem('products'))

@@ -6,7 +6,7 @@ function sayGoodbye() {
 }
 
 function saveName() {
-    const username = ("nameInput").value
+    const username = document.getElementById("nameInput").value
     localStorage.setItem('username', username)
 }
 
@@ -16,5 +16,8 @@ function restoreName() {
     inputElement.value = username
     inputElement.style.width = '300px'
     inputElement.style.backgroundColor = 'green'
+    inputElement.classList.add('myClass')
+
+    document.getElementById("mira").style.textDecoration = 'none'
 
 }

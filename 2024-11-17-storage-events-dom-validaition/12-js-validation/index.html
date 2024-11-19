@@ -10,7 +10,8 @@
 <body>
     <h2>Login</h2>
 
-    <form action="save.html" method="GET" onsubmit="validate(event)">
+
+    <form id="myForm" action="save.html" method="GET" onsubmit="return validate(event)">
         <label>email</label>
         <input id="email" type="email" name="email">
         <br>
@@ -29,9 +30,11 @@
         <div id="ageErrorMessage" class="error"></div>
         <br><br>
 
-        <button>Login</button>
+        <button onclick="">Login</button>
 
     </form>
+
+    <button onclick="document.getElementById('myForm').submit()"></button>
 
 </body>
 </html>

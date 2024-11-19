@@ -2,7 +2,7 @@ function validate(event) {
     // tells the browser, that i am taking command
     // on this event, and I don't want the browser
     // to continue handling the event
-    event.preventDefault()
+    // event.preventDefault()
 
     const emailInput = document.getElementById('email') 
     const passwordInput = document.getElementById('password') 
@@ -28,5 +28,8 @@ function validate(event) {
     if(age < 13) {
         ageErrorMessage.innerHTML = 'Kids are not allowed. Grow up and come back'
     }
+
+    return false;
+    
 
 }
