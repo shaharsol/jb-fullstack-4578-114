@@ -2,12 +2,13 @@ function collectData() {
     const carName = document.getElementById('carName').value
     const engineVolume = document.getElementById('engineVolume').value
     const carColor = document.getElementById('carColor').value
+    const imageUrl = document.getElementById('imageUrl').value
     return {
         carName: carName,
         engineVolume: engineVolume,
-        carColor: carColor
+        carColor: carColor,
+        imageUrl: imageUrl
     }
-    
 }
 
 function generateHTML(data) {
@@ -15,7 +16,8 @@ function generateHTML(data) {
         <tr style="background-color: ${data.carColor}">
             <td>${data.carName}</td>
             <td>${data.engineVolume}</td>
-        </tr>
+            <td><img src="${data.imageUrl}" /></td>
+        </tr>    
     `
     return newHTML
 }
@@ -34,6 +36,9 @@ function clearForm() {
     // we can clear the entire form in one command
     const carForm = document.getElementById('carForm')
     carForm.reset()
+
+    const carNameInput = document.getElementById('carName')
+    carNameInput.focus()
 }
 
 function addCarToTable(event) {
