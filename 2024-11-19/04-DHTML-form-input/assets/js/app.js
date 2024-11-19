@@ -41,10 +41,38 @@ function clearForm() {
     carNameInput.focus()
 }
 
+function saveSingleCarToStorage(carObject) {
+    const currentCarsInStorageJSON = localStorage.getItem('cars')
+
+    let carsArray;
+    if (!currentCarsInStorageJSON) {
+        carsArray = []
+    } else {
+        carsArray = JSON.parse(currentCarsInStorageJSON)
+    }
+    
+    carsArray.push(carObject)
+    localStorage.setItem('cars', JSON.stringify(carsArray))
+}
+
 function addCarToTable(event) {
     event.preventDefault()
     const data = collectData()
     const newHTML = generateHTML(data)
+    saveSingleCarToStorage(data)
     renderHTML(newHTML)
     clearForm()
 }
+
+function loadCarsFromLocalStorage() {
+    const carsJSON = localStorage.getItem('cars')
+    if(carsJSON) {
+        const cars = JSON.parse(carsJSON)
+        for(const car of cars) {
+            const newHTML = generateHTML(car)
+            renderHTML(newHTML)
+        }
+    }
+}
+
+loadCarsFromLocalStorage()
