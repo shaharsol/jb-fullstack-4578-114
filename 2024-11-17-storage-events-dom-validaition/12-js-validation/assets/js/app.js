@@ -10,7 +10,6 @@ function validate(event) {
     const emailErrorMessage = document.getElementById('emailErrorMessage') 
     const passwordErrorMessage = document.getElementById('passwordErrorMessage') 
     const ageErrorMessage = document.getElementById('ageErrorMessage') 
-    
 
 
     const email = emailInput.value
@@ -19,17 +18,19 @@ function validate(event) {
 
     if(!email) {
         emailErrorMessage.innerHTML = 'You must enter an email'
+        return false;
     }
 
     if(password.length < 8) {
         passwordErrorMessage.innerHTML = 'Passwords must be at least 8 characters long'
+        return false;
     }
 
     if(age < 13) {
         ageErrorMessage.innerHTML = 'Kids are not allowed. Grow up and come back'
+        return false;
     }
 
-    return false;
-    
+    return true;    
 
 }

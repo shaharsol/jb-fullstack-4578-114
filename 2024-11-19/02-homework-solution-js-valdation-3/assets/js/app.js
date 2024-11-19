@@ -1,8 +1,16 @@
-function changeBackgroundColor() {
-    const colors = ['red', 'green', 'blue', 'yellow', 'wheat', 'purple', 'grey']
+function errorMessage(innerHTML, backgroundColor) {
+    const firstNameInput = document.getElementById('firstName')
+    const firstNameErrorMessage = document.getElementById('firstNameErrorMessage')
+    firstNameErrorMessage.innerHTML = innerHTML
+    firstNameInput.style.backgroundColor = backgroundColor
+}
 
-    const randomIndex = parseInt(Math.random() * colors.length)
-
-    document.getElementById('myInput').style.backgroundColor = colors[randomIndex]
-
+function message() {
+    const firstNameInput = document.getElementById('firstName')
+    if (!firstNameInput.value) {
+        errorMessage('error', 'pink')
+    } else {
+        alert(firstNameInput.value)
+        errorMessage('', 'white')
+    }
 }
