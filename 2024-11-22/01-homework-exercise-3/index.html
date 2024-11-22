@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script defer src="assets/js/app.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+
+    <form id="colorForm" onsubmit="addColorToTable(event)">
+        <label for="colorName">color name</label>
+        <input required minlength="3" maxlength="20" id="colorName" type="text"/>
+        <br><br>
+
+        <button>Add to Table</button>
+    </form>
+
+    <p>current number of colors is <span id="counter">0</span></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>color name</th>
+                <th>color example</th>
+            </tr>
+        </thead>
+        <tbody id="colorsContainer">
+        </tbody>
+
+    </table>
+
+</body>
+</html>
