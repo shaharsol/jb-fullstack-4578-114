@@ -33,27 +33,18 @@ function clearForm() {
     descriptionInput.focus()
 }
 
-function saveSingleCarToStorage(carObject) {
-    const currentCarsInStorageJSON = localStorage.getItem('cars')
+function saveTaskToStorage(taskObject) {
+    // get JSON from local storage
+    const currentTasksInStorageJSON = localStorage.getItem('tasks')
 
-    let carsArray;
-    if (!currentCarsInStorageJSON) {
-        carsArray = []
-    } else {
-        carsArray = JSON.parse(currentCarsInStorageJSON)
-    }
-    
-    carsArray.push(carObject)
-    localStorage.setItem('cars', JSON.stringify(carsArray))
-}
+    // convert JSON to JavaScript object
+    const currentTasksInStorage = JSON.parse(currentTasksInStorageJSON)
 
-function addTask(event) {
-    event.preventDefault()
-    const data = collectData()
-    const newHTML = generateHTML(data)
-    // saveTaskToStorage(data)
-    renderHTML(newHTML)
-    clearForm()
+    // the object I got is an array, push another item to the array
+    currentTasksInStorage.push(taskObject)
+
+    // save it back to the local storage
+    localStorage.setItem('tasks', JSON.stringify(currentTasksInStorage))
 }
 
 function loadCarsFromLocalStorage() {
@@ -67,4 +58,23 @@ function loadCarsFromLocalStorage() {
     }
 }
 
+function initStorage() {
+    const currentTasksInStorageJSON = localStorage.getItem('tasks')
+    if(!currentTasksInStorageJSON) {
+        localStorage.setItem('tasks', [])
+    }
+    
+}
+
+function addTask(event) {
+    event.preventDefault()
+    const data = collectData()
+    const newHTML = generateHTML(data)
+    renderHTML(newHTML)
+    saveTaskToStorage(data)
+    clearForm()
+}
+
+
+initStorage()
 loadCarsFromLocalStorage()
