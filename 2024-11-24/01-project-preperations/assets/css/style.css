@@ -1,0 +1,17 @@
+#tasks {
+    display: flex;
+    flex-direction: row;
+}
+
+.task {
+    background-image: '';
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 150px;
+    border: 1px solid blue;
+}
+
+.task > div:first-child {
+    overflow-y: scroll;
+}
