@@ -12,6 +12,25 @@
     border: 1px solid blue;
 }
 
-.task > div:first-child {
+.task > div:nth-child(2) {
     overflow-y: scroll;
+}
+
+.task > div:nth-child(1) {
+
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.task > div > img {
+    width: 16px;
+    display: none;
+}
+
+.task:hover > div > img {
+    display: block;
+}
+
+.task > div > img:hover {
+    cursor: pointer;
 }

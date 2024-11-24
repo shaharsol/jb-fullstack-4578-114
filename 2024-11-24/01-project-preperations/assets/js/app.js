@@ -2,7 +2,9 @@ function collectData() {
     const description = document.getElementById('description').value
     const date = document.getElementById('date').value
     const time = document.getElementById('time').value
+    const index = getNumberOfTasksInLocalStorage()
     return {
+        index,
         description,
         date,
         time,
@@ -12,11 +14,15 @@ function collectData() {
 function generateHTML(data) {
     const newHTML = `
         <div class="task">
+            <div>
+                <img src="assets/images/x.png" onclick="deleteTask(${data.index})">
+            </div>
             <div>${data.description}</div>
             <div>${data.date}</div>
             <div>${data.time}</div>
         </div>
     `
+
     return newHTML
 }
 
@@ -61,9 +67,13 @@ function loadCarsFromLocalStorage() {
 function initStorage() {
     const currentTasksInStorageJSON = localStorage.getItem('tasks')
     if(!currentTasksInStorageJSON) {
-        localStorage.setItem('tasks', [])
+        localStorage.setItem('tasks', JSON.stringify([]))
     }
     
+}
+
+function getNumberOfTasksInLocalStorage() {
+    return JSON.parse(localStorage.getItem('tasks')).length
 }
 
 function addTask(event) {
@@ -73,6 +83,10 @@ function addTask(event) {
     renderHTML(newHTML)
     saveTaskToStorage(data)
     clearForm()
+}
+
+function deleteTask(index) {
+    alert(`will delete item #${index} from local storage`)
 }
 
 
