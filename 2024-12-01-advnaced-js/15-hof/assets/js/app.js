@@ -123,5 +123,9 @@ const avg2 = sum2 / students.length
 
 console.log(avg2)
 
+// find max item using reduce
+const max = students.reduce((currentMax, student) => currentMax > student.grade ? currentMax : student.grade, 0)
+console.log(max)
+
 
 
