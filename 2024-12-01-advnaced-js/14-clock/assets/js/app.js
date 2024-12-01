@@ -1,6 +1,5 @@
 setInterval(() => {
-    const now = new Date()
-    document.getElementById('clock').innerHTML = now.toLocaleTimeString()
+    document.getElementById('clock').innerHTML = (new Date()).toLocaleTimeString()
 }, 1 * 1000)
 
 
