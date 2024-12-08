@@ -31,6 +31,8 @@
     const button = document.getElementById('bouton')
     button.addEventListener('click', event => alert('bouton clicked'))
 
+    form.addEventListener('suspend', handleFormSubmission)
+
 })()
 
 
