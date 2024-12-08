@@ -24,6 +24,7 @@
     //////////////////////////////////////////////////////////////
     const getUser = () => {
         console.log('function started')
+        // doing something
         console.log('function finished')
         return user
     }
