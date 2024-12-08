@@ -8,7 +8,7 @@
                 if (dayNumber < 1) return reject('dayNumber must be greater than 0');
                 if (dayNumber > 8) return reject('no Isru Chag in Hanukah');
                 resolve(dayNumber + 1)
-            }, 10)
+            }, 2000)
         })
     }   
 
