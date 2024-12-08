@@ -11,7 +11,7 @@
                 resolve(dayNumber + 1)
             }, 10)
         })
-    }
+    }   
 
     let sum = 0;
     getNumberOfCandles(1).then(result => {
