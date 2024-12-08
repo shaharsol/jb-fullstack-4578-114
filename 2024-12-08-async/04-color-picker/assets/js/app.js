@@ -11,7 +11,11 @@
     }
 
     document.getElementById('switchColor').addEventListener('click', () => {
-        pickColor(color => document.body.style.backgroundColor = color)
+        const myVar = 'fdgdfg'
+        pickColor(color => {
+            document.body.style.backgroundColor = color
+            console.log(myVar)
+        })
     })
 
 })()
