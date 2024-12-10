@@ -11,14 +11,22 @@
 
     const generateStatsTable = todos => {
 
+        const totalTodos = todos.length
+        const completedTodos = todos.filter(todo => todo.completed).length
+        const incompletedTodos = totalTodos - completedTodos
+
         return `
             <tr>
                 <td>total todos:</td>
-                <td>${todos.length}</td>
+                <td>${totalTodos}</td>
             </tr>
             <tr>
                 <td>total completed todos:</td>
-                <td>${}</td>
+                <td>${completedTodos}</td>
+            </tr>
+            <tr>
+                <td>total incompleted todos:</td>
+                <td>${incompletedTodos}</td>
             </tr>
         `
     }
