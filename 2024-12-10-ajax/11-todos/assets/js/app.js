@@ -10,10 +10,15 @@
     }
 
     const generateStatsTable = todos => {
+
         return `
             <tr>
                 <td>total todos:</td>
                 <td>${todos.length}</td>
+            </tr>
+            <tr>
+                <td>total completed todos:</td>
+                <td>${}</td>
             </tr>
         `
     }
