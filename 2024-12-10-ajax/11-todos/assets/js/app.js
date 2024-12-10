@@ -27,18 +27,20 @@ const todos = [
 
 const arr = [
     [
+    ],
+    [
         {
             "userId": 1,
-            "id": 1,
-            "title": "delectus aut autem",
+            "id": 3,
+            "title": "fugiat veniam minus",
             "completed": false
           },
           {
             "userId": 1,
-            "id": 2,
-            "title": "quis ut nam facilis et officia qui",
-            "completed": false
-          },        
+            "id": 4,
+            "title": "et porro tempora",
+            "completed": true
+          },
     ],
     [
         {
@@ -48,11 +50,12 @@ const arr = [
             "completed": false
           },
           {
-            "userId": 2,
+            "userId": 3,
             "id": 4,
             "title": "et porro tempora",
             "completed": true
           },
+
     ]
 ]
 
@@ -88,37 +91,30 @@ const result = [
     }
 
     const generateUsersTable = todos => {
-        const result = todos.reduce((cumulative, current) => {
-            const { userId, completed } = current
+        const result = todos
+            .reduce((cumulative, current) => {
+                const { userId } = current;
+                (cumulative[userId] ? cumulative[userId] : cumulative[userId] = []).push(current)
+                return cumulative
+            }, [])
+            .filter(userTodos => userTodos)
+            .map(userTodos => userTodos
+                .reduce((cumulative, current) => {
+                    cumulative.completed += current.completed ? 1 : 0
+                    cumulative.incompleted += current.completed ? 0 : 1
+                    return cumulative
+                }, {userId: userTodos[0].userId, completed: 0, incompleted: 0})
+            )
+            .map(userTodos => `
+                <tr>
+                    <td>${userTodos.userId}</td>
+                    <td>${userTodos.completed}</td>
+                    <td>${userTodos.incompleted}</td>
+                </tr>
+            `).
+            reduce((cumulative, current) => cumulative + current, '')
 
-            let existingObjectIndex = cumulative.findIndex(user => user.userId === current.userId)
-            console.log(existingObjectIndex)
-            if(existingObjectIndex === -1) {
-                cumulative.push({
-                    userId,
-                    completed: 0,
-                    incompleted: 0 
-                })
-                existingObjectIndex = cumulative.findIndex(user => user.userId === current.userId)
-
-            }
-            console.log(existingObjectIndex)
-
-            cumulative[existingObjectIndex].completed += completed ? 1 : 0
-            cumulative[existingObjectIndex].incompleted += completed ? 0 : 1
-
-            return cumulative
-        }, [])
-        .map(user => `
-            <tr>
-                <td>${user.userId}</td>
-                <td>${user.completed}</td>
-                <td>${user.incompleted}</td>
-            </tr>
-        `)
-        .reduce((cumulative, current) => cumulative + current, '')
-
-        // console.log(result)
+        console.log(result)
 
         return result
     }
