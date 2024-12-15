@@ -25,6 +25,8 @@ const todos = [
     },
 ]
 
+[1, 2]
+
 const arr = [
     [
     ],
@@ -86,11 +88,46 @@ const result = [
     }
 
     const generateUsersTable = todos => {
-        const result = todos
 
-        // complete missing code...
+        
+        
+        
+        // const userIds = todos.map(todo => todo.userId)
+        // const usersSet = new Set(userIds)
+        // const userIdsUnique = [...usersSet]
+        const userIdsUnique = [...new Set(todos.map(todo => todo.userId))]
+        const result = userIdsUnique
+            // .map(userId => {
+            //     return {
+            //         userId,
+            //         completed: todos.filter(todo => todo.userId === userId && todo.completed).length,
+            //         incompleted: todos.filter(todo => todo.userId === userId && !todo.completed).length 
+            //     }
+            // })
+            .map(userId => ({
+                    userId,
+                    completed: todos.filter(todo => todo.userId === userId && todo.completed).length,
+                    incompleted: todos.filter(todo => todo.userId === userId && !todo.completed).length 
+                })
+            )
+            .map(user => `
+                <tr>
+                    <td>${user.userId}</td>
+                    <td>${user.completed}</td>
+                    <td>${user.incompleted}</td>
+                </tr>
+            `)
+            .reduce((cum, cur) => cum + cur, '')
 
-        console.log(result)
+
+
+        // console.log(userIds)
+
+        // const result = todos
+
+        // // complete missing code...
+
+        // console.log(result)
 
         return result
     }
