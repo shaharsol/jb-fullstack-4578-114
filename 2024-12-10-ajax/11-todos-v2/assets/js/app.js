@@ -88,9 +88,11 @@ const result = [
     }
 
     const generateUsersTable = todos => {
+        // O(n**2)
         const result = todos.reduce((cumulative, current) => {
             const { userId, completed } = current
 
+            // O(n)
             let existingObjectIndex = cumulative.findIndex(user => user.userId === current.userId)
             console.log(existingObjectIndex)
             if(existingObjectIndex === -1) {
@@ -99,6 +101,7 @@ const result = [
                     completed: 0,
                     incompleted: 0 
                 })
+                // O(n)
                 existingObjectIndex = cumulative.findIndex(user => user.userId === current.userId)
 
             }

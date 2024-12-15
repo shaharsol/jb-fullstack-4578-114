@@ -11,12 +11,15 @@
 
     const generateUsersTable = todos => {
         const result = todos
+            // O(n)
             .reduce((cumulative, current) => {
                 const { userId } = current;
                 (cumulative[userId] ? cumulative[userId] : cumulative[userId] = []).push(current)
                 return cumulative
             }, [])
+            // O(n) , so far, O(n) + O(n) = O(n)
             .filter(userTodos => userTodos)
+            // O(n**2)
             .map(userTodos => userTodos
                 .reduce((cumulative, current) => {
                     cumulative.completed += current.completed ? 1 : 0
@@ -35,6 +38,7 @@
                     <td>${userTodos.incompleted}</td>
                 </tr>
             `).
+            // O(n)
             reduce((cumulative, current) => cumulative + current, '')
 
         // O(1)    
@@ -116,4 +120,33 @@
 
 })()
 
+
+
+
+// O(1)
+const func1 = (arr) => {
+    console.log('a')
+    console.log('b')
+    console.log('c')
+
+    //
+    //
+    //
+
+    console.log('c')
+
+    // ended up with 500,000 console.log commands
+}
+
+// O(n)
+const func2 = (arr) => {
+    arr.reduce(bla bla bla)
+}
+
+// O(n**2)
+const func3 = (arr) => {
+    arr.map(item => {
+        item.map(subItem => ...)
+    })
+}
 
