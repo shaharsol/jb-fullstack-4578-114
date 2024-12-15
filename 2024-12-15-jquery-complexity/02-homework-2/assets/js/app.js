@@ -1,43 +1,68 @@
+const users = [
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz",
+      "address": {
+        "street": "Kulas Light",
+        "suite": "Apt. 556",
+        "city": "Gwenborough",
+        "zipcode": "92998-3874",
+        "geo": {
+          "lat": "-37.3159",
+          "lng": "81.1496"
+        }
+      },
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "company": {
+        "name": "Romaguera-Crona",
+        "catchPhrase": "Multi-layered client-server neural-net",
+        "bs": "harness real-time e-markets"
+      }
+    },
+  ]
+
+
+  const mid = [
+    [],
+    [],
+  ]
+
+
+  const result = [
+    {suffix: ".io", count: 3},
+    {suffix: ".com", count: 2},
+  ]
+
+
 "use strict";
 
 (() => {
 
+    const extractSuffixFromEmail = email => email.substring(email.lastIndexOf('.'))
+
     const getData = url => fetch(url).then(response => response.json())
 
-    const generateUsersSelect = users => {
-        const newHTML = users
-            .map(user => {
-                const { id, name } = user // deconstruction
-                return `
-                    <option value="${id}">${name}</option>
-                `
-            })
-            .reduce((cumulative, current) => cumulative + current, '')
-        return newHTML
+    const generateEmailSuffixesTable = users => {
+        const result = users
+            .map(user => extractSuffixFromEmail(user.email)) // (10) ['.biz', '.tv', '.net', '.org', '.ca', '.info', '.biz', '.me', '.io', '.biz']
+            .reduce((suffixes, current) => {
+                const existingSuffix = suffixes.find(({suffix}) => suffix === current)
+                console.log(existingSuffix, current)
+                if(!existingSuffix) suffixes.push({
+                    suffix: current,
+                    count: 1
+                })
+                else existingSuffix.count++
+                return suffixes
+            }, [])
+        
+        console.log(result)
     }
 
-    const renderUsersSelect = newHTML => document.getElementById('users').innerHTML = newHTML
-
-
-    const generateSingleUserDisplay = user => {
-        const { name, phone, company } = user
-
-        return `
-            <li>${name}</li>
-            <li>${phone}</li>
-            <li>${company.name}</li>
-        `        
-    }
-
-    const renderSingleUserDisplay = newHTML => document.getElementById('singleUser').innerHTML = newHTML
-
-    document.getElementById('users').addEventListener('change', async () => {
-        const userId = document.getElementById('users').value
-        const user = await getData(`https://jsonplaceholder.typicode.com/users/${userId}`)
-        const newHTML = generateSingleUserDisplay(user)
-        renderSingleUserDisplay(newHTML)
-
-    })
+    const renderEmailSuffixesTable = newHTML => document.getElementById('emailSuffixes').innerHTML = newHTML
 
     const load = async () => {
         try {
@@ -46,10 +71,10 @@
             const users = await getData('https://jsonplaceholder.typicode.com/users')
 
             // generate html
-            const usersSelectHTML = generateUsersSelect(users)
+            const emailSuffixesHTML = generateEmailSuffixesTable(users)
 
             // render html
-            renderUsersSelect(usersSelectHTML)
+            renderEmailSuffixesTable(emailSuffixesHTML)
             
         } catch (e) {
             console.warn(e)
