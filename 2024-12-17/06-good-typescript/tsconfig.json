@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+        "outDir": "assets/js",
+        "noEmitOnError": true
+    }
+}
