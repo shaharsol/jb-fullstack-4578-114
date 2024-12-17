@@ -17,7 +17,7 @@
     const printStars = (n) => { // 1. function signature identical to non-recursive solution
         if (n <= 0) return      // 2. exit condition, otherwise this is an endless loop
         document.write('* ')    // 3. do a single portion of the entire recursion work
-        printStars(n-1)         // 4. invoke the recursion with the rest of the work
+        printStars(n - 1)         // 4. invoke the recursion with the rest of the work
     }
 
 
@@ -31,7 +31,7 @@
     const printNto1 = (n) => { // 1. function signature identical to non-recursive solution
         if (n <= 0) return      // 2. exit condition, otherwise this is an endless loop
         document.write(`${n} `)    // 3. do a single portion of the entire recursion work
-        printNto1(n-1)         // 4. invoke the recursion with the rest of the work
+        printNto1(n - 1)         // 4. invoke the recursion with the rest of the work
     }
 
 
@@ -43,8 +43,8 @@
 
     const printEvenNto1 = (n) => { // 1. function signature identical to non-recursive solution
         if (n <= 0) return      // 2. exit condition, otherwise this is an endless loop
-        if(n % 2 === 0) document.write(`${n} `)    // 3. do a single portion of the entire recursion work
-        printEvenNto1(n-1)         // 4. invoke the recursion with the rest of the work
+        if (n % 2 === 0) document.write(`${n} `)    // 3. do a single portion of the entire recursion work
+        printEvenNto1(n - 1)         // 4. invoke the recursion with the rest of the work
     }
 
     document.getElementById('b4').addEventListener('click', () => {
@@ -55,7 +55,7 @@
 
     const print1toN = (n) => { // 1. function signature identical to non-recursive solution
         if (n <= 0) return      // 2. exit condition, otherwise this is an endless loop
-        print1toN(n-1)         // 4. invoke the recursion with the rest of the work
+        print1toN(n - 1)         // 4. invoke the recursion with the rest of the work
         document.write(`${n} `)    // 3. do a single portion of the entire recursion work
     }
 
@@ -73,7 +73,7 @@
 
     const getSumNto1 = (n) => {         // 1. function signature identical to non-recursive solution
         if (n <= 0) return 0            // 2. exit condition, otherwise this is an endless loop
-        return n + getSumNto1(n-1)     // 3. do a single portion of the entire recursion work +  4. invoke the recursion with the rest of the work
+        return n + getSumNto1(n - 1)     // 3. do a single portion of the entire recursion work +  4. invoke the recursion with the rest of the work
     }
 
 
@@ -86,7 +86,7 @@
 
     const getFactorial = (n) => {         // 1. function signature identical to non-recursive solution
         if (n <= 1) return 1            // 2. exit condition, otherwise this is an endless loop
-        return n * getFactorial(n-1)     // 3. do a single portion of the entire recursion work +  4. invoke the recursion with the rest of the work
+        return n * getFactorial(n - 1)     // 3. do a single portion of the entire recursion work +  4. invoke the recursion with the rest of the work
     }
 
 
@@ -106,12 +106,51 @@
 
     const getFibonacci = (n) => {         // 1. function signature identical to non-recursive solution
         if (n <= 2) return 1            // 2. exit condition, otherwise this is an endless loop
-        return getFibonacci(n-1) + getFibonacci(n-2)    // 3. do a single portion of the entire recursion work +  4. invoke the recursion with the rest of the work
+        return getFibonacci(n - 1) + getFibonacci(n - 2)    // 3. do a single portion of the entire recursion work +  4. invoke the recursion with the rest of the work
     }
 
-    const 
 
-    
+    document.getElementById('b8').addEventListener('click', () => {
+
+        const user = {
+            "id": 1, // number
+            "name": "Leanne Graham", //string
+            "username": "Bret", //string
+            "email": "Sincere@april.biz", //string
+            "address": { // object
+                "street": "Kulas Light",
+                "suite": "Apt. 556",
+                "city": "Gwenborough",
+                "zipcode": "92998-3874",
+                "geo": {
+                    "lat": "-37.3159",
+                    "lng": "81.1496"
+                }
+            },
+            "phone": "1-770-736-8031 x56442",
+            "website": "hildegard.org",
+            "company": {
+                "name": "Romaguera-Crona",
+                "catchPhrase": "Multi-layered client-server neural-net",
+                "bs": "harness real-time e-markets"
+            }
+        }
+
+        flattenObject(user)
+
+
+    })
+
+    const flattenObject = (obj) => {
+        for(const prop in obj) {
+            if (typeof obj[prop] !== 'object') console.log(prop)
+            else flattenObject(obj[prop])    
+        }
+    }
+
+
+
+
 
 
 })()
