@@ -20,6 +20,8 @@ console.log(micra)
 micra.drive()
 // console.log(`A ${micra.year} ${micra.make} ${micra.model} for sale for ${micra.price}`)
 micra.displaySaleInfo()
+Car.horn()
+micra.hornSpecific()
 
 const maxima = new Car('nissan', 'maxima', true, 2015, 113000)
 // maxima.init('nissan', 'maxima', true, 2015, 113000 )

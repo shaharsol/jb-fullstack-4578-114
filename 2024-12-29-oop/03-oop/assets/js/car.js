@@ -1,4 +1,4 @@
-export default class Car {
+class Car {
     // methods
     // public init(make: string, model: string, diesel: boolean, year: number, price: number) {
     //     this.make = make
@@ -28,6 +28,7 @@ export default class Car {
         // public year: number
         // public price: number
         this.serialNumber = Math.floor(Math.random() * 10000000);
+        this.hornVolume = Math.random() * 10;
     }
     drive() {
         console.log(`I am driving my ${this.make} ${this.model}... `);
@@ -39,6 +40,17 @@ export default class Car {
         this.serialNumber = newSerialNumber;
     }
     displaySaleInfo() {
-        console.log(`A ${this.year} ${this.make} ${this.model} for sale for ${this.price}`);
+        console.log(`A ${this.year} ${this.make} ${this.model} for sale for ${this.getFullPrice()}`);
+    }
+    getFullPrice() {
+        return this.price * (1 + Car.vat);
+    }
+    static horn() {
+        console.log(`tututututututu`);
+    }
+    hornSpecific() {
+        console.log(`tututututututu volume: ${this.hornVolume}`);
     }
 }
+Car.vat = 0.17;
+export default Car;

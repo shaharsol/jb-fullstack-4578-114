@@ -7,6 +7,8 @@ export default class Car {
     // public year: number
     // public price: number
     private serialNumber: number = Math.floor(Math.random() * 10000000)
+    private static vat: number = 0.17
+    private hornVolume = Math.random() * 10
 
     // methods
     // public init(make: string, model: string, diesel: boolean, year: number, price: number) {
@@ -36,8 +38,6 @@ export default class Car {
     ) {
     }
     
-
-
     public drive() {
         console.log(`I am driving my ${this.make} ${this.model}... `)
     }
@@ -51,7 +51,20 @@ export default class Car {
     }
 
     public displaySaleInfo() {
-        console.log(`A ${this.year} ${this.make} ${this.model} for sale for ${this.price}`)
+        console.log(`A ${this.year} ${this.make} ${this.model} for sale for ${this.getFullPrice()}`)
     }
+
+    public getFullPrice() {
+        return this.price * (1 + Car.vat)
+    }
+
+    public static horn() {
+        console.log(`tututututututu`)
+    }
+    
+    public hornSpecific() {
+        console.log(`tututututututu volume: ${this.hornVolume}`)
+    }
+
 }
 
