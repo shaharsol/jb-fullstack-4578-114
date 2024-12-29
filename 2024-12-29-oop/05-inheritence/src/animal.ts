@@ -2,12 +2,19 @@ import BreathingCreature from "./breathing-creature.js"
 
 export default class Animal extends BreathingCreature{
 
+    private static numberOfAnimals = 0
+
     public constructor (
         public readonly color: string,
         public readonly breed: string,
         public price: number,
     ) {
         super()
+        Animal.numberOfAnimals++
+    }
+
+    public static getNumberOfAnimals() {
+        return Animal.numberOfAnimals
     }
 
     public display() {

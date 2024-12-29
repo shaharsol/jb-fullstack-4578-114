@@ -1,10 +1,14 @@
 import BreathingCreature from "./breathing-creature.js";
-export default class Animal extends BreathingCreature {
+class Animal extends BreathingCreature {
     constructor(color, breed, price) {
         super();
         this.color = color;
         this.breed = breed;
         this.price = price;
+        Animal.numberOfAnimals++;
+    }
+    static getNumberOfAnimals() {
+        return Animal.numberOfAnimals;
     }
     display() {
         console.log(`color: ${this.color}`);
@@ -21,3 +25,5 @@ export default class Animal extends BreathingCreature {
         return this.price;
     }
 }
+Animal.numberOfAnimals = 0;
+export default Animal;
