@@ -1,18 +1,18 @@
 export default class Mobile {
 
     // data members / class fields
-    private type: string
-    private screenSize: number
-    private price: number
-    private numberOfCameras: number
     private pinCode: number = Math.floor(Math.random() * (9999 - 1000)) + 1000
+    public static totalMobilesCreated = 0
+    
 
     // methods
-    public constructor(type: string, screenSize: number, price: number, numberOfCameras: number) {
-        this.type = type
-        this.screenSize = screenSize
-        this.price = price
-        this.numberOfCameras = numberOfCameras
+    public constructor(
+        private type: string, 
+        private screenSize: number, 
+        private price: number, 
+        private numberOfCameras: number
+    ) {
+        Mobile.totalMobilesCreated ++
     }
     
     public displaySaleInfo() {
