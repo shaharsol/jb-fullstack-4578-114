@@ -1,11 +1,11 @@
 export default class Car {
 
     // data members / class fields
-    public make: string
-    public model: string
-    public diesel: boolean
-    public year: number
-    public price: number
+    // public make: string
+    // public model: string
+    // public diesel: boolean
+    // public year: number
+    // public price: number
     private serialNumber: number = Math.floor(Math.random() * 10000000)
 
     // methods
@@ -17,13 +17,26 @@ export default class Car {
     //     this.price = price
     // }
 
-    public constructor(make: string, model: string, diesel: boolean, year: number, price: number) {
-        this.make = make
-        this.model = model
-        this.diesel = diesel
-        this.year = year
-        this.price = price
+    // public constructor(make: string, model: string, diesel: boolean, year: number, price: number) {
+    //     this.make = make
+    //     this.model = model
+    //     this.diesel = diesel
+    //     this.year = year
+    //     this.price = price
+    // }
+
+    // short hand constructor
+
+    public constructor(
+        private make: string, 
+        private model: string, 
+        private diesel: boolean, 
+        private year: number, 
+        private price: number
+    ) {
     }
+    
+
 
     public drive() {
         console.log(`I am driving my ${this.make} ${this.model}... `)
