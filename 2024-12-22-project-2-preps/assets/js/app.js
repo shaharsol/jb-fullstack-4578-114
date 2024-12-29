@@ -46,8 +46,25 @@
     const getGraphData = async (coins) => getData(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${coins.join(',')}&tsyms=USD`)
 
     const coins = await getAllCoins()
-    console.log(coins)
+    const search = prompt('search coins')
+    const filterred = coins.filter(coin => coin.name.includes(search)).splice(0, 100)
+    console.log(filterred)
+    const html = coins
+        .map(coin => `
+            <div class="coin">
+                <p>${coin.id}</p>
+                <button id="${coin.id}">more info</button>
+            </div>
+            `)
+        .join('')
 
+    document.getElementById('cards-container').innerHTML = html
+
+    const buttonClicked = function () {
+        console.log(this.id)
+    }
+
+    document.querySelectorAll('#cards-container button').forEach(button => button.addEventListener('click', buttonClicked))
     // const btcData = await getSingleCoin('bitcoin')
     // const graphData = await getGraphData(['BTC','ETH'])
     // console.log(btcData)

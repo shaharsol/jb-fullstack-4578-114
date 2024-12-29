@@ -28,6 +28,7 @@ console.log(shay['grades'])
 // specials
 let something: any; // practically no TS on this variable
 something = 'message'
+something = 6
 console.log(typeof something) // will print 'string' but this is the JS type, not the TS type
 
 let myUndefined: undefined;
