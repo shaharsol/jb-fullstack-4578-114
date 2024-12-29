@@ -12,6 +12,7 @@ export default class Dog extends Animal{
     }
 
     public display() {
+        super.display()
         console.log(`isTrained: ${this.isTrained}`)
     }
 

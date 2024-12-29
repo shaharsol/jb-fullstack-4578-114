@@ -9,6 +9,7 @@ const gingo = new Cat(
 )
 
 gingo.display()
+gingo.inhale()
 console.log(gingo.getPrice())
 
 const lucky = new Dog(

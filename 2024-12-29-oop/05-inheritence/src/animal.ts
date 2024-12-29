@@ -1,11 +1,13 @@
-export default class Animal {
+import BreathingCreature from "./breathing-creature.js"
+
+export default class Animal extends BreathingCreature{
 
     public constructor (
         public readonly color: string,
         public readonly breed: string,
         public price: number,
     ) {
-
+        super()
     }
 
     public display() {

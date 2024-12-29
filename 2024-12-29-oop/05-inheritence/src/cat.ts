@@ -12,6 +12,7 @@ export default class Cat extends Animal{
     }
 
     public display() {
+        super.display()
         console.log(`numberOfSoulsLeft: ${this.numberOfSoulsLeft}`)
     }
 
