@@ -1,9 +1,14 @@
 export default class Car {
-    constructor() {
-        this.serialNumber = Math.floor(Math.random() * 10000000);
-    }
     // methods
-    init(make, model, diesel, year, price) {
+    // public init(make: string, model: string, diesel: boolean, year: number, price: number) {
+    //     this.make = make
+    //     this.model = model
+    //     this.diesel = diesel
+    //     this.year = year
+    //     this.price = price
+    // }
+    constructor(make, model, diesel, year, price) {
+        this.serialNumber = Math.floor(Math.random() * 10000000);
         this.make = make;
         this.model = model;
         this.diesel = diesel;

@@ -6,8 +6,8 @@
 
 import Car from "./car.js"
 
-const micra = new Car()
-micra.init('nissan', 'micra', false, 2020, 13000)
+const micra = new Car('nissan', 'micra', false, 2020, 13000)
+// micra.init('nissan', 'micra', false, 2020, 13000)
 // micra.make = 'nissan'
 // micra.model = 'micra'
 // micra.diesel = false
@@ -21,8 +21,8 @@ micra.drive()
 // console.log(`A ${micra.year} ${micra.make} ${micra.model} for sale for ${micra.price}`)
 micra.displaySaleInfo()
 
-const maxima = new Car()
-maxima.init('nissan', 'maxima', true, 2015, 113000 )
+const maxima = new Car('nissan', 'maxima', true, 2015, 113000)
+// maxima.init('nissan', 'maxima', true, 2015, 113000 )
 // maxima.make = 'nissan'
 // maxima.model = 'maxima'
 // maxima.diesel = true

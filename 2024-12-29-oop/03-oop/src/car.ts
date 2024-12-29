@@ -9,14 +9,21 @@ export default class Car {
     private serialNumber: number = Math.floor(Math.random() * 10000000)
 
     // methods
-    public init(make: string, model: string, diesel: boolean, year: number, price: number) {
+    // public init(make: string, model: string, diesel: boolean, year: number, price: number) {
+    //     this.make = make
+    //     this.model = model
+    //     this.diesel = diesel
+    //     this.year = year
+    //     this.price = price
+    // }
+
+    public constructor(make: string, model: string, diesel: boolean, year: number, price: number) {
         this.make = make
         this.model = model
         this.diesel = diesel
         this.year = year
         this.price = price
     }
-
 
     public drive() {
         console.log(`I am driving my ${this.make} ${this.model}... `)
