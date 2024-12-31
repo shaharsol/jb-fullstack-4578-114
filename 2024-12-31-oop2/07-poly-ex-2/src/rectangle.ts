@@ -8,6 +8,7 @@ export default class Rectangle extends Shape {
     ) {
         super()
     }
+    
     getArea(): number {
         return this.length * this.width
     }

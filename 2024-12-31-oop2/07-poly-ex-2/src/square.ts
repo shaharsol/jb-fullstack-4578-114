@@ -7,6 +7,7 @@ export default class Square extends Shape {
     ) {
         super()
     }
+    
     getArea(): number {
         return this.length ** 2
     }
