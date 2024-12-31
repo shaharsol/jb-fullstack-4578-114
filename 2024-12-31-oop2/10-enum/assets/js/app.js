@@ -1,5 +1,8 @@
-import FoodTruck from "./food-truck.js";
-const foodTruck = new FoodTruck();
-const coffeeMaker = foodTruck;
-coffeeMaker.makeAmericano();
-// coffeeMaker.makeHotdogs()
+import Voltage from "./voltage.js";
+const coffeMaker = {
+    numberOfMilkHotters: 2,
+    numberOfPins: 4,
+    voltage: Voltage.V240,
+    make: 'lavaza',
+};
+console.log(coffeMaker);

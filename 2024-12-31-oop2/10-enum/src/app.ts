@@ -1,16 +1,11 @@
-import CoffeeMakerInterface from "./coffee-maker-interface";
-import CoffeeMakerType from "./coffee-maker-type.js";
+import CoffeeMakerInterface from "./coffee-maker-interface.js";
+import Voltage from "./voltage.js";
 
-const coffeeMaker: CoffeeMakerType = {
+const coffeMaker: CoffeeMakerInterface = {
     numberOfMilkHotters: 2,
     numberOfPins: 4,
-    voltage: 110,
-    make: 'lavaza'
-}
-
-const anotherCoffeMaker: CoffeeMakerInterface = {
-    numberOfMilkHotters: 2,
-    numberOfPins: 4,
-    voltage: 110,
+    voltage: Voltage.V240,
     make: 'lavaza',
 }
+
+console.log(coffeMaker)
