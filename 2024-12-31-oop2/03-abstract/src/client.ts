@@ -10,4 +10,8 @@ export default class Client extends Person {
         super(name, birthdate)
     }
 
+    public calcRevenue(): number {
+        return this.orders.reduce((cum, cur) => cum + cur, 0)        
+    }
+
 }

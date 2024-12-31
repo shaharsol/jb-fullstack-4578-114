@@ -2,6 +2,6 @@
     "compilerOptions": {
         "outDir": "assets/js",
         "noEmitOnError": true,
-        "target": "ES2017"
+        "target": "ES2022"
     }
 }

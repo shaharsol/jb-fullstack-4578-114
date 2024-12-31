@@ -10,4 +10,8 @@ export default class Employee extends Person {
         super(name, birthdate)
     }
 
+    public calcRevenue(): number {
+        return this.salaries.reduce((cum, cur) => cum + cur, 0) * -1
+    }
+
 }

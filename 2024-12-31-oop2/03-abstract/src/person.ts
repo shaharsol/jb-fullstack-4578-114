@@ -1,4 +1,4 @@
-export default class Person {
+export default abstract class Person {
 
     public constructor (
         private name: string,
@@ -8,5 +8,7 @@ export default class Person {
     public printName() {
         console.log(this.name)
     }
+
+    public abstract calcRevenue(): number
 
 }

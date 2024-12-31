@@ -7,3 +7,7 @@ const employee = new Employee('George', new Date(), [6000, 6200, 6000]);
 employee.printName();
 const supplier = new Supplier('Jessica', new Date(), [400, 500]);
 supplier.printName();
+const totalRevenue = client.calcRevenue() + employee.calcRevenue() + supplier.calcRevenue();
+console.log(`total revenue: ${totalRevenue}`);
+// const person = new Person('Anna', new Date())
+// person.printName()
