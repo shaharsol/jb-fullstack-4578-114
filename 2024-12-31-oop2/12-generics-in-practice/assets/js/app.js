@@ -1,26 +1,11 @@
-const dog = {
-    name: 'noop',
-    weight: 30,
-    breed: 'Afghan Hound'
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-const cat = {
-    name: 'Eden',
-    weight: 8,
-    numberOfSouls: 6
-};
-function clone(obj) {
-    return { ...obj };
+Object.defineProperty(exports, "__esModule", { value: true });
+const axios_1 = __importDefault(require("axios"));
+async function printUsers() {
+    const users = await axios_1.default.get('https://jsonplaceholder.typicode.com/users');
+    console.log(users);
 }
-const aDuplicationOfDog = { ...dog };
-const anotherDuplicationOfDog = clone(dog);
-const anotherDuplicationOfCat = clone(cat);
-const stamObject = clone({
-    name: 'yossi',
-    age: 22
-});
-console.log(dog);
-console.log(aDuplicationOfDog);
-console.log(anotherDuplicationOfDog);
-console.log(cat);
-const aDuplicationOfCat = clone(cat);
-export {};
+printUsers();

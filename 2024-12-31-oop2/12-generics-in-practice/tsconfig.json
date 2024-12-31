@@ -3,6 +3,7 @@
         "outDir": "assets/js",
         "noEmitOnError": true,
         "target": "ES2022",
-        "moduleResolution": "node"
+        "moduleResolution": "nodenext",
+        "module": "NodeNext"
     }
 }
