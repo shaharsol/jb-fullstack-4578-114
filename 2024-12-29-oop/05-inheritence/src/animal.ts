@@ -4,6 +4,8 @@ export default class Animal extends BreathingCreature{
 
     private static numberOfAnimals = 0
 
+
+
     public constructor (
         public readonly color: string,
         public readonly breed: string,
@@ -31,6 +33,10 @@ export default class Animal extends BreathingCreature{
         return this.breed
     }
     public getPrice() {
+
+
+        this.numberOfLungs
+
         return this.price
     }
 

@@ -4,6 +4,11 @@ import Dog from './dog.js'
 import Fish from './fish.js'
 import SiameseCat from './siamese-cat.js'
 
+import BreathingCreature from './breathing-creature.js'
+
+const creature = new BreathingCreature()
+// creature.
+
 const gingo = new Cat(
     'orange',
     'mixed',

@@ -3,4 +3,6 @@ export default class BreathingCreature {
         console.log('inhaling...')
     }
 
+    protected numberOfLungs = 2
+
 }
