@@ -1,7 +1,10 @@
-import animalService from "./animals-service.js";
+import Client from "./client.js";
+import Employee from "./employee.js";
+import Supplier from "./supplier.js";
 
-// const animalService = new AnimalService()
-const animals = animalService.getAnimalsFromDatabase()
-// const animalService2 = new AnimalService()
-
-// animalService2.getAnimalsFromDatabase()
+const client = new Client('freddy', new Date(), [90, 30, 20])
+client.printName()
+const employee = new Employee('George', new Date(), [6000, 6200, 6000])
+employee.printName()
+const supplier = new Supplier('Jessica', new Date(), [400, 500])
+supplier.printName()

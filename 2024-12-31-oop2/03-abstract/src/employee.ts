@@ -1,6 +1,6 @@
 import Person from "./person.js";
 
-class Employee extends Person {
+export default class Employee extends Person {
 
     public constructor(
         name: string,

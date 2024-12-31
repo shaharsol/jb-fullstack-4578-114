@@ -5,4 +5,8 @@ export default class Person {
         private birthdate: Date
     ) {}
 
+    public printName() {
+        console.log(this.name)
+    }
+
 }
