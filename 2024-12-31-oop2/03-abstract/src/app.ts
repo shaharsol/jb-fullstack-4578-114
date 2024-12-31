@@ -1,5 +1,6 @@
 import Client from "./client.js";
 import Employee from "./employee.js";
+import Person from "./person.js";
 import Supplier from "./supplier.js";
 
 const client = new Client('freddy', new Date(), [90, 30, 20])
