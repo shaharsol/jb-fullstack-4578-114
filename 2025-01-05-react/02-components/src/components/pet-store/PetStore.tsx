@@ -6,5 +6,4 @@ export default function PetStore() {
             <p>hello petstore</p>
         </div>
     )
-    
 }
