@@ -1,0 +1,5 @@
+.CatList {
+    display: flex;
+    flex-direction: row;
+    border: 1px lightblue dashed;
+}

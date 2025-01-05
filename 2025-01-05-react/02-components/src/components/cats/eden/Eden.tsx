@@ -1,6 +1,6 @@
 import './Eden.css'
 
-function Eden(): JSX.Element {
+export default function Eden(): JSX.Element {
     return (
         <div className='Eden'>
             <div>Eden</div>
