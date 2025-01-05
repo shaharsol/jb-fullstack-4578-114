@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "02-hello-wolrd",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "18.3^.1",
+    "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
