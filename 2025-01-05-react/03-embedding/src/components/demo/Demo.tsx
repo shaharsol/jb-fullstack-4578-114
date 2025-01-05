@@ -1,4 +1,6 @@
 import './Demo.css'
+import squirrelImageSource from '../../assets/images/squirell.jpg'
+
 
 export default function Demo(): JSX.Element {
 
@@ -51,6 +53,7 @@ export default function Demo(): JSX.Element {
                     </tr>)}
                 </tbody>
             </table>
+            <img src={squirrelImageSource} />
         </div>
     )
 }
