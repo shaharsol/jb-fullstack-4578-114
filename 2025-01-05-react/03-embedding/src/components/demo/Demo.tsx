@@ -10,10 +10,12 @@ export default function Demo(): JSX.Element {
 
     const dogs = [
         {
+            id: 1,
             name: 'cheif',
             age: 6
         },
         {
+            id: 2,
             name: 'noop',
             age: 4
         }
@@ -37,12 +39,15 @@ export default function Demo(): JSX.Element {
             <p>dogs:</p>
             <table>
                 <thead>
-
+                    <tr>
+                        <th>name</th>
+                        <th>age</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    {dogs.map(dog => <tr>
-                        <td>{dog.name}</td>
-                        <td>{dog.age}</td>
+                    {dogs.map(({id, name, age}) => <tr key={id}>
+                        <td>{name}</td>
+                        <td>{age}</td>
                     </tr>)}
                 </tbody>
             </table>
