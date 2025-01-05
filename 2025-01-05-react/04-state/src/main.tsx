@@ -6,5 +6,5 @@ import Demo from './components/demo/Demo'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Demo />
-  </StrictMode>,
+  </StrictMode>
 )
