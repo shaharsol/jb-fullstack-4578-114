@@ -1,0 +1,11 @@
+.Noop {
+    display: flex;
+    flex-direction: column;
+    border: 1px purple dashed;
+    padding: 2px;
+
+}
+
+.Noop img {
+    max-width: 200px;
+}
