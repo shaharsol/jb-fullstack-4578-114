@@ -2,4 +2,10 @@
     display: flex;
     flex-direction: column;
     border: 1px purple dashed;
+    padding: 2px;
+
+}
+
+.Eden img {
+    max-width: 200px;
 }
