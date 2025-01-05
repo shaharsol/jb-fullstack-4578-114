@@ -3,5 +3,6 @@
     flex-direction: row;
     border: 1px lightblue dashed;
     padding: 2px;
+    justify-content: space-between;
 
 }

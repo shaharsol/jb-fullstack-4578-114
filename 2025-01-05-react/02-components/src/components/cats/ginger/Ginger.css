@@ -1,0 +1,11 @@
+.Ginger {
+    display: flex;
+    flex-direction: column;
+    border: 1px purple dashed;
+    padding: 2px;
+
+}
+
+.Ginger img {
+    max-width: 200px;
+}
