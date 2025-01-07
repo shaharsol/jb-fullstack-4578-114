@@ -21,6 +21,7 @@ export default function Header() {
                     {/* but the best option is NavLink */}
                     <NavLink to="/profile">profile</NavLink>
                     <NavLink to="/feed">feed</NavLink>
+                    <NavLink to="/search">search</NavLink>
                 </nav>
             </div>          
         </div>
