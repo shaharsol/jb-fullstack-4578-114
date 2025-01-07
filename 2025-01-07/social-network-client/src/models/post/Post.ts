@@ -1,3 +1,4 @@
+import Comment from "../comment/Comment";
 import User from "../user/User";
 
 export default interface Post {
@@ -9,5 +10,5 @@ export default interface Post {
     createdAt: string,
     updatedAt: string,
     user: User
-    
+    comments: Comment[]
 }
