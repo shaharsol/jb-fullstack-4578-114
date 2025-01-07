@@ -9,7 +9,21 @@ export default function Profile(): JSX.Element {
     const [posts, setPosts] = useState<Post[]>([])
 
     useEffect(() => {
-        profile.getProfile().then(setPosts)
+        // useEffect disallows the callback function to be async
+        // so we either use then:
+        profile.getProfile()
+            .then(setPosts)
+            .catch(alert)
+
+        // or an async IIFE:            
+        // (async () => {
+        //     try {
+        //         const profilePosts = await profile.getProfile()
+        //         setPosts(profilePosts)
+        //     } catch (e) {
+        //         alert(e)
+        //     }
+        // })()
     }, [])
 
     return (
