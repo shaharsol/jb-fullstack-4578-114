@@ -1,5 +1,3 @@
-import Feed from '../../posts/feed/Feed'
-import Profile from '../../posts/profile/Profile'
 import Followers from '../followers/Followers'
 import Following from '../following/Following'
 import Footer from '../footer/Footer'
