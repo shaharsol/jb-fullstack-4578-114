@@ -3,21 +3,36 @@ import './Demo.css'
 
 export default function Demo(): JSX.Element {
 
-    // let time = new Date().toLocaleTimeString()
-    let [time, setTime] = useState<string>(new Date().toLocaleTimeString())
-    
+    const [animals, setAnimals] = useState<string[]>([])
+    const [isDogs, setIsDogs] = useState<boolean>(true)
+
+    // imagional server function
+    function getDogs() {
+        return ['noop', 'chief', 'toy']
+    }
+
+    // imagional server function
+    function getCats() {
+        return ['gingo', 'eden']
+    }
+
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            console.log('setting time...')
-            setTime(new Date().toLocaleTimeString())
-        }, 1000)
-        
-        return () => clearInterval(intervalId)
-    }, [])
+        setAnimals(isDogs ? getDogs() : getCats()) 
+    }, [isDogs])
+
+    function selectChanged() {
+        setIsDogs(!isDogs)
+    }
 
     return (
         <div className='Demo'>
-            <p>time is {time}</p>
+            <select onChange={selectChanged}>
+                <option value="dogs">dogs</option>
+                <option value="cats">cats</option>
+            </select>
+            <ul>
+                {animals.map(animal => <li key={animal}>{animal}</li>)}
+            </ul>
         </div>
     )
 }
