@@ -4,8 +4,8 @@ import profileService from '../../../services/profile'
 
 interface PostProps {
     post: PostModel,
-    isAllowActions: boolean,
-    remove (id: string): void
+    isAllowActions?: boolean, // === isAllowActions: boolean | undefined
+    remove? (id: string): void
 }
 export default function Post(props: PostProps): JSX.Element {
 
@@ -13,7 +13,10 @@ export default function Post(props: PostProps): JSX.Element {
     const { name } = props.post.user
     
     async function deleteMe() {
-        if(confirm(`are you sure you want to delete "${title}"`)) {
+        // props.remove: Function | undefined
+        if(props.remove && confirm(`are you sure you want to delete "${title}"`)) {
+            // props.remove: Function
+            // this action is called type-narrowing.
             try {
                 await profileService.remove(id)
                 props.remove(id)
@@ -37,9 +40,12 @@ export default function Post(props: PostProps): JSX.Element {
             <div>
                 {body}
             </div>
-            <div>
-                <button onClick={deleteMe}>Delete</button>
-            </div>
+            { props.isAllowActions && 
+                <div>
+                    <button>Edit</button>
+                    <button onClick={deleteMe}>Delete</button>
+                </div>
+            }
         </div>
     )
 }

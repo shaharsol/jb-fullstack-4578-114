@@ -14,17 +14,11 @@ export default function Feed() {
 
     }, [])
 
-    function remove(id: string): void {
-
-    }
-
     return (
         <div className='Feed'>
             {posts.map(p => <Post
                 key={p.id}
                 post={p}
-                remove={remove}
-                isAllowActions={false}
             ></Post>)}
         </div>
     )

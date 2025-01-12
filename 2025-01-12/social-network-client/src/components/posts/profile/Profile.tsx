@@ -29,7 +29,7 @@ export default function Profile(): JSX.Element {
 
     function remove(id: string): void {
         const index = posts.findIndex(post => post.id === id)
-        if(index > -1) {
+        if (index > -1) {
             const postsAfterRemoval = [...posts]
             postsAfterRemoval.splice(index, 1)
             setPosts(postsAfterRemoval)
@@ -38,13 +38,13 @@ export default function Profile(): JSX.Element {
 
     return (
         <div className='Profile'>
-            {posts.map(p => <Post 
-                            key={p.id} 
-                            post={p}
-                            remove={remove}
-                            isAllowActions={true}
-                            >
-                            </Post>)}
+            {posts.map(p => <Post
+                key={p.id}
+                post={p}
+                isAllowActions={true}
+                remove={remove}
+            >
+            </Post>)}
         </div>
     )
 }
