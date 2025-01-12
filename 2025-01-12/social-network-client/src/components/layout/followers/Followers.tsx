@@ -14,7 +14,7 @@ export default function Followers() {
     }, [])
 
     return (
-        <div className='Feed'>
+        <div className='Followers'>
             {followers.map(follow => <Follow 
                                       key={follow.id} 
                                       user={follow}
