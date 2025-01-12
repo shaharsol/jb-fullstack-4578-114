@@ -2,6 +2,7 @@ import './Following.css'
 import { useEffect, useState } from 'react'
 import User from '../../../models/user/User'
 import followingService from '../../../services/following'
+import Follow from '../../follows/follow/Follow'
 
 export default function Following() {
     const [following, setFollowing] = useState<User[]>([])
@@ -13,10 +14,11 @@ export default function Following() {
     }, [])
 
     return (
-        <div className='Feed'>
-            <ul>
-                {following.map(({id, name}) => <li key={id}>{name}</li>)}
-            </ul>
+        <div className='Following'>
+            {following.map(follow => <Follow
+                key={follow.id}
+                user={follow}
+            ></Follow>)}        
         </div>
     )
 }
