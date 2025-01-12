@@ -27,11 +27,21 @@ export default function Profile(): JSX.Element {
         // })()
     }, [])
 
+    function remove(id: string): void {
+        const index = posts.findIndex(post => post.id === id)
+        if(index > -1) {
+            const postsAfterRemoval = [...posts]
+            postsAfterRemoval.splice(index, 1)
+            setPosts(postsAfterRemoval)
+        }
+    }
+
     return (
         <div className='Profile'>
             {posts.map(p => <Post 
                             key={p.id} 
                             post={p}
+                            remove={remove}
                             >
                             </Post>)}
         </div>

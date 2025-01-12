@@ -4,6 +4,7 @@ import profileService from '../../../services/profile'
 
 interface PostProps {
     post: PostModel
+    remove (id: string): void
 }
 export default function Post(props: PostProps): JSX.Element {
 
@@ -11,11 +12,16 @@ export default function Post(props: PostProps): JSX.Element {
     const { name } = props.post.user
     
     async function deleteMe() {
-
-        try {
-            await profileService.remove(id)
-        } catch (e) {
-            alert(e)
+        if(confirm(`are you sure you want to delete "${title}"`)) {
+            try {
+                await profileService.remove(id)
+                props.remove(id)
+                // i was able to delete from the server,
+                // this is the point to affect the UI
+                // in other words, we need to change the state
+            } catch (e) {
+                alert(e)
+            }
         }
     }
 
