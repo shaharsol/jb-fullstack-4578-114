@@ -42,6 +42,7 @@ export default function Profile(): JSX.Element {
                             key={p.id} 
                             post={p}
                             remove={remove}
+                            isAllowActions={true}
                             >
                             </Post>)}
         </div>

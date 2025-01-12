@@ -3,7 +3,8 @@ import PostModel from '../../../models/post/Post'
 import profileService from '../../../services/profile'
 
 interface PostProps {
-    post: PostModel
+    post: PostModel,
+    isAllowActions: boolean,
     remove (id: string): void
 }
 export default function Post(props: PostProps): JSX.Element {
