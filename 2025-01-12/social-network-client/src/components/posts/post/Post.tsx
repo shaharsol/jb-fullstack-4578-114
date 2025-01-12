@@ -1,16 +1,24 @@
 import './Post.css'
+import PostModel from '../../../models/post/Post'
 
-export default function Post(): JSX.Element {
+interface PostProps {
+    post: PostModel
+}
+export default function Post(props: PostProps): JSX.Element {
+
+    const { title, body, createdAt} = props.post
+    const { name } = props.post.user
+
     return (
         <div className='Post'>
             <div>
-                title
+                {title}
             </div>
             <div>
-                by line
+                by {name} at {createdAt}
             </div>
             <div>
-                body
+                {body}
             </div>
         </div>
     )
