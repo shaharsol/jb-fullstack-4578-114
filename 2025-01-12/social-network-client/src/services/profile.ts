@@ -23,6 +23,12 @@ class Profile {
         return response.data
     }
 
+    async update(id: string, draft: PostDraft): Promise<Post> {
+        const { title, body } = draft
+        const response = await axios.patch<Post>(`${import.meta.env.VITE_REST_SERVER_URL}/posts/${id}`, { title, body })
+        return response.data
+    }
+
 }
 
 // singleton

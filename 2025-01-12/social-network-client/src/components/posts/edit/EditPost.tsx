@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './EditPost.css'
 import profileService from '../../../services/profile'
 import { useEffect } from 'react'
@@ -9,6 +9,7 @@ export default function EditPost(): JSX.Element {
 
     const { id } = useParams<'id'>()
     const { handleSubmit, register, formState, reset} = useForm<PostDraft>()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if(id) {
@@ -20,8 +21,10 @@ export default function EditPost(): JSX.Element {
 
     async function submit(draft: PostDraft) {
         try {
-            // const newPost = await profileService.create(draft)
-            // reset()
+            if(id) {
+                await profileService.update(id, draft)
+                navigate('/profile')
+            }            
         } catch (e) {
             alert(e)
         }
@@ -52,7 +55,7 @@ export default function EditPost(): JSX.Element {
                     },
                 })} />
                 <span className='error'>{formState.errors.body?.message}</span>
-                <button>Add Post</button>
+                <button>Update Post</button>
             </form>            
         </div>
     )
