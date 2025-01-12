@@ -6,13 +6,16 @@ interface FollowProps {
     user: User
 }
 export default function Follow(props: FollowProps): JSX.Element {
+
+    const { name } = props.user
+
     return (
         <div className='Follow'>
             <div>
                 <img src={profilePicSource} />
             </div>
             <div>
-                {props.user.name}
+                {name}
             </div>
         </div>
     )

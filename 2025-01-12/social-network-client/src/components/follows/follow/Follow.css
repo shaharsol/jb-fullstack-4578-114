@@ -1,3 +1,7 @@
+.Follow {
+    display: flex;
+    flex-direction: column;
+}
 .Follow img {
     width: 32px;
 }
