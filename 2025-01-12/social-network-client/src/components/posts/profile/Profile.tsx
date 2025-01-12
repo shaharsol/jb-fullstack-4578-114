@@ -3,11 +3,16 @@ import './Profile.css'
 import PostModel from '../../../models/post/Post'
 import profile from '../../../services/profile'
 import Post from '../post/Post'
+import NewPost from '../new/NewPost'
 
 export default function Profile(): JSX.Element {
 
     // posts: Post[]
     const [posts, setPosts] = useState<PostModel[]>([])
+
+    useEffect(() => {
+        document.title = 'SN - Profile'
+    }, [])
 
     useEffect(() => {
         // useEffect disallows the callback function to be async
@@ -38,13 +43,14 @@ export default function Profile(): JSX.Element {
 
     return (
         <div className='Profile'>
+            <NewPost />
             {posts.map(p => <Post
                 key={p.id}
                 post={p}
                 isAllowActions={true}
                 remove={remove}
-            >
-            </Post>)}
+            />
+            )}
         </div>
     )
 }

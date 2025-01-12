@@ -8,6 +8,10 @@ export default function Feed() {
     const [posts, setPosts] = useState<PostModel[]>([])
 
     useEffect(() => {
+        document.title = 'SN - Feed'
+    }, [])
+
+    useEffect(() => {
         feed.getFeed()
             .then(setPosts)
             .catch(alert)
@@ -19,7 +23,7 @@ export default function Feed() {
             {posts.map(p => <Post
                 key={p.id}
                 post={p}
-            ></Post>)}
+            />)}
         </div>
     )
 }
