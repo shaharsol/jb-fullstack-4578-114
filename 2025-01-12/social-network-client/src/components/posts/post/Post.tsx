@@ -1,6 +1,7 @@
 import './Post.css'
 import PostModel from '../../../models/post/Post'
 import profileService from '../../../services/profile'
+import { useNavigate } from 'react-router-dom'
 
 interface PostProps {
     post: PostModel,
@@ -11,6 +12,7 @@ export default function Post(props: PostProps): JSX.Element {
 
     const { title, body, createdAt, id } = props.post
     const { name } = props.post.user
+    const navigate = useNavigate()
     
     async function deleteMe() {
         // props.remove: Function | undefined
@@ -29,6 +31,10 @@ export default function Post(props: PostProps): JSX.Element {
         }
     }
 
+    function editMe() {
+        navigate(`/edit/${id}`)
+    }
+
     return (
         <div className='Post'>
             <div>
@@ -42,7 +48,7 @@ export default function Post(props: PostProps): JSX.Element {
             </div>
             { props.isAllowActions && 
                 <div>
-                    <button>Edit</button>
+                    <button onClick={editMe}>Edit</button>
                     <button onClick={deleteMe}>Delete</button>
                 </div>
             }

@@ -8,6 +8,11 @@ class Profile {
         return response.data
     }
 
+    async getPost(id: string): Promise<Post> {
+        const response = await axios.get<Post>(`${import.meta.env.VITE_REST_SERVER_URL}/posts/${id}`)
+        return response.data
+    }
+
     async remove(id: string): Promise<boolean> {
         const response = await axios.delete<boolean>(`${import.meta.env.VITE_REST_SERVER_URL}/posts/${id}`)
         return response.data
