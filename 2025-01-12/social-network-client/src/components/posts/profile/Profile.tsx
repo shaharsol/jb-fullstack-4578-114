@@ -29,11 +29,11 @@ export default function Profile(): JSX.Element {
 
     return (
         <div className='Profile'>
-            {posts.map(post => <Post 
-                                key={post.id} 
-                                post={post}
-                                >
-                                </Post>)}
+            {posts.map(p => <Post 
+                            key={p.id} 
+                            post={p}
+                            >
+                            </Post>)}
         </div>
     )
 }
