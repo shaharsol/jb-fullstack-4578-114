@@ -9,11 +9,12 @@ interface NewPostProps {
 }
 export default function NewPost(props: NewPostProps): JSX.Element {
 
-    const { register, handleSubmit } = useForm<PostDraft>()
+    const { register, handleSubmit, reset } = useForm<PostDraft>()
 
     async function submit(draft: PostDraft) {
         try {
             const newPost = await profileService.create(draft)
+            reset()
             props.addPost(newPost)
         } catch (e) {
             alert(e)

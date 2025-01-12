@@ -41,15 +41,22 @@ export default function Profile(): JSX.Element {
         }
     }
 
+    function addPost(post: PostModel): void {
+        setPosts([post, ...posts])
+    }
+
     return (
         <div className='Profile'>
-            <NewPost />
-            {posts.map(p => <Post
-                key={p.id}
-                post={p}
-                isAllowActions={true}
-                remove={remove}
+            <NewPost 
+                addPost={addPost} 
             />
+            {posts.map(p =>
+                <Post
+                    key={p.id}
+                    post={p}
+                    isAllowActions={true}
+                    remove={remove}
+                />
             )}
         </div>
     )
