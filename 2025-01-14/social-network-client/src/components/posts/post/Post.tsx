@@ -61,6 +61,7 @@ export default function Post(props: PostProps): JSX.Element {
             }
             <Comments 
                 comments={comments}
+                postId={id}
             />
         </div>
     )

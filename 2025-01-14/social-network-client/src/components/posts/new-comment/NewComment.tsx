@@ -5,11 +5,12 @@ import Comment from '../../../models/comment/Comment'
 import commentsService from '../../../services/comments'
 
 interface NewCommentProps{
-    postId: string
+    postId: string,
+    addComment(comment: Comment): void
 }
 export default function NewComment(props: NewCommentProps): JSX.Element {
 
-    const { postId } = props
+    const { postId, addComment } = props
 
     const { 
         register, 
@@ -20,9 +21,11 @@ export default function NewComment(props: NewCommentProps): JSX.Element {
 
     async function submit(draft: CommentDraft) {
         try {
-            await commentsService.create(postId, draft)
+            const newComment = await commentsService.create(postId, draft)
+            reset()
+            addComment(newComment)
         } catch (e) {
-
+            alert(e)
         }
     }
 

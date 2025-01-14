@@ -5,10 +5,11 @@ import './Comments.css'
 
 interface CommentsProps {
     comments: CommentModel[]
+    postId: string
 }
 export default function Comments(props: CommentsProps): JSX.Element {
 
-    const { comments } = props
+    const { comments, postId } = props
 
     return (
         <div className='Comments'>
@@ -16,7 +17,9 @@ export default function Comments(props: CommentsProps): JSX.Element {
                 total comments: {comments.length}
             </div>
             <div>
-                <NewComment />
+                <NewComment 
+                    postId={postId}
+                />
             </div>
             {comments.map(c =>
                 <Comment
