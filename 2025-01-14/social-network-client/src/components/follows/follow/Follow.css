@@ -1,0 +1,9 @@
+.Follow {
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed lightslategray;
+}
+
+.Follow img {
+    width: 32px;
+}
