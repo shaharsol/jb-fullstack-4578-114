@@ -20,6 +20,17 @@ export default function Feed() {
 
     }, [])
 
+    function addComment(comment: Comment): void {
+        const postsWithNewComment = [...posts]
+    
+        const postToAddCommentTo = postsWithNewComment.find(post => post.id === comment.postId)
+        if(postToAddCommentTo) {
+            postToAddCommentTo.comments.unshift(comment)
+        }
+    
+        setPosts(postsWithNewComment)
+    }
+
     return (
         <div className='Feed'>
             {posts.map(p => <Post
