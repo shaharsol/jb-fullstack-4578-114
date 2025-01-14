@@ -2,6 +2,7 @@ import './Post.css'
 import PostModel from '../../../models/post/Post'
 import profileService from '../../../services/profile'
 import { useNavigate } from 'react-router-dom'
+import Comments from '../comments/Comments'
 
 interface PostProps {
     post: PostModel,
@@ -10,7 +11,13 @@ interface PostProps {
 }
 export default function Post(props: PostProps): JSX.Element {
 
-    const { title, body, createdAt, id } = props.post
+    const { 
+        title, 
+        body, 
+        createdAt, 
+        id, 
+        comments 
+    } = props.post
     const { name } = props.post.user
     const navigate = useNavigate()
     
@@ -52,6 +59,9 @@ export default function Post(props: PostProps): JSX.Element {
                     <button onClick={deleteMe}>Delete</button>
                 </div>
             }
+            <Comments 
+                comments={comments}
+            />
         </div>
     )
 }
