@@ -1,16 +1,24 @@
 import User from '../../../models/user/User'
 import './Follow.css'
 import profilePicSource from '../../../assets/images/profile.jpg'
+import followingService from '../../../services/following'
 
 interface FollowProps {
     user: User
+    removeFromFollowingList(userId: string): void
 }
 export default function Follow(props: FollowProps): JSX.Element {
 
-    const { name } = props.user
+            
+    const { user: {id, name}, removeFromFollowingList } = props
 
     async function unfollow() {
-        
+        try {
+            await followingService.unfollow(id)
+            removeFromFollowingList(id)
+        } catch (e) {
+            alert(e)
+        }
     }
 
     return (
