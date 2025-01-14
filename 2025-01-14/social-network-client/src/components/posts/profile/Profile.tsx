@@ -4,6 +4,7 @@ import PostModel from '../../../models/post/Post'
 import profile from '../../../services/profile'
 import Post from '../post/Post'
 import NewPost from '../new/NewPost'
+import Comment from '../../../models/comment/Comment'
 
 export default function Profile(): JSX.Element {
 
@@ -45,6 +46,10 @@ export default function Profile(): JSX.Element {
         setPosts([post, ...posts])
     }
 
+    function addComment(comment: Comment): void {
+
+    }
+
     return (
         <div className='Profile'>
             <NewPost 
@@ -56,6 +61,7 @@ export default function Profile(): JSX.Element {
                     post={p}
                     isAllowActions={true}
                     remove={remove}
+                    addComment={addComment}
                 />
             )}
         </div>

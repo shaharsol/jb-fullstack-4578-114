@@ -5,11 +5,12 @@ import './Comments.css'
 
 interface CommentsProps {
     comments: CommentModel[]
-    postId: string
+    postId: string,
+    addComment(comment: CommentModel): void
 }
 export default function Comments(props: CommentsProps): JSX.Element {
 
-    const { comments, postId } = props
+    const { comments, postId, addComment } = props
 
     return (
         <div className='Comments'>
@@ -18,6 +19,7 @@ export default function Comments(props: CommentsProps): JSX.Element {
             </div>
             <div>
                 <NewComment 
+                    addComment={addComment}
                     postId={postId}
                 />
             </div>
