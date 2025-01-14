@@ -9,6 +9,10 @@ export default function Follow(props: FollowProps): JSX.Element {
 
     const { name } = props.user
 
+    async function unfollow() {
+        
+    }
+
     return (
         <div className='Follow'>
             <div>
@@ -16,6 +20,9 @@ export default function Follow(props: FollowProps): JSX.Element {
             </div>
             <div>
                 {name}
+            </div>
+            <div>
+                <button onClick={unfollow}>unfollow</button>
             </div>
         </div>
     )

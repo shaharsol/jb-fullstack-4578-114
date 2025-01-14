@@ -15,12 +15,12 @@
     grid-row: 4;
 }
 
-.Layout > aside:nth-child(1) {
+.Layout > aside:nth-child(0) {
     grid-column: 1;
     grid-row: 2;
 }
 
-.Layout > aside:nth-child(2) {
+.Layout > aside:nth-child(1) {
     grid-column: 1;
     grid-row: 3;
 }
