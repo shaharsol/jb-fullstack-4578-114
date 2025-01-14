@@ -14,6 +14,7 @@ export default function Followers() {
     }, [])
 
     function removeFromFollowingList(userId: string): void {
+        console.log(userId)
     }
 
     return (

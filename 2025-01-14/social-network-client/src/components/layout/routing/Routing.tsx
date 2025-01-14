@@ -11,7 +11,7 @@ export default function Routing(): JSX.Element {
             {/* <Route path="/" element={<Profile />} /> */}
             <Route path="/profile" element={<Profile />} />
             <Route path="/feed" element={<Feed />} />
-            <Route path="/edit/:id/:name" element={<EditPost />} />
+            <Route path="/edit/:id/" element={<EditPost />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     )   

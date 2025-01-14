@@ -6,15 +6,14 @@ import Post from '../post/Post'
 import NewPost from '../new/NewPost'
 import Comment from '../../../models/comment/Comment'
 import Loading from '../../common/loading/Loading'
+import useTitle from '../../../hooks/useTitle'
 
 export default function Profile(): JSX.Element {
 
     // posts: Post[]
     const [posts, setPosts] = useState<PostModel[]>([])
 
-    useEffect(() => {
-        document.title = 'SN - Profile'
-    }, [])
+    useTitle('SN - Profile')
 
     useEffect(() => {
         // useEffect disallows the callback function to be async
