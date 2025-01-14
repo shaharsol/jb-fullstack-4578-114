@@ -1,0 +1,7 @@
+.Comment div:nth-child(1) {
+    font-size: x-small;
+}
+
+.Comment div:nth-child(2) {
+    font-size: small;
+}
