@@ -47,7 +47,14 @@ export default function Profile(): JSX.Element {
     }
 
     function addComment(comment: Comment): void {
+        const postsWithNewComment = [...posts]
 
+        const postToAddCommentTo = postsWithNewComment.find(post => post.id === comment.postId)
+        if(postToAddCommentTo) {
+            postToAddCommentTo.comments.unshift(comment)
+        }
+
+        setPosts(postsWithNewComment)
     }
 
     return (
