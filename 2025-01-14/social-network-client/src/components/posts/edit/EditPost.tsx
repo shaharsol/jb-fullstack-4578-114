@@ -17,7 +17,7 @@ export default function EditPost(): JSX.Element {
                 .then(reset)
                 .catch(alert)
         }
-    })
+    }, [])
 
     async function submit(draft: PostDraft) {
         try {
