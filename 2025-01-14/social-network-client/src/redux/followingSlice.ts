@@ -18,6 +18,13 @@ export const followingSlice = createSlice({
         },
         unfollow: (state, action: PayloadAction<{userId: string}>) => {
             state.following = state.following.filter(f => f.id !== action.payload.userId)
+        },
+        follow: (state, action: PayloadAction<User>) => {
+            state.following.push(action.payload)
         }
     }
 })
+
+export const { init, unfollow, follow } = followingSlice.actions
+
+export default followingSlice.reducer
