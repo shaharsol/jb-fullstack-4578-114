@@ -13,11 +13,13 @@ export default function Follow(props: FollowProps): JSX.Element {
     const { user: {id, name}, removeFromFollowingList } = props
 
     async function unfollow() {
-        try {
-            await followingService.unfollow(id)
-            removeFromFollowingList(id)
-        } catch (e) {
-            alert(e)
+        if(window.confirm(`are you sure you wanna stop following ${name}?`)) {
+            try {
+                await followingService.unfollow(id)
+                removeFromFollowingList(id)
+            } catch (e) {
+                alert(e)
+            }
         }
     }
 
