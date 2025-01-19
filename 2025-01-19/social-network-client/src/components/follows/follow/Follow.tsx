@@ -5,7 +5,10 @@ import followingService from '../../../services/following'
 import LoadingButton from '../../common/loading-button/LoadingButton'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-import { unfollow as unfollowAction } from '../../../redux/followingSlice'
+import { 
+    unfollow as unfollowAction, 
+    follow as followAction } 
+from '../../../redux/followingSlice'
 
 interface FollowProps {
     user: User
@@ -25,7 +28,6 @@ export default function Follow(props: FollowProps): JSX.Element {
             try {
                 setIsSubmitting(true)
                 await followingService.unfollow(id)
-                // removeFromFollowingList(id)
                 dispatch(unfollowAction({userId: id}))
             } catch (e) {
                 alert(e)
@@ -35,7 +37,16 @@ export default function Follow(props: FollowProps): JSX.Element {
         }
     }
 
-    function follow() {
+    async function follow() {
+        try {
+            setIsSubmitting(true)
+            await followingService.follow(id)
+            dispatch(followAction(props.user))
+        } catch (e) {
+            alert(e)
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (

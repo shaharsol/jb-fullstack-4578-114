@@ -12,6 +12,11 @@ class Following {
         return response.data
     }
 
+    async follow(userId: string): Promise<boolean> {
+        const response = await axios.post<boolean>(`${import.meta.env.VITE_REST_SERVER_URL}/follows/follow/${userId}`)
+        return response.data
+    }
+
 }
 
 // singleton
