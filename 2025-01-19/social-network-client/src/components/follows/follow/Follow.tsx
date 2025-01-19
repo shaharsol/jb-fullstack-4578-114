@@ -39,7 +39,6 @@ export default function Follow(props: FollowProps): JSX.Element {
                 {name}
             </div>
             <div>
-                <button onClick={unfollow}>unfollow</button>
                 <LoadingButton 
                     onClick={unfollow}
                     isSubmitting={isSubmitting}
