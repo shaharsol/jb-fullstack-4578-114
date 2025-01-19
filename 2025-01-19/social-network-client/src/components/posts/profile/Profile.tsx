@@ -7,30 +7,26 @@ import NewPost from '../new/NewPost'
 import Comment from '../../../models/comment/Comment'
 import Loading from '../../common/loading/Loading'
 import useTitle from '../../../hooks/useTitle'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
+import { init } from '../../../redux/profileSlice'
 
 export default function Profile(): JSX.Element {
 
-    // posts: Post[]
-    const [posts, setPosts] = useState<PostModel[]>([])
 
     useTitle('SN - Profile')
 
-    useEffect(() => {
-        // useEffect disallows the callback function to be async
-        // so we either use then:
-        profile.getProfile()
-            .then(setPosts)
-            .catch(alert)
+    const posts = useAppSelector(state => state.profile.posts)
+    const dispatch = useAppDispatch()
 
-        // or an async IIFE:            
-        // (async () => {
-        //     try {
-        //         const profilePosts = await profile.getProfile()
-        //         setPosts(profilePosts)
-        //     } catch (e) {
-        //         alert(e)
-        //     }
-        // })()
+    useEffect(() => {
+        (async () => {
+            try {
+                const postsFromServer = await profile.getProfile()
+                dispatch(init(postsFromServer))
+            } catch (e) {
+                alert(e)
+            }
+        })()
     }, [])
 
     function remove(id: string): void {
