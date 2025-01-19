@@ -4,7 +4,8 @@ import CommentDraft from '../../../models/comment/CommentDraft'
 import commentsService from '../../../services/comments'
 import LoadingButton from '../../common/loading-button/LoadingButton'
 import { useAppDispatch } from '../../../redux/hooks'
-import { addComment } from '../../../redux/profileSlice'
+import { addComment as addCommentProfile} from '../../../redux/profileSlice'
+import { addComment as addCommentFeed } from '../../../redux/feedSlice'
 
 interface NewCommentProps{
     postId: string,
@@ -26,7 +27,8 @@ export default function NewComment(props: NewCommentProps): JSX.Element {
         try {
             const newComment = await commentsService.create(postId, draft)
             reset()
-            dispatch(addComment(newComment))
+            dispatch(addCommentProfile(newComment))
+            dispatch(addCommentFeed(newComment))
         } catch (e) {
             alert(e)
         }
