@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { init } from '../../../redux/followingSlice'
 
 export default function Following() {
-    // const [following, setFollowing] = useState<User[]>([])
     const following = useAppSelector(state => state.following.following)
 
     const dispatch = useAppDispatch()
