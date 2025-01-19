@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import './Profile.css'
 import PostModel from '../../../models/post/Post'
 import profile from '../../../services/profile'
@@ -21,8 +21,10 @@ export default function Profile(): JSX.Element {
     useEffect(() => {
         (async () => {
             try {
-                const postsFromServer = await profile.getProfile()
-                dispatch(init(postsFromServer))
+                if(posts.length === 0) {
+                    const postsFromServer = await profile.getProfile()
+                    dispatch(init(postsFromServer))
+                }
             } catch (e) {
                 alert(e)
             }
@@ -34,12 +36,13 @@ export default function Profile(): JSX.Element {
         if (index > -1) {
             const postsAfterRemoval = [...posts]
             postsAfterRemoval.splice(index, 1)
-            setPosts(postsAfterRemoval)
+            // setPosts(postsAfterRemoval)
         }
     }
 
     function addPost(post: PostModel): void {
-        setPosts([post, ...posts])
+        console.log(post)
+        // setPosts([post, ...posts])
     }
 
     function addComment(comment: Comment): void {
@@ -50,7 +53,7 @@ export default function Profile(): JSX.Element {
             postToAddCommentTo.comments.unshift(comment)
         }
 
-        setPosts(postsWithNewComment)
+        // setPosts(postsWithNewComment)
     }
 
     return (
