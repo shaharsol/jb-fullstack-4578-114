@@ -4,7 +4,7 @@ import profilePicSource from '../../../assets/images/profile.jpg'
 import followingService from '../../../services/following'
 import LoadingButton from '../../common/loading-button/LoadingButton'
 import { useState } from 'react'
-import { useAppDispatch } from '../../../redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { unfollow as unfollowAction } from '../../../redux/followingSlice'
 
 interface FollowProps {
@@ -18,6 +18,7 @@ export default function Follow(props: FollowProps): JSX.Element {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
     const dispatch = useAppDispatch()
+    const isFollowing = useAppSelector(state => state.following.following.findIndex(f => f.id === id) > -1)
 
     async function unfollow() {
         if(window.confirm(`are you sure you wanna stop following ${name}?`)) {
@@ -34,6 +35,9 @@ export default function Follow(props: FollowProps): JSX.Element {
         }
     }
 
+    function follow() {
+    }
+
     return (
         <div className='Follow'>
             <div>
@@ -43,12 +47,19 @@ export default function Follow(props: FollowProps): JSX.Element {
                 {name}
             </div>
             <div>
-                <LoadingButton 
+                {isFollowing && <LoadingButton 
                     onClick={unfollow}
                     isSubmitting={isSubmitting}
                     buttonText='Unfollow'
                     loadingText='Unfollowing'
-                />
+                />}
+
+                {!isFollowing && <LoadingButton 
+                    onClick={follow}
+                    isSubmitting={isSubmitting}
+                    buttonText='Follow'
+                    loadingText='Following'
+                />}
             </div>
         </div>
     )
