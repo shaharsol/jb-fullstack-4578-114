@@ -21,13 +21,7 @@ export default function Following() {
                 alert(e)
             }
         })()        
-    }, [ dispatch ])
-
-    function removeFromFollowingList(userId: string): void {
-        console.log(userId)
-        // const newFollowing = following.filter(f => f.id !== userId)
-        // setFollowing(newFollowing)
-    }
+    }, [])
 
     return (
         <div className='Following'>
@@ -38,7 +32,6 @@ export default function Following() {
                 {following.map(follow => <Follow
                     key={follow.id}
                     user={follow}
-                    removeFromFollowingList={removeFromFollowingList}
                 ></Follow>)}        
             </>}
         </div>
