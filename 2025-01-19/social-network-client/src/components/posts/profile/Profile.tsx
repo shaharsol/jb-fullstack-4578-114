@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import './Profile.css'
-import PostModel from '../../../models/post/Post'
 import profile from '../../../services/profile'
 import Post from '../post/Post'
 import NewPost from '../new/NewPost'
@@ -39,20 +38,13 @@ export default function Profile(): JSX.Element {
         }
     }
 
-    function addPost(post: PostModel): void {
-        console.log(post)
-        // setPosts([post, ...posts])
-    }
-
     return (
         <div className='Profile'>
 
             { posts.length === 0 && <Loading />}
 
             { posts.length > 0 && <>
-                <NewPost 
-                    addPost={addPost} 
-                />
+                <NewPost />
                 {posts.map(p =>
                     <Post
                         key={p.id}

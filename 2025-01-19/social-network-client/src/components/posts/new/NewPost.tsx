@@ -2,21 +2,21 @@ import { useForm } from 'react-hook-form'
 import './NewPost.css'
 import PostDraft from '../../../models/post/PostDraft'
 import profileService from '../../../services/profile'
-import Post from '../../../models/post/Post'
 import loadingImageSource from '../../../assets/images/loading.webp'
+import { useAppDispatch } from '../../../redux/hooks'
+import { newPost } from '../../../redux/profileSlice'
 
-interface NewPostProps {
-    addPost(post: Post): void
-}
-export default function NewPost(props: NewPostProps): JSX.Element {
+export default function NewPost(): JSX.Element {
 
     const { register, handleSubmit, reset, formState } = useForm<PostDraft>()
 
+    const dispatch = useAppDispatch()
+
     async function submit(draft: PostDraft) {
         try {
-            const newPost = await profileService.create(draft)
+            const newPostFromServer = await profileService.create(draft)
             reset()
-            props.addPost(newPost)
+            dispatch(newPost(newPostFromServer))
         } catch (e) {
             alert(e)
         }
