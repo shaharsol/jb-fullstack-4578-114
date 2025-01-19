@@ -1,15 +1,14 @@
 import './Following.css'
-import { useEffect, useState } from 'react'
-import User from '../../../models/user/User'
+import { useEffect } from 'react'
 import followingService from '../../../services/following'
 import Follow from '../follow/Follow'
 import Loading from '../../common/loading/Loading'
-import { useAppDispatch } from '../../../redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { init } from '../../../redux/followingSlice'
 
 export default function Following() {
-    const [following, setFollowing] = useState<User[]>([])
-
+    // const [following, setFollowing] = useState<User[]>([])
+    const following = useAppSelector(state => state.following.following)
 
     const dispatch = useAppDispatch()
 
@@ -17,16 +16,17 @@ export default function Following() {
         (async () => {
             try {
                 const following = await followingService.getFollowing()
-                dispatch(init(following))                
+                dispatch(init(following))
             } catch (e) {
                 alert(e)
             }
         })()        
-    }, [])
+    }, [ dispatch ])
 
     function removeFromFollowingList(userId: string): void {
-        const newFollowing = following.filter(f => f.id !== userId)
-        setFollowing(newFollowing)
+        console.log(userId)
+        // const newFollowing = following.filter(f => f.id !== userId)
+        // setFollowing(newFollowing)
     }
 
     return (
