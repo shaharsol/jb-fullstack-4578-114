@@ -13,17 +13,12 @@ export default function Followers() {
             .catch(alert)
     }, [])
 
-    function removeFromFollowingList(userId: string): void {
-        console.log(userId)
-    }
-
     return (
         <div className='Followers'>
             <h3>People who follow me</h3>
             {followers.map(follow => <Follow
                 key={follow.id}
                 user={follow}
-                removeFromFollowingList={removeFromFollowingList}
             ></Follow>)}
         </div>
     )
