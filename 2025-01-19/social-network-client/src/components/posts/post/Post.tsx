@@ -1,6 +1,5 @@
 import './Post.css'
 import PostModel from '../../../models/post/Post'
-import CommentModel from '../../../models/comment/Comment'
 import profileService from '../../../services/profile'
 import { useNavigate } from 'react-router-dom'
 import Comments from '../comments/Comments'
@@ -9,7 +8,6 @@ interface PostProps {
     post: PostModel,
     isAllowActions?: boolean, // === isAllowActions: boolean | undefined
     remove? (id: string): void,
-    addComment(comment: CommentModel): void
 }
 export default function Post(props: PostProps): JSX.Element {
 
@@ -21,7 +19,6 @@ export default function Post(props: PostProps): JSX.Element {
         comments 
     } = props.post
     const { name } = props.post.user
-    const { addComment } = props
     const navigate = useNavigate()
     
     async function deleteMe() {
@@ -65,7 +62,6 @@ export default function Post(props: PostProps): JSX.Element {
             <Comments 
                 comments={comments}
                 postId={id}
-                addComment={addComment}
             />
         </div>
     )

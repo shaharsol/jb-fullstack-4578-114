@@ -4,7 +4,6 @@ import PostModel from '../../../models/post/Post'
 import profile from '../../../services/profile'
 import Post from '../post/Post'
 import NewPost from '../new/NewPost'
-import Comment from '../../../models/comment/Comment'
 import Loading from '../../common/loading/Loading'
 import useTitle from '../../../hooks/useTitle'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
@@ -45,17 +44,6 @@ export default function Profile(): JSX.Element {
         // setPosts([post, ...posts])
     }
 
-    function addComment(comment: Comment): void {
-        const postsWithNewComment = [...posts]
-
-        const postToAddCommentTo = postsWithNewComment.find(post => post.id === comment.postId)
-        if(postToAddCommentTo) {
-            postToAddCommentTo.comments.unshift(comment)
-        }
-
-        // setPosts(postsWithNewComment)
-    }
-
     return (
         <div className='Profile'>
 
@@ -71,7 +59,6 @@ export default function Profile(): JSX.Element {
                         post={p}
                         isAllowActions={true}
                         remove={remove}
-                        addComment={addComment}
                     />
                 )}
             </>}
