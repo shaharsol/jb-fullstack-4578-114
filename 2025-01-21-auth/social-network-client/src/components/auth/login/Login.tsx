@@ -9,12 +9,12 @@ export default function Login(): JSX.Element {
 
     const { register, handleSubmit } = useForm<LoginModel>()
 
-    const { setJwt } = useContext(AuthContext)!
+    const { newLogin } = useContext(AuthContext)!
 
     async function submit(login: LoginModel) {
         const jwt = await auth.login(login)
         // here i need to code something that will set the JWT in the AuthContext state
-        setJwt(jwt)
+        newLogin(jwt)
     }
 
     return (
