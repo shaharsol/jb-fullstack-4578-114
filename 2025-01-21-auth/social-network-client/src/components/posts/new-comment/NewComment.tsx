@@ -1,11 +1,12 @@
 import { useForm } from 'react-hook-form'
 import './NewComment.css'
 import CommentDraft from '../../../models/comment/CommentDraft'
-import commentsService from '../../../services/comments'
 import LoadingButton from '../../common/loading-button/LoadingButton'
 import { useAppDispatch } from '../../../redux/hooks'
 import { addComment as addCommentProfile} from '../../../redux/profileSlice'
 import { addComment as addCommentFeed } from '../../../redux/feedSlice'
+import CommentsService from '../../../services/auth-aware/comments'
+import useService from '../../../hooks/useService'
 
 interface NewCommentProps{
     postId: string,
@@ -22,6 +23,8 @@ export default function NewComment(props: NewCommentProps): JSX.Element {
     } = useForm<CommentDraft>()  
 
     const dispatch = useAppDispatch()
+
+    const commentsService = useService(CommentsService)
 
     async function submit(draft: CommentDraft) {
         try {
