@@ -1,11 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import './EditPost.css'
-import profileService from '../../../services/profile'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import PostDraft from '../../../models/post/PostDraft'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { update } from '../../../redux/profileSlice'
+import useService from '../../../hooks/useService'
+import ProfileService from '../../../services/auth-aware/profile'
 
 export default function EditPost(): JSX.Element {
 
@@ -15,6 +16,8 @@ export default function EditPost(): JSX.Element {
 
     const post = useAppSelector(state => state.profile.posts.find(p => p.id === id))
     const dispatch = useAppDispatch()
+
+    const profileService = useService(ProfileService)
 
     useEffect(() => {
         if(id && post) {

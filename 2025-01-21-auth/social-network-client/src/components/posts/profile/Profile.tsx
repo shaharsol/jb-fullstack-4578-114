@@ -22,7 +22,7 @@ export default function Profile(): JSX.Element {
         (async () => {
             try {
                 if(posts.length === 0) {
-                    const postsFromServer = await profile.getProfile()
+                    const postsFromServer = await profileService.getProfile()
                     dispatch(init(postsFromServer))
                 }
             } catch (e) {
