@@ -1,17 +1,19 @@
 import { useEffect } from 'react'
 import './Profile.css'
-import profile from '../../../services/profile'
 import Post from '../post/Post'
 import NewPost from '../new/NewPost'
 import Loading from '../../common/loading/Loading'
 import useTitle from '../../../hooks/useTitle'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { init } from '../../../redux/profileSlice'
+import useService from '../../../hooks/useService'
+import ProfileService from '../../../services/auth-aware/profile'
 
 export default function Profile(): JSX.Element {
 
-
     useTitle('SN - Profile')
+
+    const profileService = useService(ProfileService)
 
     const posts = useAppSelector(state => state.profile.posts)
     const dispatch = useAppDispatch()
