@@ -1,7 +1,6 @@
 import User from '../../../models/user/User'
 import './Follow.css'
 import profilePicSource from '../../../assets/images/profile.jpg'
-import followingService from '../../../services/auth-aware/Following'
 import LoadingButton from '../../common/loading-button/LoadingButton'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
@@ -9,6 +8,8 @@ import {
     unfollow as unfollowAction, 
     follow as followAction } 
 from '../../../redux/followingSlice'
+import FollowingService from '../../../services/auth-aware/following'
+import useService from '../../../hooks/useService'
 
 interface FollowProps {
     user: User
@@ -22,6 +23,8 @@ export default function Follow(props: FollowProps): JSX.Element {
 
     const dispatch = useAppDispatch()
     const isFollowing = useAppSelector(state => state.following.following.findIndex(f => f.id === id) > -1)
+
+    const followingService = useService(FollowingService)
 
     async function unfollow() {
         if(window.confirm(`are you sure you wanna stop following ${name}?`)) {
