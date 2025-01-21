@@ -3,11 +3,13 @@ import Post from "../models/post/Post";
 import Comment from "../models/comment/Comment";
 
 interface FeedState {
-    posts: Post[]
+    posts: Post[],
+    isNewContent: boolean
 }
 
 const initialState: FeedState = {
-    posts: []
+    posts: [],
+    isNewContent: false
 }
 
 export const feedSlice = createSlice({

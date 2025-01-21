@@ -29,12 +29,28 @@ export default function Feed() {
         })()
     }, [])
 
+    async function reload() {
+        try {
+            const postsFromServer = await feedService.getFeed()
+            dispatch(init(postsFromServer))
+        } catch (e) {
+            alert(e)
+        }
+    }
+
+    const isNewContent = useAppSelector(state => state.feed.isNewContent)
+
     return (
         <div className='Feed'>
 
             {posts.length === 0 && <Loading />}
 
             {posts.length > 0 && <>
+
+                {isNewContent && <>
+                    <div className="info">You have new content in your feed. reload? <button onClick={reload}>yes</button></div>
+                </>}
+
                 {posts.map(p => <Post
                 key={p.id}
                 post={p}
