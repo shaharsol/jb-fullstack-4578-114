@@ -1,15 +1,17 @@
 import './Following.css'
 import { useEffect } from 'react'
-import followingService from '../../../services/following'
 import Follow from '../follow/Follow'
 import Loading from '../../common/loading/Loading'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { init } from '../../../redux/followingSlice'
+import useService from '../../../hooks/useService'
 
 export default function Following() {
     const following = useAppSelector(state => state.following.following)
 
     const dispatch = useAppDispatch()
+
+    const followingService = useService()
 
     useEffect(() => {
         (async () => {

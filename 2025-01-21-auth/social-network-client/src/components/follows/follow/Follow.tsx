@@ -1,7 +1,7 @@
 import User from '../../../models/user/User'
 import './Follow.css'
 import profilePicSource from '../../../assets/images/profile.jpg'
-import followingService from '../../../services/following'
+import followingService from '../../../services/auth-aware/following'
 import LoadingButton from '../../common/loading-button/LoadingButton'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
