@@ -18,13 +18,18 @@ export const feedSlice = createSlice({
     reducers: {
         init: (state, action: PayloadAction<Post[]>) => {
             state.posts = action.payload
+            state.isNewContent = false
         },
         addComment: (state, action: PayloadAction<Comment>) => {
             state.posts.find(p => p.id === action.payload.postId)?.comments.push(action.payload)
-        }
+        },
+        setNewContent: (state, action: PayloadAction<boolean>) => {
+            state.isNewContent = action.payload
+        },
+
     }
 })
 
-export const { init, addComment } = feedSlice.actions
+export const { init, addComment, setNewContent } = feedSlice.actions
 
 export default feedSlice.reducer

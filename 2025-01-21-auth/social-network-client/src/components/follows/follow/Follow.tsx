@@ -10,6 +10,7 @@ import {
 from '../../../redux/followingSlice'
 import FollowingService from '../../../services/auth-aware/following'
 import useService from '../../../hooks/useService'
+import { setNewContent } from '../../../redux/feedSlice'
 
 interface FollowProps {
     user: User
@@ -32,6 +33,7 @@ export default function Follow(props: FollowProps): JSX.Element {
                 setIsSubmitting(true)
                 await followingService.unfollow(id)
                 dispatch(unfollowAction({userId: id}))
+                dispatch(setNewContent(true))
             } catch (e) {
                 alert(e)
             } finally {
@@ -45,6 +47,7 @@ export default function Follow(props: FollowProps): JSX.Element {
             setIsSubmitting(true)
             await followingService.follow(id)
             dispatch(followAction(props.user))
+            dispatch(setNewContent(true))
         } catch (e) {
             alert(e)
         } finally {

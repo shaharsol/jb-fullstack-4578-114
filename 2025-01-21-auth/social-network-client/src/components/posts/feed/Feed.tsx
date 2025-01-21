@@ -3,7 +3,7 @@ import './Feed.css'
 import Post from '../post/Post'
 import useTitle from '../../../hooks/useTitle'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-import { init } from '../../../redux/feedSlice'
+import { init, setNewContent } from '../../../redux/feedSlice'
 import Loading from '../../common/loading/Loading'
 import useService from '../../../hooks/useService'
 import FeedService from '../../../services/auth-aware/feed'
@@ -38,6 +38,10 @@ export default function Feed() {
         }
     }
 
+    function dismiss() {
+        dispatch(setNewContent(false))
+    }
+
     const isNewContent = useAppSelector(state => state.feed.isNewContent)
 
     return (
@@ -48,7 +52,9 @@ export default function Feed() {
             {posts.length > 0 && <>
 
                 {isNewContent && <>
-                    <div className="info">You have new content in your feed. reload? <button onClick={reload}>yes</button></div>
+                    <div className="info">
+                        You have updates in your feed. reload? <button onClick={reload}>yes</button><button onClick={dismiss}>no</button>
+                    </div>
                 </>}
 
                 {posts.map(p => <Post
