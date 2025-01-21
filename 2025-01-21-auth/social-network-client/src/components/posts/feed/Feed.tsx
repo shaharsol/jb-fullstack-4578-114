@@ -52,9 +52,9 @@ export default function Feed() {
             {posts.length > 0 && <>
 
                 {isNewContent && <>
-                    <div className="info">
-                        You have updates in your feed. reload? <button onClick={reload}>yes</button><button onClick={dismiss}>no</button>
-                    </div>
+                        <div className="info">
+                            You have updates in your feed. reload? <button onClick={reload}>yes</button><button onClick={dismiss}>no</button>
+                        </div>
                 </>}
 
                 {posts.map(p => <Post
