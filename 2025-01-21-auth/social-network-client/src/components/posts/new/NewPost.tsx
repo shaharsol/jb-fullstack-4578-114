@@ -1,16 +1,19 @@
 import { useForm } from 'react-hook-form'
 import './NewPost.css'
 import PostDraft from '../../../models/post/PostDraft'
-import profileService from '../../../services/profile'
 import loadingImageSource from '../../../assets/images/loading.webp'
 import { useAppDispatch } from '../../../redux/hooks'
 import { newPost } from '../../../redux/profileSlice'
+import ProfileService from '../../../services/auth-aware/profile'
+import useService from '../../../hooks/useService'
 
 export default function NewPost(): JSX.Element {
 
     const { register, handleSubmit, reset, formState } = useForm<PostDraft>()
 
     const dispatch = useAppDispatch()
+
+    const profileService = useService(ProfileService)
 
     async function submit(draft: PostDraft) {
         try {
