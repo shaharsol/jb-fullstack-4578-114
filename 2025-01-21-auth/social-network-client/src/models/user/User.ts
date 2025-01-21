@@ -1,8 +1,8 @@
-export default interface User {
+import Login from "./Login";
+
+export default interface User extends Login {
     id: string,
     name: string,
-    username: string,
-    password: string,
     createdAt: string,
     updatedAt: string
 }
