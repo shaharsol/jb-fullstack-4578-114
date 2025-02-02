@@ -24,6 +24,7 @@ const requestListener = (request, response) => {
                     response.end(JSON.stringify(user))
                     break;
                 case 'POST':
+                    // here i save the info to the database
                     response.end('saving user...')
                     break;
                 default:
@@ -39,6 +40,7 @@ const requestListener = (request, response) => {
                     response.end(list)
                     break;
                 case 'POST':
+                    // save in database
                     response.end('saving list...')
                     break;
                 default:
