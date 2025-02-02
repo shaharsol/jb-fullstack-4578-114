@@ -14,12 +14,16 @@ const logRequest = (req, res, next) => {
 
 const connectToMysql = (req, res, next) => {
     console.log('connecting to mysql...')
-    next()
+    const mysql = 'this is my mysql connection'
+    req.mysql = 
+    req.fjkdfhgjh = 3
+    if (Math.random() > 0.5 ) next ('there was an error connecting to the database')
+    else next() // passing ANYTHING inside a next() call, tells express, i had an error and here it is
 }
 
 const disconnectFromMysql = (req, res, next) => {
     console.log('disconnecting from mysql...')
-    next()
+    next() // this tells express to move the wand to the next middelware
 }
 
 const connectToMongo = (req, res, next) => {
@@ -28,6 +32,7 @@ const connectToMongo = (req, res, next) => {
 }
 
 const printUser = (req, res, next) => {
+    console.log(req.mysql)
     res.json(user) // after closing a response, i dont neccessarily need a next
 }
 
@@ -47,17 +52,29 @@ const sendWelcomeEmail = (req, res, next) => {
     next()
 }
 
+const errorLogger = (err, req, res, next) => {
+    console.log(`there was an error somewhere and this is it: ${err}`)
+    next()
+}
+
+const pagerDuty = (err, req, res, next) => {
+    console.log(`sending the SMS to the current TORAN`)
+}
+
 const app = express()
 
 app.use(logRequest)
 
 app.use('/user', connectToMysql)
-// app.use('/user', disconnectFromMysql)
 app.get('/user', printUser)
 app.post('/user', connectToMysql, sendWelcomeEmail, saveUser)
+app.use('/user', disconnectFromMysql)
 
 app.use('/list', connectToMongo)
 
 app.use(notFound)
+
+app.use(errorLogger)
+app.use(pagerDuty)
 
 app.listen(3000, () => console.log('express app started on port 3000...'))
