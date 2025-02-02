@@ -17,14 +17,38 @@ const requestListener = (request, response) => {
 
     switch (request.url) {
         case '/user':
-            response.setHeader('Content-Type', 'application/json')
-            response.end(JSON.stringify(user))
+
+            switch (request.method) {
+                case 'GET':
+                    response.setHeader('Content-Type', 'application/json')
+                    response.end(JSON.stringify(user))
+                    break;
+                case 'POST':
+                    response.end('saving user...')
+                    break;
+                default:
+                    response.writeHead(404)
+                    response.end('unknown operation')
+                    break;
+            }
             break;
         case '/list':
-            response.setHeader('Content-Type', 'text/csv')
-            response.end(list)
+            switch (request.method) {
+                case 'GET':
+                    response.setHeader('Content-Type', 'text/csv')
+                    response.end(list)
+                    break;
+                case 'POST':
+                    response.end('saving list...')
+                    break;
+                default:
+                    response.writeHead(404)
+                    response.end('unknown operation')
+                    break;
+            }
             break;
         default:
+            response.writeHead(404)
             response.end('unknown operation')
             break;
     }
