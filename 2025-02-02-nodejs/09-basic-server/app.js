@@ -1,0 +1,1 @@
+require('http').createServer((request, response) => response.end('hello from server')).listen(3000, () => console.log('server started on port 3000...'))
