@@ -15,9 +15,10 @@ daniel,32,33333
 
 const requestListener = (request, response) => {
 
+    // log request
     switch (request.url) {
         case '/user':
-
+            // connect to mysql
             switch (request.method) {
                 case 'GET':
                     response.setHeader('Content-Type', 'application/json')
@@ -32,9 +33,11 @@ const requestListener = (request, response) => {
                     response.end('unknown operation')
                     break;
             }
+            // disconnect to mysql
             break;
         case '/list':
-            switch (request.method) {
+                // connect to mongodb
+                switch (request.method) {
                 case 'GET':
                     response.setHeader('Content-Type', 'text/csv')
                     response.end(list)
@@ -48,6 +51,7 @@ const requestListener = (request, response) => {
                     response.end('unknown operation')
                     break;
             }
+            // diconnect to mongodb
             break;
         default:
             response.writeHead(404)
