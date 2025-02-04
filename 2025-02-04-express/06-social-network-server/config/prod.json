@@ -1,6 +1,5 @@
 {
     "app": {
-        "port": 80,
-        "name": "twitter prod"
+        "port": 80
     }
 }
