@@ -1,7 +1,7 @@
 import express from "express"
 import config from 'config'
 
-const port = config.get<number>('app.port')
+const port = config.get<string>('app.port')
 const name = config.get<string>('app.name')
 
 const app = express()

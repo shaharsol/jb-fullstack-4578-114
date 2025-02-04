@@ -1,5 +1,6 @@
 {
     "app": {
-        "name": "APP_NAME"
+        "name": "APP_NAME",
+        "port": "APP_PORT"
     }
 }
