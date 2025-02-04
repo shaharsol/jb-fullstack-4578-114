@@ -43,8 +43,12 @@ const saveUser = (req, res, next) => {
 }
 
 const notFound = (req, res, next) => {
-    res.status(404)
-    res.send('the page u requested was not found on this server.... la la la')
+    // res.status(404)
+    // res.send('the page u requested was not found on this server.... la la la')
+    next({
+        statusCode: 404,
+        message: 'the page u requested was not found on this server.... la la la'
+    })
 }
 
 const sendWelcomeEmail = (req, res, next) => {
@@ -54,11 +58,23 @@ const sendWelcomeEmail = (req, res, next) => {
 
 const errorLogger = (err, req, res, next) => {
     console.log(`there was an error somewhere and this is it: ${err}`)
-    next()
+    next(err)
 }
 
 const pagerDuty = (err, req, res, next) => {
     console.log(`sending the SMS to the current TORAN`)
+    next(err)
+}
+
+const errorResponder = (err, req, res, next) => {
+    res.status(err.statusCode || 500).send(err.message || 'something bad happened...')
+
+    /*
+    res.send =
+
+    res.setHeader('Content-type': 'text/html')
+    res.end()
+    */
 }
 
 const app = express()
@@ -76,5 +92,6 @@ app.use(notFound)
 
 app.use(errorLogger)
 app.use(pagerDuty)
+app.use(errorResponder)
 
 app.listen(3000, () => console.log('express app started on port 3000...'))
