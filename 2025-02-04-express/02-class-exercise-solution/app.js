@@ -47,6 +47,10 @@ const respond = (req, res, next) => {
     res.json(req.data)
 }
 
-server.get('/users', getUsers, filterData, respond)
+const errorHandler = (err, req, res, next) => {
+    res.status(500).send(err.toString())
+}
+
+server.get('/users', getUsers, filterData, respond, errorHandler)
 
 server.listen(3000, () => console.log('started'))
