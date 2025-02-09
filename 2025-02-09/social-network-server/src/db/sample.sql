@@ -37,4 +37,4 @@ FROM
     LEFT OUTER JOIN `comments` AS `posts->comments` ON `posts`.`id` = `posts->comments`.`post_id`
     LEFT OUTER JOIN `users` AS `posts->comments->user` ON `posts->comments`.`user_id` = `posts->comments->user`.`id`
 WHERE
-    `User`.`id` = '1230ae30-dc4f-4752-bd84-092956f5c633';
+    `User`.`id` = '1230ae30-dc4f-4752-bd84-092956f5c633';   

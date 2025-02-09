@@ -26,3 +26,7 @@ export async function getProfile(req: Request, res: Response, next: NextFunction
         next(e)
     }
 }
+
+export async function getPost(req: Request, res: Response, next: NextFunction) {
+    const post = await Post.findByPk('gjkdfgjdkgjdf')
+}
