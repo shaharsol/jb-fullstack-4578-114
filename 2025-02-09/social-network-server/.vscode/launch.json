@@ -1,5 +1,8 @@
 {
     "configurations": [{
+        "env": {
+            "NODE_ENV": "debug"
+        },
         "type": "node",
         "request": "launch",
         "name": "Launch Program",

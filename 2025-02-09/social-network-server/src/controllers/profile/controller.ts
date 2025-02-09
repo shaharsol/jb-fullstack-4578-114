@@ -28,5 +28,47 @@ export async function getProfile(req: Request, res: Response, next: NextFunction
 }
 
 export async function getPost(req: Request, res: Response, next: NextFunction) {
-    const post = await Post.findByPk('gjkdfgjdkgjdf')
+    try {
+        const post = await Post.findByPk(req.params.id, {
+            include: [
+                User,
+                {
+                    model: Comment,
+                    include: [ User ]
+                }
+            ]
+        })
+        res.json(post)
+    } catch (e) {
+        next(e)
+    }
+}
+
+export async function deletePost(req: Request, res: Response, next: NextFunction) {
+    try {
+        // this is how you delete an EXISTING object:
+        // const post = await Post.findByPk(req.params.id)
+        // await post.destroy() 
+
+        // this is how you delete, using a static function,
+        // when you don't already have a sequelize object:
+        const id = req.params.id
+        const deletedRows = await Post.destroy({
+            where: { id }
+        })
+
+        if(deletedRows === 0) return next({
+            status: 404,
+            message: 'the post you were trying to delete does not exist'
+        })
+        
+        res.json({
+            success: true
+        })
+        
+        
+
+    } catch (e) {
+        next(e)
+    }
 }
