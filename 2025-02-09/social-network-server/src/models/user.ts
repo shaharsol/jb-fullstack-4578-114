@@ -34,7 +34,7 @@ export default class User extends Model{
     username: string
     
     @AllowNull(false)
-    @Column(DataType.STRING(32))
+    @Column(DataType.STRING(64))
     password: string
 
     @HasMany(() => Post, {

@@ -13,7 +13,7 @@
     "sequelize": {
         "logging": true,
         "sync": {
-            "force": true
+            "force": false
         }
     }
 }
