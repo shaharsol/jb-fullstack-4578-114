@@ -3,11 +3,13 @@ import {
     Column, 
     DataType, 
     Default, 
+    HasMany, 
     Index, 
     Model, 
     PrimaryKey, 
     Table 
 } from "sequelize-typescript";
+import Post from "./post";
 
 @Table({
     underscored: true,
@@ -31,4 +33,10 @@ export default class User extends Model{
     @AllowNull(false)
     @Column(DataType.STRING(32))
     password: string
+
+    @HasMany(() => Post, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
+    posts: Post[]
 }

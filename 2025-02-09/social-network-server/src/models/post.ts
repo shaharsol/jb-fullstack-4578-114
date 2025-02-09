@@ -1,13 +1,16 @@
 import { 
     AllowNull, 
+    BelongsTo, 
     Column, 
     DataType, 
     Default, 
+    ForeignKey, 
     Index, 
     Model, 
     PrimaryKey, 
     Table 
 } from "sequelize-typescript";
+import User from "./user";
 
 @Table({
     underscored: true
@@ -19,6 +22,7 @@ export default class Post extends Model{
     @Column(DataType.UUID)
     id: string
     
+    @ForeignKey(() => User)
     @AllowNull(false)
     @Column(DataType.UUID)
     userId: string
@@ -30,4 +34,8 @@ export default class Post extends Model{
     @AllowNull(false)
     @Column(DataType.TEXT)
     body: string
+
+    @BelongsTo(() => User)
+    user: User
+
 }

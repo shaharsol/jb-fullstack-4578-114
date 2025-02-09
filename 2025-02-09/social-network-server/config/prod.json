@@ -3,6 +3,9 @@
         "port": "80"
     },
     "sequelize": {
-        "logging": false
+        "logging": false,
+        "sync": {
+            "force": false
+        }
     }
 }

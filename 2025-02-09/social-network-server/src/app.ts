@@ -7,6 +7,7 @@ const name = config.get<string>('app.name')
 
 const app = express()
 
-sequelize.sync()
+const force = config.get<boolean>('sequelize.sync.force')
+sequelize.sync({ force })
 
 app.listen(port, () => console.log(`${name} started on port ${port}...`))
