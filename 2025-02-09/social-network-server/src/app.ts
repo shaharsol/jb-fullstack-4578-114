@@ -1,4 +1,4 @@
-import express from "express"
+import express, { json } from "express"
 import config from 'config'
 import sequelize from "./db/sequelize"
 import profileRouter from "./routers/profile"
@@ -16,6 +16,8 @@ const app = express();
     await sequelize.sync({ force })
 
     // middlewares
+    app.use(json()) // a middleware to extract the post/put/patch data and save it to the request object in case the content type of the request is application/json
+
     app.use('/profile', profileRouter)
 
     // special notFound middleware

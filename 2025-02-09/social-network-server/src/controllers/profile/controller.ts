@@ -45,7 +45,7 @@ export async function getPost(req: Request, res: Response, next: NextFunction) {
 }
 
 export async function deletePost(req: Request, res: Response, next: NextFunction) {
-    try {
+        try {
         // this is how you delete an EXISTING object:
         // const post = await Post.findByPk(req.params.id)
         // await post.destroy() 
@@ -61,13 +61,22 @@ export async function deletePost(req: Request, res: Response, next: NextFunction
             status: 404,
             message: 'the post you were trying to delete does not exist'
         })
-        
+
         res.json({
             success: true
         })
-        
-        
 
+    } catch (e) {
+        next(e)
+    }
+}
+
+export async function createPost(req: Request, res: Response, next: NextFunction) {
+    try {
+        const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
+
+        const post = await Post.create({ ...req.body, userId })
+        res.json(post)
     } catch (e) {
         next(e)
     }
