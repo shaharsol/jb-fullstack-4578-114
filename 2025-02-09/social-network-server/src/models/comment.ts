@@ -3,16 +3,15 @@ import {
     Column, 
     DataType, 
     Default, 
-    Index, 
     Model, 
     PrimaryKey, 
     Table 
 } from "sequelize-typescript";
 
 @Table({
-    underscored: true,
+    underscored: true
 })
-export default class User extends Model{
+export default class Comment extends Model{
 
     @PrimaryKey
     @Default(DataType.UUIDV4)
@@ -20,15 +19,14 @@ export default class User extends Model{
     id: string
     
     @AllowNull(false)
-    @Column(DataType.STRING(40))
-    name: string
-    
-    @Index({ unique: true })
+    @Column(DataType.UUID)
+    postId: string
+
     @AllowNull(false)
-    @Column(DataType.STRING(40))
-    username: string
-    
+    @Column(DataType.UUID)
+    userId: string
+
     @AllowNull(false)
-    @Column(DataType.STRING(32))
-    password: string
+    @Column(DataType.TEXT)
+    body: string
 }
