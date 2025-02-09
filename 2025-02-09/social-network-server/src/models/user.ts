@@ -1,5 +1,6 @@
 import { 
     AllowNull, 
+    BelongsToMany, 
     Column, 
     DataType, 
     Default, 
@@ -10,6 +11,8 @@ import {
     Table 
 } from "sequelize-typescript";
 import Post from "./post";
+import Comment from "./comment";
+import Follow from "./follow";
 
 @Table({
     underscored: true,
@@ -39,4 +42,14 @@ export default class User extends Model{
         onUpdate: 'CASCADE'
     })
     posts: Post[]
+
+    @HasMany(() => Comment)
+    comments: Comment[]
+
+    @BelongsToMany(() => User, () => Follow, 'followeeId', 'followerId')
+    followers: User[]
+
+    @BelongsToMany(() => User, () => Follow, 'followerId', 'followeeId')
+    following: User[]
+
 }

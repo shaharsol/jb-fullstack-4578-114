@@ -5,12 +5,13 @@ import {
     DataType, 
     Default, 
     ForeignKey, 
-    Index, 
+    HasMany, 
     Model, 
     PrimaryKey, 
     Table 
 } from "sequelize-typescript";
 import User from "./user";
+import Comment from "./comment";
 
 @Table({
     underscored: true
@@ -37,5 +38,8 @@ export default class Post extends Model{
 
     @BelongsTo(() => User)
     user: User
+
+    @HasMany(() => Comment)
+    comments: Comment[]
 
 }
