@@ -76,6 +76,15 @@ export async function createPost(req: Request, res: Response, next: NextFunction
         const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
 
         const post = await Post.create({ ...req.body, userId })
+        await post.reload({
+            include: [
+                User,
+                {
+                    model: Comment,
+                    include: [ User ]
+                }
+            ]
+        })
         res.json(post)
     } catch (e) {
         next(e)
