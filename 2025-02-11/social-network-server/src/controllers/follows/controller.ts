@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import User from "../../models/user";
 import Follow from "../../models/follow";
+import { col } from "sequelize";
 
 export async function getFollowers(req: Request, res: Response, next: NextFunction) {
     try {
@@ -9,8 +10,9 @@ export async function getFollowers(req: Request, res: Response, next: NextFuncti
         const user = await User.findByPk(userId, {
             include: [ { 
                 model: User,
-                as: 'followers'
-            } ]
+                as: 'followers',
+            } ],
+            order: [[col('followers.name'), 'ASC']],
         })
         res.json(user.followers)
     } catch (e) {

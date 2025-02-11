@@ -21,7 +21,7 @@ export async function getFeed(req: Request, res: Response, next: NextFunction) {
 
         const feed = user.following.reduce((cumulative: Post[], { posts }) => {
             return [...cumulative, ...posts]
-        }, [])
+        }, []).sort((a: Post, b: Post) => a.createdAt < b.createdAt ? 1 : -1)
 
         res.json(feed)        
 
@@ -31,6 +31,7 @@ export async function getFeed(req: Request, res: Response, next: NextFunction) {
         //     from 	posts
         //     JOIN	follows on posts.user_id = follows.followee_id
         //     AND		follows.follower_id = ?
+        //     ORDER BY created_at DESC
         // `, {
         //     replacements: [ userId ],
         //     model: Post
