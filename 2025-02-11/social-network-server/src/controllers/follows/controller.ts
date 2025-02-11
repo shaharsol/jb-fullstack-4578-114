@@ -47,3 +47,23 @@ export async function follow(req: Request<{id: string}>, res: Response, next: Ne
         next(e)
     }
 }
+
+export async function unfollow(req: Request<{id: string}>, res: Response, next: NextFunction) {
+
+    try {
+        const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
+        const isUnfollowed = await Follow.destroy({
+            where: {
+                followerId: userId,
+                followeeId: req.params.id
+            }
+        })
+        if (!isUnfollowed) return next({
+            status: 404,
+            message: 'tried to delete unexisting record'
+        })
+        res.json({ success: true })
+    } catch (e) {
+        next(e)
+    }
+}
