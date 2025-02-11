@@ -19,8 +19,8 @@ export async function getFeed(req: Request, res: Response, next: NextFunction) {
             } ]
         })
 
-        const feed = user.following.reduce((cummulative: Post[], { posts }) => {
-            return [...cummulative, ...posts]
+        const feed = user.following.reduce((cumulative: Post[], { posts }) => {
+            return [...cumulative, ...posts]
         }, [])
 
         res.json(feed)        
