@@ -5,6 +5,7 @@ import profileRouter from "./routers/profile"
 import followsRouter from "./routers/follows"
 import commentsRouter from "./routers/comments"
 import feedRouter from "./routers/feed"
+import authRouter from "./routers/auth"
 import errorLogger from "./middlewares/error/error-logger"
 import errorResponder from "./middlewares/error/error-responder"
 import notFound from "./middlewares/not-found"
@@ -25,6 +26,7 @@ const app = express();
     app.use('/follows', followsRouter)
     app.use('/comments', commentsRouter)
     app.use('/feed', feedRouter)
+    app.use('/auth', authRouter)
 
     // special notFound middleware
     app.use(notFound)
