@@ -3,6 +3,7 @@ import config from 'config'
 import sequelize from "./db/sequelize"
 import profileRouter from "./routers/profile"
 import followsRouter from "./routers/follows"
+import commentsRouter from "./routers/comments"
 import errorLogger from "./middlewares/error/error-logger"
 import errorResponder from "./middlewares/error/error-responder"
 import notFound from "./middlewares/not-found"
@@ -21,6 +22,7 @@ const app = express();
 
     app.use('/profile', profileRouter)
     app.use('/follows', followsRouter)
+    app.use('/comments', commentsRouter)
 
     // special notFound middleware
     app.use(notFound)
