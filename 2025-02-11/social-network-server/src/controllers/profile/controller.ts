@@ -32,7 +32,7 @@ export async function getProfile(req: Request, res: Response, next: NextFunction
     }
 }
 
-export async function getPost(req: Request, res: Response, next: NextFunction) {
+export async function getPost(req: Request<{id: string}>, res: Response, next: NextFunction) {
     try {
         const post = await Post.findByPk(req.params.id, postIncludes)
         res.json(post)
@@ -41,7 +41,7 @@ export async function getPost(req: Request, res: Response, next: NextFunction) {
     }
 }
 
-export async function deletePost(req: Request, res: Response, next: NextFunction) {
+export async function deletePost(req: Request<{id: string}>, res: Response, next: NextFunction) {
         try {
         // this is how you delete an EXISTING object:
         // const post = await Post.findByPk(req.params.id)
@@ -80,7 +80,7 @@ export async function createPost(req: Request, res: Response, next: NextFunction
     }
 }
 
-export async function updatePost(req: Request, res: Response, next: NextFunction) {
+export async function updatePost(req: Request<{id: string}>, res: Response, next: NextFunction) {
     try {
         const post = await Post.findByPk(req.params.id, postIncludes)
 
