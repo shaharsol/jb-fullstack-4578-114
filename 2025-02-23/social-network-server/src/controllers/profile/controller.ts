@@ -8,7 +8,7 @@ import { StatusCodes } from "http-status-codes";
 
 export async function getProfile(req: Request, res: Response, next: NextFunction) {
     try {
-        const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
+        const userId = req.userId
 
         const user = await User.findByPk(userId, {
             include: [ {
@@ -59,7 +59,7 @@ export async function deletePost(req: Request<{id: string}>, res: Response, next
 
 export async function createPost(req: Request, res: Response, next: NextFunction) {
     try {
-        const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
+        const userId = req.userId
 
         const post = await Post.create({ ...req.body, userId })
         await post.reload(postIncludes)

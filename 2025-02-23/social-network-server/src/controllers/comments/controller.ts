@@ -4,7 +4,7 @@ import User from "../../models/user";
 
 export async function createComment(req: Request<{postId: string}>, res: Response, next: NextFunction) {
     try {
-        const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
+        const userId = req.userId
 
         const { postId } = req.params 
 
