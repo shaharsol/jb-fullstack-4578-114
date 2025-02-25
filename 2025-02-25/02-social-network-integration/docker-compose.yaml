@@ -8,7 +8,7 @@ services:
       - MYSQL_DATABASE=twitter
       - MYSQL_TCP_PORT=3306
     ports:
-      - 3307:3306
+      - "3306:3306"
     build: ./database
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
@@ -22,7 +22,7 @@ services:
     ports:
       - 3000:3000
     environment:
-      - NODE_ENV=docker
+      - NODE_ENV=compose
     build: ./backend
     depends_on:
       database:
