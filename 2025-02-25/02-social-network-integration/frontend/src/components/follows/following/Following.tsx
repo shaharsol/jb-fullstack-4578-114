@@ -5,7 +5,7 @@ import Loading from '../../common/loading/Loading'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { init } from '../../../redux/followingSlice'
 import useService from '../../../hooks/useService'
-import FollowingService from '../../../services/auth-aware/following'
+import FollowingService from '../../../services/auth-aware/Following'
 
 export default function Following() {
     const following = useAppSelector(state => state.following.following)
@@ -22,7 +22,7 @@ export default function Following() {
             } catch (e) {
                 alert(e)
             }
-        })()        
+        })()
     }, [])
 
     return (
@@ -34,7 +34,7 @@ export default function Following() {
                 {following.map(follow => <Follow
                     key={follow.id}
                     user={follow}
-                ></Follow>)}        
+                ></Follow>)}
             </>}
         </div>
     )

@@ -7,7 +7,7 @@ import useTitle from '../../../hooks/useTitle'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { init } from '../../../redux/profileSlice'
 import useService from '../../../hooks/useService'
-import ProfileService from '../../../services/auth-aware/profile'
+import ProfileService from '../../../services/auth-aware/Profile'
 
 export default function Profile(): JSX.Element {
 

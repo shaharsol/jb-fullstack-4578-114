@@ -4,11 +4,12 @@ import profilePicSource from '../../../assets/images/profile.jpg'
 import LoadingButton from '../../common/loading-button/LoadingButton'
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-import { 
-    unfollow as unfollowAction, 
-    follow as followAction } 
-from '../../../redux/followingSlice'
-import FollowingService from '../../../services/auth-aware/following'
+import {
+    unfollow as unfollowAction,
+    follow as followAction
+}
+    from '../../../redux/followingSlice'
+import FollowingService from '../../../services/auth-aware/Following'
 import useService from '../../../hooks/useService'
 import { setNewContent } from '../../../redux/feedSlice'
 
@@ -17,8 +18,8 @@ interface FollowProps {
 }
 export default function Follow(props: FollowProps): JSX.Element {
 
-            
-    const { user: {id, name} } = props
+
+    const { user: { id, name } } = props
 
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
@@ -28,11 +29,11 @@ export default function Follow(props: FollowProps): JSX.Element {
     const followingService = useService(FollowingService)
 
     async function unfollow() {
-        if(window.confirm(`are you sure you wanna stop following ${name}?`)) {
+        if (window.confirm(`are you sure you wanna stop following ${name}?`)) {
             try {
                 setIsSubmitting(true)
                 await followingService.unfollow(id)
-                dispatch(unfollowAction({userId: id}))
+                dispatch(unfollowAction({ userId: id }))
                 dispatch(setNewContent(true))
             } catch (e) {
                 alert(e)
@@ -64,14 +65,14 @@ export default function Follow(props: FollowProps): JSX.Element {
                 {name}
             </div>
             <div>
-                {isFollowing && <LoadingButton 
+                {isFollowing && <LoadingButton
                     onClick={unfollow}
                     isSubmitting={isSubmitting}
                     buttonText='Unfollow'
                     loadingText='Unfollowing'
                 />}
 
-                {!isFollowing && <LoadingButton 
+                {!isFollowing && <LoadingButton
                     onClick={follow}
                     isSubmitting={isSubmitting}
                     buttonText='Follow'

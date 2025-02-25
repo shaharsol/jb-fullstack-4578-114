@@ -3,7 +3,7 @@ import './Followers.css'
 import User from '../../../models/user/User'
 import Follow from '../follow/Follow'
 import useService from '../../../hooks/useService'
-import FollowersService from '../../../services/auth-aware/followers'
+import FollowersService from '../../../services/auth-aware/Followers'
 
 export default function Followers() {
     const [followers, setFollowers] = useState<User[]>([])

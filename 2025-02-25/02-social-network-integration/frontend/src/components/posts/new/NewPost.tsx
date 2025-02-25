@@ -4,7 +4,7 @@ import PostDraft from '../../../models/post/PostDraft'
 import loadingImageSource from '../../../assets/images/loading.webp'
 import { useAppDispatch } from '../../../redux/hooks'
 import { newPost } from '../../../redux/profileSlice'
-import ProfileService from '../../../services/auth-aware/profile'
+import ProfileService from '../../../services/auth-aware/Profile'
 import useService from '../../../hooks/useService'
 
 export default function NewPost(): JSX.Element {
@@ -37,7 +37,7 @@ export default function NewPost(): JSX.Element {
                         value: 10,
                         message: 'title must be 10 chars long'
                     }
-                })}/>
+                })} />
                 <span className='error'>{formState.errors.title?.message}</span>
                 <textarea placeholder='post body' {...register('body', {
                     required: {
@@ -51,7 +51,7 @@ export default function NewPost(): JSX.Element {
                 })} />
                 <span className='error'>{formState.errors.body?.message}</span>
                 {!formState.isSubmitting && <button>Add Post</button>}
-                {formState.isSubmitting && <p>posting new post... <i><img src={loadingImageSource}/></i></p>}
+                {formState.isSubmitting && <p>posting new post... <i><img src={loadingImageSource} /></i></p>}
             </form>
         </div>
     )

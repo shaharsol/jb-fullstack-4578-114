@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { init, setNewContent } from '../../../redux/feedSlice'
 import Loading from '../../common/loading/Loading'
 import useService from '../../../hooks/useService'
-import FeedService from '../../../services/auth-aware/feed'
+import FeedService from '../../../services/auth-aware/Feed'
 
 export default function Feed() {
     useTitle('SN - Feed')
@@ -19,7 +19,7 @@ export default function Feed() {
     useEffect(() => {
         (async () => {
             try {
-                if(posts.length === 0) {
+                if (posts.length === 0) {
                     const postsFromServer = await feedService.getFeed()
                     dispatch(init(postsFromServer))
                 }
@@ -52,15 +52,15 @@ export default function Feed() {
             {posts.length > 0 && <>
 
                 {isNewContent && <>
-                        <div className="info">
-                            You have updates in your feed. reload? <button onClick={reload}>yes</button><button onClick={dismiss}>no</button>
-                        </div>
+                    <div className="info">
+                        You have updates in your feed. reload? <button onClick={reload}>yes</button><button onClick={dismiss}>no</button>
+                    </div>
                 </>}
 
                 {posts.map(p => <Post
-                key={p.id}
-                post={p}
-            />)}
+                    key={p.id}
+                    post={p}
+                />)}
             </>}
         </div>
     )

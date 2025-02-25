@@ -1,6 +1,6 @@
 import './Post.css'
 import PostModel from '../../../models/post/Post'
-import ProfileService from '../../../services/auth-aware/profile'
+import ProfileService from '../../../services/auth-aware/Profile'
 import { useNavigate } from 'react-router-dom'
 import Comments from '../comments/Comments'
 import { useAppDispatch } from '../../../redux/hooks'
@@ -13,27 +13,27 @@ interface PostProps {
 }
 export default function Post(props: PostProps): JSX.Element {
 
-    const { 
-        title, 
-        body, 
-        createdAt, 
-        id, 
-        comments 
+    const {
+        title,
+        body,
+        createdAt,
+        id,
+        comments
     } = props.post
     const { name } = props.post.user
-    
-    
+
+
     const navigate = useNavigate()
-    
+
     const dispatch = useAppDispatch()
 
     const profileService = useService(ProfileService)
 
     async function deleteMe() {
-        if(confirm(`are you sure you want to delete "${title}"`)) {
+        if (confirm(`are you sure you want to delete "${title}"`)) {
             try {
                 await profileService.remove(id)
-                dispatch(remove({id}))
+                dispatch(remove({ id }))
             } catch (e) {
                 alert(e)
             }
@@ -55,13 +55,13 @@ export default function Post(props: PostProps): JSX.Element {
             <div>
                 {body}
             </div>
-            { props.isAllowActions && 
+            {props.isAllowActions &&
                 <div>
                     <button onClick={editMe}>Edit</button>
                     <button onClick={deleteMe}>Delete</button>
                 </div>
             }
-            <Comments 
+            <Comments
                 comments={comments}
                 postId={id}
             />

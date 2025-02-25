@@ -3,24 +3,24 @@ import './NewComment.css'
 import CommentDraft from '../../../models/comment/CommentDraft'
 import LoadingButton from '../../common/loading-button/LoadingButton'
 import { useAppDispatch } from '../../../redux/hooks'
-import { addComment as addCommentProfile} from '../../../redux/profileSlice'
+import { addComment as addCommentProfile } from '../../../redux/profileSlice'
 import { addComment as addCommentFeed } from '../../../redux/feedSlice'
-import CommentsService from '../../../services/auth-aware/comments'
+import CommentsService from '../../../services/auth-aware/Comments'
 import useService from '../../../hooks/useService'
 
-interface NewCommentProps{
+interface NewCommentProps {
     postId: string,
 }
 export default function NewComment(props: NewCommentProps): JSX.Element {
 
     const { postId } = props
 
-    const { 
-        register, 
-        handleSubmit, 
-        formState, 
-        reset 
-    } = useForm<CommentDraft>()  
+    const {
+        register,
+        handleSubmit,
+        formState,
+        reset
+    } = useForm<CommentDraft>()
 
     const dispatch = useAppDispatch()
 

@@ -6,12 +6,12 @@ import PostDraft from '../../../models/post/PostDraft'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { update } from '../../../redux/profileSlice'
 import useService from '../../../hooks/useService'
-import ProfileService from '../../../services/auth-aware/profile'
+import ProfileService from '../../../services/auth-aware/Profile'
 
 export default function EditPost(): JSX.Element {
 
     const { id } = useParams<'id'>()
-    const { handleSubmit, register, formState, reset} = useForm<PostDraft>()
+    const { handleSubmit, register, formState, reset } = useForm<PostDraft>()
     const navigate = useNavigate()
 
     const post = useAppSelector(state => state.profile.posts.find(p => p.id === id))
@@ -20,7 +20,7 @@ export default function EditPost(): JSX.Element {
     const profileService = useService(ProfileService)
 
     useEffect(() => {
-        if(id && post) {
+        if (id && post) {
             // profileService.getPost(id)
             //     .then(reset)
             //     .catch(alert)
@@ -31,11 +31,11 @@ export default function EditPost(): JSX.Element {
 
     async function submit(draft: PostDraft) {
         try {
-            if(id) {
+            if (id) {
                 const updatedPost = await profileService.update(id, draft)
                 dispatch(update(updatedPost))
                 navigate('/profile')
-            }            
+            }
         } catch (e) {
             alert(e)
         }
@@ -53,7 +53,7 @@ export default function EditPost(): JSX.Element {
                         value: 10,
                         message: 'title must be 10 chars long'
                     }
-                })}/>
+                })} />
                 <span className='error'>{formState.errors.title?.message}</span>
                 <textarea placeholder='post body' {...register('body', {
                     required: {
@@ -67,7 +67,7 @@ export default function EditPost(): JSX.Element {
                 })} />
                 <span className='error'>{formState.errors.body?.message}</span>
                 <button>Update Post</button>
-            </form>            
+            </form>
         </div>
     )
 }
