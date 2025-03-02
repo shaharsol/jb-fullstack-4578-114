@@ -11,11 +11,15 @@ class Products {
     }
 
     async add(draft: Draft): Promise<Product> {
-
+        const response = await axios.post<Product>(`${import.meta.env.VITE_REST_SERVER_URL}/products`, draft)
+        const newProduct = response.data
+        return newProduct
     }
 
     async remove(id: string): Promise<boolean> {
-
+        const response = await axios.delete<boolean>(`${import.meta.env.VITE_REST_SERVER_URL}/products/${id}`)
+        const isDeleted = response.data
+        return isDeleted
     }
 }
 
