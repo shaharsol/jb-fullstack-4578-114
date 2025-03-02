@@ -11,7 +11,6 @@ import productsRouter from './routers/products'
 import errorLogger from "./middlewares/error/error-logger"
 import errorResponder from "./middlewares/error/error-responder"
 import notFound from "./middlewares/not-found"
-import enforceAuth from "./middlewares/enforce-auth"
 import cors from 'cors'
 
 const port = config.get<string>('app.port')

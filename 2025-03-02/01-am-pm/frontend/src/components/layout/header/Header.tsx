@@ -1,8 +1,5 @@
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './Header.css'
-import useUsername from '../../../hooks/useUsername'
-import { useContext } from 'react'
-import { AuthContext } from '../../auth/auth/Auth'
 
 export default function Header() {
 

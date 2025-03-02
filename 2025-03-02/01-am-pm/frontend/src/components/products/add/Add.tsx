@@ -22,7 +22,7 @@ export default function Add(): JSX.Element {
     }, [])
 
 
-    const { register, handleSubmit, formState, reset } = useForm<Draft>()
+    const { register, handleSubmit, formState } = useForm<Draft>()
 
     const navigate = useNavigate()
 
