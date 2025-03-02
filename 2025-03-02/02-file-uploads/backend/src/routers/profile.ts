@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { createPost, deletePost, getPost, getProfile, updatePost } from "../controllers/profile/controller";
 import validation from "../middlewares/validation";
-import { newPostValidator, updatePostValidator } from "../controllers/profile/validator";
+import { newPostFilesValidator, newPostValidator, updatePostValidator } from "../controllers/profile/validator";
 import enforceAuth from "../middlewares/enforce-auth";
+import filesValidation from "../middlewares/files-validation";
 
 const profileRouter = Router()
 
@@ -11,7 +12,7 @@ profileRouter.use(enforceAuth)
 profileRouter.get('/', getProfile)
 profileRouter.get('/:id', getPost)
 profileRouter.delete('/:id', deletePost)
-profileRouter.post('/', /* validation(newPostValidator) ,*/ createPost)
+profileRouter.post('/', validation(newPostValidator), filesValidation(newPostFilesValidator), createPost)
 profileRouter.patch('/:id', validation(updatePostValidator), updatePost)
 
 export default profileRouter
