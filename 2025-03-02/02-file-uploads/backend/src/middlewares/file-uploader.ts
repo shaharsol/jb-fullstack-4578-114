@@ -22,7 +22,7 @@ export default async function fileUploader (req: Request, res: Response, next: N
             accessKeyId: 'test',
             secretAccessKey: 'test'
         },
-        endpoint: 'http://localhost:4566'
+        endpoint: 'http://127.0.0.1:4566'
     })
 
     const postImage = req.files.postImage as UploadedFile
