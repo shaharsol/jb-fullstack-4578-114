@@ -9,11 +9,7 @@ export default function App(): JSX.Element {
     return (
         <div className="App">
             <BrowserRouter>
-                <Provider store={store}>
-                    <Auth>
-                        <Layout />
-                    </Auth>
-                </Provider>
+                <Layout />
             </BrowserRouter>
         </div>
     )

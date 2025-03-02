@@ -6,14 +6,6 @@ import { AuthContext } from '../../auth/auth/Auth'
 
 export default function Header() {
 
-    const name = useUsername()
-
-    const { logout } = useContext(AuthContext)!
-
-    function logMeOut() {
-        logout()
-    }
-
     return (
         <div className='Header'>
             <div>
@@ -21,14 +13,10 @@ export default function Header() {
             </div>  
             <div>
                 <nav>
-                    <NavLink to="/profile">profile</NavLink>
-                    <NavLink to="/feed">feed</NavLink>
-                    <NavLink to="/search">search</NavLink>
+                    <NavLink to="/products/list">list</NavLink>
+                    <NavLink to="/products/add">add product</NavLink>
                 </nav>
             </div>          
-            <div>
-                Hello {name} | <button onClick={logMeOut}>logout</button>
-            </div>
         </div>
     )
 }
