@@ -28,3 +28,13 @@ export async function add(req: Request<{}, {}, {
         next(e)
     }
 }
+
+export async function remove(req: Request<{id: string}>, res: Response, next: NextFunction) {
+    try {
+        const { id } = req.params
+        await Product.destroy({where: {id}})
+        res.json({success: true})
+    } catch (e) {
+        next(e)
+    }
+}

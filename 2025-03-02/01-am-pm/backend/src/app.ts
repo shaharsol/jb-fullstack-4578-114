@@ -6,6 +6,8 @@ import sequelize from "./db/sequelize"
 // import commentsRouter from "./routers/comments"
 // import feedRouter from "./routers/feed"
 // import authRouter from "./routers/auth"
+import categoriesRouter from './routers/categories'
+import productsRouter from './routers/products'
 import errorLogger from "./middlewares/error/error-logger"
 import errorResponder from "./middlewares/error/error-responder"
 import notFound from "./middlewares/not-found"
@@ -26,11 +28,8 @@ const app = express();
 
     app.use(json()) // a middleware to extract the post/put/patch data and save it to the request object in case the content type of the request is application/json
 
-    // [ if we have auth in this app, uncomment this ]:
-    // app.use('/auth', authRouter)
-
-    // [ here is the place to mount routers on the app]:
-    // app.use('/profile', profileRouter)
+    app.use('/categories', categoriesRouter)
+    app.use('/products', productsRouter)
 
     // special notFound middleware
     app.use(notFound)
