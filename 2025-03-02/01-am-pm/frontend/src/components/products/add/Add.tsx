@@ -28,7 +28,7 @@ export default function Add(): JSX.Element {
 
     async function submit(draft: Draft) {
         try {
-            const newProduct= await productsService.add(draft)
+            await productsService.add(draft)
             alert('added product')
             navigate('/products/list')
         } catch (e) {
@@ -40,20 +40,50 @@ export default function Add(): JSX.Element {
     return (
         <div className='Add'>
             <form onSubmit={handleSubmit(submit)}>
-                <input placeholder='product name' {...register('name')}/>
+                <input placeholder='product name' {...register('name', {
+                    required: {
+                        value: true,
+                        message: 'name is a must'
+                    }
+                })}/>
+                <span className='error'>{formState.errors.name?.message}</span>
 
-                <input type="number" placeholder='price' {...register('price')} />
+                <input type="number" placeholder='price' {...register('price', {
+                    required: {
+                        value: true,
+                        message: 'price is a must'
+                    }
+                })} />
+                <span className='error'>{formState.errors.price?.message}</span>
 
-                <select {...register('categoryId')}>
-                    <option value="" disabled selected>please select category...</option>
+                <select defaultValue={''} {...register('categoryId', {
+                    required: {
+                        value: true,
+                        message: 'category is a must'
+                    }
+                })}>
+                    <option value="" disabled>please select category...</option>
                     {categories.map(({id, name}) => <option key={id} value={id}>{name}</option>)}
                 </select>
+                <span className='error'>{formState.errors.categoryId?.message}</span>
 
                 <label>production date</label>
-                <input type="datetime-local"  {...register('productionTime')}/>
+                <input type="datetime-local"  {...register('productionTime', {
+                    required: {
+                        value: true,
+                        message: 'production time is a must'
+                    }
+                })}/>
+                <span className='error'>{formState.errors.productionTime?.message}</span>
 
                 <label>expiration date</label>
-                <input type="datetime-local"  {...register('expirationTime')}/>
+                <input type="datetime-local"  {...register('expirationTime', {
+                    required: {
+                        value: true,
+                        message: 'expiration time is a must'
+                    }
+                })}/>
+                <span className='error'>{formState.errors.expirationTime?.message}</span>
 
                 <button>Add Product</button>
             </form>

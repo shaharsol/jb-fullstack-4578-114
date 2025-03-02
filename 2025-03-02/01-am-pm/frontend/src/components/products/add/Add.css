@@ -1,4 +1,5 @@
-.Add {
+.Add form {
     display: flex;
+    gap: 6px;
     flex-direction: column;
 }

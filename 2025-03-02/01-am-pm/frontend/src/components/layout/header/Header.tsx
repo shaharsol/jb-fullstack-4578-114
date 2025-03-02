@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './Header.css'
 import useUsername from '../../../hooks/useUsername'
 import { useContext } from 'react'
