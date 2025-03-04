@@ -24,6 +24,7 @@ export default function NewPost(): JSX.Element {
             draft.postImage = (draft.postImage as unknown as FileList)[0]
             const newPostFromServer = await profileService.create(draft)
             reset()
+            setPreviewImageSrc('')
             dispatch(newPost(newPostFromServer))
         } catch (e) {
             alert(e)
