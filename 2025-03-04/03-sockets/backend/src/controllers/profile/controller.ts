@@ -5,6 +5,7 @@ import Comment from "../../models/comment";
 import postIncludes from "../common/post-includes";
 import AppError from "../../errors/app-error";
 import { StatusCodes } from "http-status-codes";
+import socket from "../../io/io";
 
 export async function getProfile(req: Request, res: Response, next: NextFunction) {
     try {
@@ -71,6 +72,7 @@ export async function createPost(req: Request, res: Response, next: NextFunction
         const post = await Post.create(createParams)
         await post.reload(postIncludes)
         res.json(post)
+        socket.emit('newPost', post)
     } catch (e) {
         next(e)
     }
