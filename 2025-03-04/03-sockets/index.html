@@ -12,6 +12,10 @@
 
         const socket = io('ws://localhost:3003')
 
+        socket.on('welcome', payload => {
+            document.getElementById('data').innerHTML = `my ID is ${payload.id}`
+        })
+
     </script>
 
 

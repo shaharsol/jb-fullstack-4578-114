@@ -12,10 +12,12 @@ const io = new Server({
 
 io.on('connection', socket => {
 
+    console.log('got a new connection')
+
     socket.emit('welcome', {
         id: v4()
     })
-    
+
 })
 
 io.listen(port)
