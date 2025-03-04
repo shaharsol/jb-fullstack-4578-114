@@ -23,11 +23,16 @@ io.on('connection', socket => {
         id
     })
 
-    io.emit('new member')
+    io.emit('new member', {
+        id
+    })
 
     socket.on('disconnect', () => {
         console.log('client disconnected...')
         clients = clients.filter(client => client !== id)
+        io.emit('member gone', {
+            id
+        })
     })
 
 })
