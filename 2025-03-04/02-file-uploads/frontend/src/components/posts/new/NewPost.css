@@ -1,0 +1,18 @@
+.NewPost {
+    border: 1px dashed lightgreen;
+    padding: 4px;
+    margin: 4px;
+}
+
+.NewPost > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.NewPost .error {
+    color: red;
+}
+
+.NewPost i img {
+    height: 16px;
+}

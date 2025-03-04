@@ -1,0 +1,11 @@
+{
+    "app": {
+        "port": "80"
+    },
+    "sequelize": {
+        "logging": false,
+        "sync": {
+            "force": false
+        }
+    }
+}
