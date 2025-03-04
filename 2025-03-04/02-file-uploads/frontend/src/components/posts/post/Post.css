@@ -7,3 +7,7 @@
     margin: 8px;
     border-radius: 4px;
 }
+
+.Post img {
+    width: 300px;
+}

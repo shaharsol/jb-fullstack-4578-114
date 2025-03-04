@@ -1,8 +1,8 @@
 import Comment from "../comment/Comment";
 import User from "../user/User";
-import PostDraft from "./PostDraft";
+import BasePost from "./BasePost";
 
-export default interface Post extends PostDraft {
+export default interface Post extends BasePost {
     id: string,
     userId: string,
     imageUrl: string,

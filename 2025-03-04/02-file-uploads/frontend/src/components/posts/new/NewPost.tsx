@@ -17,6 +17,8 @@ export default function NewPost(): JSX.Element {
 
     async function submit(draft: PostDraft) {
         try {
+
+            draft.postImage = (draft.postImage as unknown as FileList)[0]
             const newPostFromServer = await profileService.create(draft)
             reset()
             dispatch(newPost(newPostFromServer))
@@ -50,6 +52,7 @@ export default function NewPost(): JSX.Element {
                     },
                 })} />
                 <span className='error'>{formState.errors.body?.message}</span>
+                <input type="file" accept='image/png, image/jpeg, image/jpg' {...register('postImage')} />
                 {!formState.isSubmitting && <button>Add Post</button>}
                 {formState.isSubmitting && <p>posting new post... <i><img src={loadingImageSource} /></i></p>}
             </form>

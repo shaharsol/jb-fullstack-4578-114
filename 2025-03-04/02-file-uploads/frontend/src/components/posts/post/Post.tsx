@@ -18,7 +18,8 @@ export default function Post(props: PostProps): JSX.Element {
         body,
         createdAt,
         id,
-        comments
+        comments,
+        imageUrl
     } = props.post
     const { name } = props.post.user
 
@@ -52,6 +53,9 @@ export default function Post(props: PostProps): JSX.Element {
             <div>
                 by {name} at {createdAt}
             </div>
+            {imageUrl && <div>
+                <img src={imageUrl} />
+            </div>}
             <div>
                 {body}
             </div>

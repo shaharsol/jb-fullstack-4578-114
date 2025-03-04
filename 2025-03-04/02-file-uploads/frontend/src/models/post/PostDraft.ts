@@ -1,4 +1,5 @@
-export default interface PostDraft {
-    title: string,
-    body: string
+import BasePost from "./BasePost";
+
+export default interface PostDraft extends BasePost {
+    postImage: File
 }
