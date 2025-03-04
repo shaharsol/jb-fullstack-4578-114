@@ -1,15 +1,7 @@
 import { CreateBucketCommand, S3Client } from "@aws-sdk/client-s3";
 import config from 'config'
 
-const s3Client = new S3Client({
-    region: 'us-east-1',
-    forcePathStyle: true, // required only for localstack
-    credentials: {
-        accessKeyId: 'test',
-        secretAccessKey: 'test'
-    },
-    endpoint: 'http://127.0.0.1:4566'
-})
+const s3Client = new S3Client(JSON.parse(JSON.stringify(config.get('s3.connection'))))
 
 export async function createAppBucketIfNotExist() {
     try {
