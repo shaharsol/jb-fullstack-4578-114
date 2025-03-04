@@ -16,3 +16,7 @@
 .NewPost i img {
     height: 16px;
 }
+
+.NewPost img {
+    width: 300px;
+}
