@@ -7,5 +7,13 @@
         "sync": {
             "force": false
         }
+    },
+    "s3": {
+        "isLocalstack": false,
+        "connection": {
+            "credentials": {
+                "accessKeyId": "hgdfhjgdh"
+            }
+        }
     }
 }

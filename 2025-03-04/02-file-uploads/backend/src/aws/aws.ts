@@ -1,7 +1,15 @@
 import { CreateBucketCommand, S3Client } from "@aws-sdk/client-s3";
 import config from 'config'
 
-const s3Client = new S3Client(JSON.parse(JSON.stringify(config.get('s3.connection'))))
+// read the config of s3, and clone it deeply
+const s3Config = JSON.parse(JSON.stringify(config.get('s3.connection')))
+
+// if we're NOT running localstack, i.e. we want to run against AWS PRODUCTION servers
+// then we MUST delete the `endpoint` property from the config object
+if (!config.get<boolean>('s3.isLocalstack')) delete s3Config.endpoint
+
+// init the client
+const s3Client = new S3Client(s3Config)
 
 export async function createAppBucketIfNotExist() {
     try {

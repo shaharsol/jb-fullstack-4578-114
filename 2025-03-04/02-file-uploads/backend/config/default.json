@@ -20,6 +20,7 @@
     },
     "s3": {
         "bucket": "il.co.johnbryce.shaharsol",
+        "isLocalstack": true,
         "connection": {
             "region": "us-east-1",
             "forcePathStyle": true,
