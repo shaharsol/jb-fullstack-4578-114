@@ -12,6 +12,7 @@ import notFound from "./middlewares/not-found"
 import enforceAuth from "./middlewares/enforce-auth"
 import cors from 'cors'
 import fileUpload from "express-fileupload"
+import { createAppBucketIfNotExist } from "./aws/aws"
 
 const port = config.get<string>('app.port')
 const name = config.get<string>('app.name')
@@ -22,6 +23,8 @@ const app = express();
 (async () => {
     await sequelize.sync({ force })
 
+    await createAppBucketIfNotExist();
+    
     // middlewares
     app.use(cors()) // allow any client to use this server
 
