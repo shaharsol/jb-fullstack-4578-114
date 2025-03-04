@@ -10,12 +10,24 @@ const io = new Server({
     }
 })
 
+let clients: string[] = []
+
 io.on('connection', socket => {
 
     console.log('got a new connection')
-
+    
+    const id = v4()
+    clients.push(id)
+    
     socket.emit('welcome', {
-        id: v4()
+        id
+    })
+
+    io.emit('new member')
+
+    socket.on('disconnect', () => {
+        console.log('client disconnected...')
+        clients = clients.filter(client => client !== id)
     })
 
 })
