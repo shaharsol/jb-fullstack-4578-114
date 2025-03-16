@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
-        "test": "jest --coverage",
-        "dev": "nodemon --exec ts-node src/app.ts",
-        "build": "npm test && tsc",
-        "start": "node dist/app.js"
+        "test": "jest",
+        "dev": "nodemon --exec ts-node src/server.ts",
+        "build": "tsc",
+        "start": "node dist/server.js"
     },
     "keywords": [],
     "author": "",
@@ -42,9 +42,11 @@
         "@types/joi": "^17.2.2",
         "@types/jsonwebtoken": "^9.0.8",
         "@types/node": "^22.13.1",
+        "@types/supertest": "^6.0.2",
         "@types/uuid": "^10.0.0",
         "jest": "^29.7.0",
         "nodemon": "^3.1.9",
+        "supertest": "^7.0.0",
         "ts-jest": "^29.2.6",
         "ts-node": "^10.9.2"
     }
