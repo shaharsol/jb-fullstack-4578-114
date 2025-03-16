@@ -54,7 +54,7 @@ export default function Post(props: PostProps): JSX.Element {
                 by {name} at {createdAt}
             </div>
             {imageUrl && <div>
-                <img src={imageUrl} />
+                <img src={`${import.meta.env.VITE_AWS_SERVER_URL}/${imageUrl}`} />
             </div>}
             <div>
                 {body}
