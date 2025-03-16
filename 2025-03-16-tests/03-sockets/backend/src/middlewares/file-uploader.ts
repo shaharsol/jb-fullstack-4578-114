@@ -32,6 +32,6 @@ export default async function fileUploader (req: Request, res: Response, next: N
 
     const response = await upload.done()
     
-    req.imageUrl = response.Location // http://localstack:4566/fjgkdfjk/gjkdfd/djfgkdk
+    req.imageUrl = response.Location
     next()
 }
