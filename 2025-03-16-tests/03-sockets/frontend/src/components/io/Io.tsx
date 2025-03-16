@@ -1,9 +1,11 @@
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { useAppDispatch } from "../../redux/hooks";
-import { newPost } from "../../redux/profileSlice";
+import { addComment, newPost } from "../../redux/profileSlice";
 import Post from "../../models/post/Post";
 import { v4 } from "uuid";
+import SocketMessages from "socket-enums-shaharsol";
+import Comment from "../../models/comment/Comment";
 
 interface SocketContextInterface {
     xClientId: string
@@ -35,9 +37,13 @@ export default function Io(props: PropsWithChildren): JSX.Element {
 
             if (payload.from !== xClientId) {
                 switch(eventName) {
-                    case 'newPost': 
+                    case SocketMessages.NEW_POST : 
                         const newPostPayload = payload.data as Post
                         dispatch(newPost(newPostPayload))
+                        break;
+                    case SocketMessages.NEW_COMMENT:
+                        const newCommentPayload = payload.data as Comment
+                        dispatch(addComment(newCommentPayload))
                         break;
                 }
             }
