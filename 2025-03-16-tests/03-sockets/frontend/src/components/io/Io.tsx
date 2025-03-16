@@ -30,12 +30,19 @@ export default function Io(props: PropsWithChildren): JSX.Element {
             // in other words:
             // if this event was initiate by "us"
             // then we should ignore it
-            switch(eventName) {
-                case 'newPost': 
-                    const newPostPayload = payload as Post
-                    dispatch(newPost(newPostPayload))
-                    break;
+
+            console.log(eventName, payload)
+
+            if (payload.from !== xClientId) {
+                switch(eventName) {
+                    case 'newPost': 
+                        const newPostPayload = payload.data as Post
+                        dispatch(newPost(newPostPayload))
+                        break;
+                }
             }
+
+
         })
 
         return () => {
