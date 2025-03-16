@@ -1,5 +1,8 @@
 {
     "db": {
         "host": "database"
+    },
+    "io": {
+        "url": "ws://io:3003"
     }
 }

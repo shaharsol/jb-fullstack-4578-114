@@ -33,3 +33,18 @@ services:
     ports:
       - 5173:80
     build: ./frontend
+  
+  io:
+    container_name: sn-io
+    ports:
+      - 3003:3003
+    build: ./io
+  
+  localstack: 
+    container_name: localstack
+    ports:
+      - 127.0.0.1:4566:4566
+      - 127.0.0.1:4510-4559:4510-4559
+    image: localstack/localstack
+
+
