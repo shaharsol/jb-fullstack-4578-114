@@ -1,0 +1,12 @@
+.Comment div:nth-child(1) {
+    font-size: x-small;
+}
+
+.Comment div:nth-child(2) {
+    font-size: small;
+}
+
+.Comment {
+    padding: 2px;
+    border: 1px dashed yellow;
+}

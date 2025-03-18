@@ -1,0 +1,13 @@
+.Post {
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed lightgreen;
+    box-shadow: 2px;
+    padding: 4px;
+    margin: 8px;
+    border-radius: 4px;
+}
+
+.Post img {
+    width: 300px;
+}

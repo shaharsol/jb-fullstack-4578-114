@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+
+
+    <script>
+
+        const socket = io('ws://localhost:3003')
+
+        socket.on('welcome', payload => {
+            document.getElementById('data').innerHTML = `my ID is ${payload.id}`
+        })
+
+        socket.on('new member', payload => {
+            document.getElementById('members').innerHTML += `<br>new member ID ${payload.id}`
+        })
+
+        socket.on('member gone', payload => {
+            document.getElementById('members').innerHTML += `<br>member left ${payload.id}`
+        })
+
+    </script>
+
+
+</head>
+<body>
+    <div id="data"></div>
+    <div id="members"></div>
+</body>
+</html>
