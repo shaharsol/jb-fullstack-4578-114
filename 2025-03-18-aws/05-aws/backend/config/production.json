@@ -1,0 +1,23 @@
+{
+    "app": {
+        "port": "80"
+    },
+    "sequelize": {
+        "logging": false,
+        "sync": {
+            "force": false
+        }
+    },
+    "s3": {
+        "isLocalstack": false,
+        "connection": {
+            "credentials": {
+                "accessKeyId": "AKIAXLEKZJVVZRFJDEQ5",
+                "secretAccessKey": ""
+            }
+        }
+    },
+    "io": {
+        "url": "ws://io:3003"
+    }
+}
