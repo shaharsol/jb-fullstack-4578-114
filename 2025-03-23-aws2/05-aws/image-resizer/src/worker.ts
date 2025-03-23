@@ -46,7 +46,7 @@ async function resize(
 
 
 async function work() {
-    // while(true) {
+    while(true) {
         const { Messages } = await sqsClient.send(new ReceiveMessageCommand({
             QueueUrl: config.get<string>('sqs.queueUrl'),
             MaxNumberOfMessages: 1
@@ -99,8 +99,8 @@ async function work() {
             console.log('nothing to process....')
         }
 
-
-    // }
+        await new Promise(resolve => setTimeout(resolve, 1000))
+    }
 }
 
 work()
