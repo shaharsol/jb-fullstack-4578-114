@@ -13,6 +13,38 @@ if (!config.get<boolean>('s3.isLocalstack')) delete s3Config.endpoint
 const sqsClient = new SQSClient(sqsConfig)
 const s3Client = new S3Client(s3Config)
 
+
+async function resize(
+    photoContent: Uint8Array<ArrayBufferLike>, 
+    width: number, 
+    height: number,
+    key: string,
+    bucket: string,
+    contentType: string,
+    suffix: string
+) {
+    const resizedImage = await sharp(photoContent)
+        .resize(width, height)
+        .toBuffer()
+
+    const resizedKey = key.replace('.', `-${suffix}.`)
+
+    const upload = new Upload({
+        client: s3Client,
+        params: {
+            Bucket: bucket,
+            Key: resizedKey,
+            Body: resizedImage,
+            ContentType: contentType
+        }
+    })                
+
+    const newUploadResponse = await upload.done()
+    console.log(newUploadResponse)
+
+}
+
+
 async function work() {
     // while(true) {
         const { Messages } = await sqsClient.send(new ReceiveMessageCommand({
@@ -40,33 +72,29 @@ async function work() {
 
 
             const metadata = await sharp(photoContent).metadata()
-            const { width, height } = metadata
+            console.log(metadata)
+            const { width, height } = metadata;
 
-            const resizedImage = await sharp(photoContent)
-                .resize(Math.floor(width! * 0.1), Math.floor(height! * 0.1))
-                .toBuffer()
-
-            const resizedKey = message.key.replace('.', '-10.')
-            // ghgdfhgjdfhgjhdfjkghdfj.png
-            // ghgdfhgjdfhgjhdfjkghdfj-10.png
-
-            const upload = new Upload({
-                client: s3Client,
-                params: {
-                    Bucket: message.bucket,
-                    Key: resizedKey,
-                    Body: resizedImage
-                }
-            })                
-
-            const newUploadResponse = await upload.done()
-            console.log(newUploadResponse)
-
-            // await sqsClient.send(new DeleteMessageCommand({
-            //     QueueUrl: config.get<string>('sqs.queueUrl'),
-            //     ReceiptHandle,
-            // }))            
-
+            try {
+                await Promise.all([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9].map(ratio => {
+                    resize(
+                        photoContent!,
+                        Math.floor(width! * ratio),
+                        Math.floor(height! * ratio),
+                        message.key,
+                        message.bucket,
+                        s3Response.ContentType!,
+                        (ratio * 100).toString()
+                    )
+                }))
+                await sqsClient.send(new DeleteMessageCommand({
+                    QueueUrl: config.get<string>('sqs.queueUrl'),
+                    ReceiptHandle,
+                }))            
+    
+            } catch (e) {
+                console.log(`there was an error in ${ReceiptHandle}`, e)
+            }
         } else {
             console.log('nothing to process....')
         }
