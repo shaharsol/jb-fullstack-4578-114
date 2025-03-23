@@ -1,5 +1,6 @@
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { DeleteMessageCommand, ReceiveMessageCommand, SQSClient } from '@aws-sdk/client-sqs'
+import { Upload } from '@aws-sdk/lib-storage'
 import config from 'config'
 import sharp from 'sharp'
 
@@ -41,11 +42,25 @@ async function work() {
             const metadata = await sharp(photoContent).metadata()
             const { width, height } = metadata
 
-            const resize = await sharp(photoContent)
-                .resize()
+            const resizedImage = await sharp(photoContent)
+                .resize(Math.floor(width! * 0.1), Math.floor(height! * 0.1))
                 .toBuffer()
 
+            const resizedKey = message.key.replace('.', '-10.')
+            // ghgdfhgjdfhgjhdfjkghdfj.png
+            // ghgdfhgjdfhgjhdfjkghdfj-10.png
 
+            const upload = new Upload({
+                client: s3Client,
+                params: {
+                    Bucket: message.bucket,
+                    Key: resizedKey,
+                    Body: resizedImage
+                }
+            })                
+
+            const newUploadResponse = await upload.done()
+            console.log(newUploadResponse)
 
             // await sqsClient.send(new DeleteMessageCommand({
             //     QueueUrl: config.get<string>('sqs.queueUrl'),
