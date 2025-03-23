@@ -1,6 +1,7 @@
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { DeleteMessageCommand, ReceiveMessageCommand, SQSClient } from '@aws-sdk/client-sqs'
 import config from 'config'
+import sharp from 'sharp'
 
 const sqsConfig = JSON.parse(JSON.stringify(config.get('sqs.connection')))
 const s3Config = JSON.parse(JSON.stringify(config.get('s3.connection')))
@@ -36,13 +37,20 @@ async function work() {
 
             console.log(photoContent)
 
-            // here we process the image
-            // let's say we're done
 
-            await sqsClient.send(new DeleteMessageCommand({
-                QueueUrl: config.get<string>('sqs.queueUrl'),
-                ReceiptHandle,
-            }))            
+            const metadata = await sharp(photoContent).metadata()
+            const { width, height } = metadata
+
+            const resize = await sharp(photoContent)
+                .resize()
+                .toBuffer()
+
+
+
+            // await sqsClient.send(new DeleteMessageCommand({
+            //     QueueUrl: config.get<string>('sqs.queueUrl'),
+            //     ReceiptHandle,
+            // }))            
 
         } else {
             console.log('nothing to process....')
