@@ -56,7 +56,7 @@ export async function createPost(req: Request<{}, {}, {}>, res: Response, next: 
 
         const post = new PostModel(createParams)
         await post.save()
-        res.json(post)
+        res.json(post.toObject())
         socket.emit(SocketMessages.NEW_POST, {
             from: req.headers['x-client-id'], // req.header(), req.get()
             data: post
