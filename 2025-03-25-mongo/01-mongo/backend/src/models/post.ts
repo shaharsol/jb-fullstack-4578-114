@@ -7,7 +7,6 @@ interface PostComment {
 }
 
 interface Post {
-    id: string,
     title: string,
     body: string,
     userId: string,
@@ -27,6 +26,19 @@ const PostSchema = new mongoose.Schema<Post>({
     userId: String,
     createdAt: Date,
     comments: [CommentSchema]
+}, {
+    versionKey: false,
+    virtuals: {
+        id: {
+            get() {
+                return this._id
+            }
+        }
+    },
+    toObject: {
+        virtuals: true,
+        versionKey: false,
+    }
 })
 
 export const PostModel = mongoose.model<Post>('Post', PostSchema, 'posts')

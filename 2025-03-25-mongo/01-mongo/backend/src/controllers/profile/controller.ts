@@ -7,19 +7,11 @@ import { PostModel } from "../../models/post";
 
 export async function getProfile(req: Request, res: Response, next: NextFunction) {
     try {
-        // const userId = req.userId
+        const userId = req.userId
 
-        // const user = await User.findByPk(userId, {
-        //     include: [ {
-        //         model: Post,
-        //         ...postIncludes
-        //     } ],
-        //     order: [['createdAt', 'asc']]
-        // })
-        // // console.log(user.get({ plain: true }))
-        // res.json(user.posts)
+        const profile = await PostModel.find({ userId })
 
-
+        res.json(profile.map(doc => doc.toObject()))
 
     } catch (e) {
         next(e)
