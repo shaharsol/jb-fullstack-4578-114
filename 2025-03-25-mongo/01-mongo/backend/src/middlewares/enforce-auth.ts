@@ -3,7 +3,6 @@ import AppError from "../errors/app-error";
 import { StatusCodes } from "http-status-codes";
 import { verify } from "jsonwebtoken";
 import config from 'config'
-import User from "../models/user";
 
 declare global {
     namespace Express {
@@ -26,7 +25,7 @@ export default function enforceAuth(req: Request, res: Response, next: NextFunct
     if (parts[0] !== 'Bearer' ) return next(new AppError(StatusCodes.UNAUTHORIZED, 'bad authorization header'))
 
     try {
-        const user = verify(parts[1], config.get<string>('app.jwtSecret')) as User
+        const user = verify(parts[1], config.get<string>('app.jwtSecret')) as {id: string}
         req.userId = user.id
         next()
     } catch (e) {

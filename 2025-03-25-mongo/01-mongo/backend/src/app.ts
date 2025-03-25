@@ -1,6 +1,5 @@
 import express, { json } from "express"
 import config from 'config'
-import sequelize from "./db/sequelize"
 import profileRouter from "./routers/profile"
 import followsRouter from "./routers/follows"
 import commentsRouter from "./routers/comments"
@@ -14,13 +13,15 @@ import cors from 'cors'
 import fileUpload from "express-fileupload"
 import { createAppBucketIfNotExist } from "./aws/s3"
 import { createAppQueueIfNotExist, queueUrl } from "./aws/sqs"
+import { connect } from "./db/mongoose"
 
 const force = config.get<boolean>('sequelize.sync.force')
 
 const app = express();
 
 export async function start() {
-    await sequelize.sync({ force })
+
+    await connect()
 
     await createAppBucketIfNotExist();
 
