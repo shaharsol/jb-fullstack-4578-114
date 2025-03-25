@@ -13,13 +13,6 @@ export async function getFollowers(req: Request, res: Response, next: NextFuncti
             }
         })
 
-        // const user = await User.findByPk(userId, {
-        //     include: [ { 
-        //         model: User,
-        //         as: 'followers',
-        //     } ],
-        //     order: [[col('followers.name'), 'ASC']],
-        // })
         res.json(followers.map(user => user.toObject()))
     } catch (e) {
         next(e)
@@ -47,9 +40,7 @@ export async function follow(req: Request<{id: string}>, res: Response, next: Ne
         // await user.save()
 
         // 2. the mongo way
-        const user = await UserModel.findOneAndUpdate({
-            _id: userId
-        }, {
+        const user = await UserModel.findByIdAndUpdate(userId, {
             $push: {
                 following: req.params.id
             }
