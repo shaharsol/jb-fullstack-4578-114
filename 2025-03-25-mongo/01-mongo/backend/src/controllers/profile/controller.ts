@@ -4,12 +4,13 @@ import { StatusCodes } from "http-status-codes";
 import socket from "../../io/io";
 import SocketMessages from "socket-enums-shaharsol";
 import { PostModel } from "../../models/post";
+import mongoose from "../../db/mongoose";
 
 export async function getProfile(req: Request, res: Response, next: NextFunction) {
     try {
         const userId = req.userId
 
-        const profile = await PostModel.find({ userId })
+        const profile = await PostModel.find({ userId }).populate('user')
 
         res.json(profile.map(doc => doc.toObject()))
 
@@ -47,7 +48,7 @@ export async function createPost(req: Request<{}, {}, {}>, res: Response, next: 
     try {
         const userId = req.userId
 
-        let createParams = { ...req.body, userId }
+        let createParams = { ...req.body, userId, user: new mongoose.Schema.ObjectId(userId) }
 
         // if(req.imageUrl) {
         //     const { imageUrl } = req

@@ -1,6 +1,6 @@
 import mongoose from "../db/mongoose"
 
-interface User {
+export interface User {
     id: string,
     name: string,
     username: string,

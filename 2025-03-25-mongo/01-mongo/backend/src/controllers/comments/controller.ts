@@ -11,18 +11,18 @@ export async function createComment(req: Request<{postId: string}>, res: Respons
         const { postId } = req.params 
 
         // 1. javascript way
-        const post = await PostModel.findById(postId)
-        post.comments.push({...req.body, userId, createdAt: new Date()})
-        await post.save()
+        // const post = await PostModel.findById(postId)
+        // post.comments.push({...req.body, userId, createdAt: new Date()})
+        // await post.save()
 
         // 2. the mongo way
-        // const post = await PostModel.findByIdAndUpdate(postId, {
-        //     $push: {
-        //         comments: {...req.body, userId, createdAt: new Date()}
-        //     }
-        // }, {
-        //     new: true
-        // })
+        const post = await PostModel.findByIdAndUpdate(postId, {
+            $push: {
+                comments: {...req.body, userId, createdAt: new Date()}
+            }
+        }, {
+            new: true
+        })
 
         res.json(post.toObject())
         // socket.emit(SocketMessages.NEW_COMMENT, {
