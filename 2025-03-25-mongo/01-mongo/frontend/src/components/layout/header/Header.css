@@ -1,0 +1,15 @@
+.Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Header nav {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.Header .active {
+    color: green;
+}

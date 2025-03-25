@@ -1,0 +1,28 @@
+{
+    "s3": {
+        "bucket": "il.co.johnbryce.shaharsol",
+        "isLocalstack": true,
+        "connection": {
+            "region": "us-east-1",
+            "forcePathStyle": true,
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://127.0.0.1:4566"
+        }
+    },
+    "sqs": {
+        "isLocalstack": true,
+        "queueName": "shaharsol-sn-queue",
+        "queueUrl": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/shaharsol-sn-queue",
+        "connection": {
+            "region": "us-east-1",
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://127.0.0.1:4566"
+        }
+    }
+}

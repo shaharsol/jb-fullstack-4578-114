@@ -1,0 +1,13 @@
+{
+    "db": {
+        "host": "database"
+    },
+    "io": {
+        "url": "ws://io:3003"
+    },
+    "s3": {
+        "connection": {
+            "endpoint": "http://localstack:4566" 
+        }
+    }
+}
