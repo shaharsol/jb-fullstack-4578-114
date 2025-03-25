@@ -10,7 +10,7 @@ export async function getProfile(req: Request, res: Response, next: NextFunction
     try {
         const userId = req.userId
 
-        const profile = await PostModel.find({ userId }).populate('user')
+        const profile = await PostModel.find({ userId }).populate(['user', 'comments.user'])
 
         res.json(profile.map(doc => doc.toObject()))
 
