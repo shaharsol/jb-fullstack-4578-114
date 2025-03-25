@@ -1,6 +1,6 @@
 import mongoose from "../db/mongoose"
 
-export interface User {
+interface User {
     id: string,
     name: string,
     username: string,
@@ -9,7 +9,7 @@ export interface User {
     following: string[]
 }
 
-export const UserSchema = new mongoose.Schema<User>({
+const UserSchema = new mongoose.Schema<User>({
     id: String,
     name: String,
     username: String,
