@@ -20,8 +20,8 @@ export async function getProfile(req: Request, res: Response, next: NextFunction
 
 export async function getPost(req: Request<{id: string}>, res: Response, next: NextFunction) {
     try {
-        // const post = await Post.findByPk(req.params.id, postIncludes)
-        // res.json(post)
+        const post = await PostModel.findById(req.params.id)
+        res.json(post.toObject())
     } catch (e) {
         next(e)
     }

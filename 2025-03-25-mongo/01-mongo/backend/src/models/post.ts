@@ -27,17 +27,12 @@ const PostSchema = new mongoose.Schema<Post>({
     createdAt: Date,
     comments: [CommentSchema]
 }, {
-    versionKey: false,
-    virtuals: {
-        id: {
-            get() {
-                return this._id
-            }
-        }
-    },
     toObject: {
-        virtuals: true,
-        versionKey: false,
+        transform: function(doc, ret) {
+            ret.id = ret._id
+            delete ret._id
+            delete ret.__v
+        }
     }
 })
 
