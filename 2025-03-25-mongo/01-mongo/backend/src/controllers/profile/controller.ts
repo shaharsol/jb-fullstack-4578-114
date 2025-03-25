@@ -29,16 +29,14 @@ export async function getPost(req: Request<{id: string}>, res: Response, next: N
 
 export async function deletePost(req: Request<{id: string}>, res: Response, next: NextFunction) {
     try {
-        // const id = req.params.id
-        // const deletedRows = await Post.destroy({
-        //     where: { id }
-        // })
+        const _id = req.params.id
+        const deleteResponse = await PostModel.deleteOne({ _id })
 
-        // if(deletedRows === 0) return next(new AppError(StatusCodes.NOT_FOUND, 'the post you were trying to delete does not exist'))
+        if(deleteResponse.deletedCount === 0) return next(new AppError(StatusCodes.NOT_FOUND, 'the post you were trying to delete does not exist'))
 
-        // res.json({
-        //     success: true
-        // })
+        res.json({
+            success: true
+        })
 
     } catch (e) {
         next(e)
@@ -70,13 +68,13 @@ export async function createPost(req: Request<{}, {}, {}>, res: Response, next: 
 
 export async function updatePost(req: Request<{id: string}>, res: Response, next: NextFunction) {
     try {
-        // const post = await Post.findByPk(req.params.id, postIncludes)
+        const post = await PostModel.findById(req.params.id)
 
-        // const { title, body } = req.body
-        // post.title = title
-        // post.body = body
-        // await post.save() // <= this command generates the actual SQL UPDATE
-        // res.json(post)
+        const { title, body } = req.body
+        post.title = title
+        post.body = body
+        await post.save() // <= this command generates the actual MQL UPDATE
+        res.json(post.toObject())
 
     } catch (e) {
         next(e)
