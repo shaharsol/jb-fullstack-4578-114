@@ -1,1 +1,6 @@
-<p>profile works....</p>
+@for (post of profile(); track post.id) {
+    <app-post></app-post>
+}
+@empty {
+    <p>loading...</p>
+}
