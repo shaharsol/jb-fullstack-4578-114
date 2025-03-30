@@ -1,10 +1,11 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, computed, OnDestroy, OnInit, signal } from '@angular/core';
 import { AllcapsPipe } from '../../../pipes/allcaps.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
-  imports: [DatePipe, AllcapsPipe],
+  imports: [DatePipe, AllcapsPipe, FormsModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -13,6 +14,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     name: string = 'Bob'
     currentTime = (new Date())
     intervalId: any
+    address: string = 'Khoma imigidal 33'
+    username = signal<string>('')
+    email = computed(() => `${this.username()}@johnbryce.co.il`)
 
     // runs when the component initializes
     ngOnInit(): void {

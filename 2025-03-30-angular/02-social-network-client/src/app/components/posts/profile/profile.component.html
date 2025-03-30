@@ -1,3 +1,16 @@
 <!-- one way binding -->
 <p>{{name}}</p>
 <p>current time: {{currentTime | date | allcaps}}</p>
+
+<!-- two way binding -->
+<input [(ngModel)]="address"/> 
+{{address}}
+
+<hr/>
+
+<input [(ngModel)]="username"/> 
+<br/>
+{{username()}}
+<br/>
+{{email()}}
+
