@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProfileService } from '../../../services/profile.service';
 
 @Component({
   selector: 'app-feed',
@@ -6,6 +7,14 @@ import { Component } from '@angular/core';
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.css'
 })
-export class FeedComponent {
+export class FeedComponent implements OnInit{
+
+    constructor (
+        public profileService: ProfileService
+    ) {}
+
+    ngOnInit(): void {
+        this.profileService.sayHi()
+    }
 
 }
