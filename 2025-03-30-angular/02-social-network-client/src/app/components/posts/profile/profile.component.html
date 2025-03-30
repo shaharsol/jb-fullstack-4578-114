@@ -1,5 +1,8 @@
 @for (post of profile(); track post.id) {
-    <app-post [post]="post"></app-post>
+    <app-post 
+        [post]="post" 
+        (deletedPost)="removePost($event)"
+    ></app-post>
 }
 @empty {
     <p>loading...</p>

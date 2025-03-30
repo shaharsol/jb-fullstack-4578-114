@@ -24,10 +24,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
     }
+
+    removePost(id: string) {
+        this.profile.set(this.profile().filter(p => p.id !== id))
+    }
     
     async ngOnInit(): Promise<void> {
-        const profilePosts = await this.profileService.getProfile()
-        this.profile.set(profilePosts)
+        try {
+            const profilePosts = await this.profileService.getProfile()
+            this.profile.set(profilePosts)
+        } catch (e) {
+            alert(e)
+        }
     }
     
 
