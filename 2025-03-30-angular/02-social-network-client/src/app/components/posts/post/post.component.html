@@ -1,1 +1,5 @@
-<p>post works!</p>
+<div id="post">
+    <h3>{{post()?.title}}</h3>
+    <p>by {{post()?.user?.name}} at {{post()?.createdAt}}</p>
+    <div>{{post()?.body}}</div>
+</div>

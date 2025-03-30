@@ -1,5 +1,5 @@
 @for (post of profile(); track post.id) {
-    <app-post></app-post>
+    <app-post [post]="post"></app-post>
 }
 @empty {
     <p>loading...</p>
