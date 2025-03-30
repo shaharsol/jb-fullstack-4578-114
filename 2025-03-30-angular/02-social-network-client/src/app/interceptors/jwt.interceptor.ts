@@ -8,5 +8,5 @@ export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
         headers: req.headers.set('Authorization', `Bearer ${jwt}`)
     }) 
 
-    return next(req);
+    return next(reqWithJwt);
 };
