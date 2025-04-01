@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { PostComment } from '../../../models/comment/comment.model';
 import { ProfileService } from '../../../services/profile.service';
 
@@ -16,9 +16,13 @@ export class CommentComponent {
 
     postId = input<string>()
     comment = input<PostComment>()
+
+    deletedComment = output<string>()
+
     async deleteMe() {
         try {
-            this.profileService.deleteComment(this.postId()!, this.comment()!.id)
+            await this.profileService.deleteComment(this.postId()!, this.comment()!.id)
+            this.deletedComment.emit(this.comment()!.id)
         } catch (e) {
             alert(e)
         }
