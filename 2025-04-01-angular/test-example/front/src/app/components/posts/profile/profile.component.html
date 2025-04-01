@@ -1,0 +1,13 @@
+<app-new
+    (newPost)="addPost($event)"
+></app-new>
+@for (post of profile(); track post.id) {
+    <app-post 
+        [post]="post" 
+        (deletedPost)="removePost($event)"
+        (deletedComment)="deleteComment($event)"
+    ></app-post>
+}
+@empty {
+    <p>loading...</p>
+}

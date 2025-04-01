@@ -1,0 +1,14 @@
+<div id="post">
+    <h3>{{post()?.title}}</h3>
+    <p>by {{post()?.user?.name}} at {{post()?.createdAt}}</p>
+    <div>{{post()?.body}}</div>
+    <button (click)="deleteMe()">delete</button>
+    <button (click)="editMe()">edit</button>
+    <app-comments
+        [comments]="post()?.comments"
+        [postId]="post()?.id"
+        (deletedComment)="deleteComment($event)"
+    >
+
+    </app-comments>
+</div>

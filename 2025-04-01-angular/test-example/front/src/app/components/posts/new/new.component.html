@@ -1,0 +1,21 @@
+<form [formGroup]="newForm" (ngSubmit)="addPost()">
+    <input formControlName="title">
+    <div [hidden]="newForm.controls.title.valid || !newForm.controls.title.dirty">
+        @if (newForm.controls.title.errors?.['required']) {
+            <span>title is required</span>
+        }
+        @else if (newForm.controls.title.errors?.['minlength']) {
+            <span>title must be at least 10 characters long</span>
+        }
+    </div>
+    <textarea formControlName="body"></textarea>
+    <div [hidden]="newForm.controls.body.valid || !newForm.controls.body.dirty">
+        @if (newForm.controls.body.errors?.['required']) {
+            <span>body is required</span>
+        }
+        @else if (newForm.controls.body.errors?.['minlength']) {
+            <span>body must be at least 20 characters long</span>
+        }
+    </div>
+    <button>Add Post</button>
+</form>

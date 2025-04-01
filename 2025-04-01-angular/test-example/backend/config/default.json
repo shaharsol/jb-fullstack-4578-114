@@ -1,0 +1,42 @@
+{
+    "app": {
+        "port": "3000",
+        "name": "my ikea",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret"
+    },
+    "s3": {
+        "bucket": "il.co.johnbryce.shaharsol",
+        "isLocalstack": true,
+        "connection": {
+            "region": "us-east-1",
+            "forcePathStyle": true,
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://127.0.0.1:4566"
+        }
+    },
+    "sqs": {
+        "isLocalstack": true,
+        "queueName": "shaharsol-sn-queue",
+        "connection": {
+            "region": "us-east-1",
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://127.0.0.1:4566"
+        }
+    },
+    "io": {
+        "url": "ws://127.0.0.1:3003"
+    },
+    "mongoose": {
+        "host": "127.0.0.1",
+        "port": 27017,
+        "database": "ikea"
+    }
+
+}
