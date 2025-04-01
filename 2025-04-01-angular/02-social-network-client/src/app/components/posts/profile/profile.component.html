@@ -2,6 +2,7 @@
     <app-post 
         [post]="post" 
         (deletedPost)="removePost($event)"
+        (deletedComment)="deleteComment($event)"
     ></app-post>
 }
 @empty {

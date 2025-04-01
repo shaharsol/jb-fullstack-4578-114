@@ -19,6 +19,7 @@ export class PostComponent {
 
     post = input<Post>()
     deletedPost = output<string>()
+    deletedComment = output<{postId: string, commentId: string}>()
 
     async deleteMe() {
         try {
@@ -27,6 +28,10 @@ export class PostComponent {
         } catch (e) {
             alert(e)
         }
+    }
+
+    deleteComment(id: string) {
+        this.deletedComment.emit({postId: this.post()!.id, commentId: id})
     }
 
 }

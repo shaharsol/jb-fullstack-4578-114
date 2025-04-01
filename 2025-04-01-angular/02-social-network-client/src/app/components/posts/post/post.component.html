@@ -6,6 +6,7 @@
     <app-comments
         [comments]="post()?.comments"
         [postId]="post()?.id"
+        (deletedComment)="deleteComment($event)"
     >
 
     </app-comments>

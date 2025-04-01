@@ -37,6 +37,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
             alert(e)
         }
     }
+
+    deleteComment(event: {postId: string, commentId: string}) {
+        const { postId, commentId } = event
+        const profile = this.profile()
+        const post = profile.find(p => p.id === postId)
+        if(post) {
+            post.comments = post.comments.filter(c => c.id !== commentId)
+        }
+        this.profile.set(profile)
+    }
     
 
 }
