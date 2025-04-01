@@ -1,1 +1,42 @@
-<p>new works!</p>
+<form [formGroup]="newForm" (ngSubmit)="addFurniture()">
+    <input formControlName="type" placeholder="type">
+    <div [hidden]="newForm.controls.type.valid || !newForm.controls.type.dirty">
+        @if (newForm.controls.type.errors?.['required']) {
+            <span>type is required</span>
+        }
+        @else if (newForm.controls.type.errors?.['minlength']) {
+            <span>type must be at least 10 characters long</span>
+        }
+    </div>
+
+    <input formControlName="size" placeholder="size">
+    <div [hidden]="newForm.controls.size.valid || !newForm.controls.size.dirty">
+        @if (newForm.controls.size.errors?.['required']) {
+            <span>size is required</span>
+        }
+        @else if (newForm.controls.size.errors?.['minlength']) {
+            <span>size must be at least 20 characters long</span>
+        }
+    </div>
+
+    <input formControlName="color" placeholder="color">
+    <div [hidden]="newForm.controls.color.valid || !newForm.controls.color.dirty">
+        @if (newForm.controls.color.errors?.['required']) {
+            <span>color is required</span>
+        }
+        @else if (newForm.controls.color.errors?.['minlength']) {
+            <span>color must be at least 20 characters long</span>
+        }
+    </div>
+
+    <input formControlName="price" type="number" placeholder="price">
+    <div [hidden]="newForm.controls.price.valid || !newForm.controls.price.dirty">
+        @if (newForm.controls.price.errors?.['required']) {
+            <span>price is required</span>
+        }
+        @else if (newForm.controls.price.errors?.['min']) {
+            <span>price must be positive</span>
+        }
+    </div>
+    <button>Add Furniture</button>
+</form>
