@@ -30,6 +30,10 @@ export class PostComponent {
         }
     }
 
+    async editMe() {
+        
+    }
+
     deleteComment(id: string) {
         this.deletedComment.emit({postId: this.post()!.id, commentId: id})
     }

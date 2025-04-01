@@ -30,9 +30,12 @@ export class NewComponent {
     })
 
     async addPost() {
+        if(this.newForm.invalid) return
+
         try {
             const post = await this.profileService.addPost(this.newForm.value as Draft)
             this.newPost.emit(post)
+            this.newForm.reset()
         } catch (e) {
             alert(e)
         }

@@ -45,4 +45,11 @@ export class ProfileService {
         return newPost
     }
 
+    async updatePost(postId: string, draft: Draft): Promise<Post> {
+        const observable = this.httpClient.patch<Post>(`${environment.restServerUrl}/profile/${postId}`, draft)
+        const updatedPost = firstValueFrom(observable)
+        return updatedPost
+    }
+
+
 }

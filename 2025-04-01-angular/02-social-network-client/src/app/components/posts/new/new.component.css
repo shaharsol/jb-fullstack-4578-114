@@ -2,3 +2,7 @@ form {
     display: flex;
     flex-direction: column;
 }
+
+form span {
+    color: red;
+}
