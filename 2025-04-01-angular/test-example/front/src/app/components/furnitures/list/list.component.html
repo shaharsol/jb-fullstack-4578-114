@@ -1,0 +1,10 @@
+<div id="list">
+@for (furniture of list(); track furniture.id) {
+    <app-single 
+        [furniture]="furniture"
+    ></app-single>
+}
+@empty {
+    <p>loading...</p>
+}
+</div>

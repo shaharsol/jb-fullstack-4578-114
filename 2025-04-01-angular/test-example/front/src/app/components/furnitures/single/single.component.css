@@ -1,0 +1,5 @@
+#furniture {
+    border: 1px black solid;
+    display: flex;
+    flex-direction: column;
+}
