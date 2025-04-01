@@ -1,7 +1,0 @@
-#post {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    border: 1px dashed lightblue;
-    padding: 4px;
-}
