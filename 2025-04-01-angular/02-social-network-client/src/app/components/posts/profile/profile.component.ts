@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { ProfileService } from '../../../services/profile.service';
 import { Post } from '../../../models/post/post.model';
 import { PostComponent } from "../post/post.component";
+import { NewComponent } from "../new/new.component";
 
 @Component({
   selector: 'app-profile',
-  imports: [PostComponent],
+  imports: [PostComponent, NewComponent],
 //   providers: [ProfileService], // if the components needs its own ProfileService, 
 // it states here like so...
   templateUrl: './profile.component.html',
@@ -46,6 +47,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
             post.comments = post.comments.filter(c => c.id !== commentId)
         }
         this.profile.set(profile)
+    }
+
+    addPost(post: Post) {
+        this.profile.set([post, ...this.profile()])
     }
     
 

@@ -1,10 +1,9 @@
 import { PostComment } from "../comment/comment.model";
 import { User } from "../user/user.model";
+import { Draft } from "./draft.model";
 
-export interface Post {
+export interface Post extends Draft {
     id: string,
-    title: string,
-    body: string,
     createdAt: string,
     user: User,
     comments: PostComment[]

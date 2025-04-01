@@ -4,6 +4,7 @@ import { Post } from '../models/post/post.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { firstValueFrom } from 'rxjs';
+import { Draft } from '../models/post/draft.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,12 @@ export class ProfileService {
         const observable = this.httpClient.delete<boolean>(`${environment.restServerUrl}/comments/${postId}/${commentId}`)
         const isDeleted = firstValueFrom(observable)
         return isDeleted
+    }
+
+    async addPost(draft: Draft): Promise<Post> {
+        const observable = this.httpClient.post<Post>(`${environment.restServerUrl}/profile`, draft)
+        const newPost = firstValueFrom(observable)
+        return newPost
     }
 
 }
