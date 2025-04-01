@@ -31,4 +31,11 @@ export class ProfileService {
         const isDeleted = firstValueFrom(observable)
         return isDeleted
     }
+
+    async deleteComment(postId: string, commentId: string): Promise<boolean> {
+        const observable = this.httpClient.delete<boolean>(`${environment.restServerUrl}/comments/${postId}/${commentId}`)
+        const isDeleted = firstValueFrom(observable)
+        return isDeleted
+    }
+
 }

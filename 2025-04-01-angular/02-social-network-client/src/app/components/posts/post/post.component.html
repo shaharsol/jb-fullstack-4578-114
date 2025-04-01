@@ -5,6 +5,7 @@
     <button (click)="deleteMe()">delete</button>
     <app-comments
         [comments]="post()?.comments"
+        [postId]="post()?.id"
     >
 
     </app-comments>

@@ -48,7 +48,7 @@ export async function createPost(req: Request<{}, {}, {}>, res: Response, next: 
     try {
         const userId = req.userId
 
-        let createParams = { ...req.body, userId, user: userId }
+        let createParams = { ...req.body, userId, user: userId, createdAt: new Date() }
 
         // if(req.imageUrl) {
         //     const { imageUrl } = req

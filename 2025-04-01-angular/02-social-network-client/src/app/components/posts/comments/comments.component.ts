@@ -10,4 +10,5 @@ import { CommentComponent } from "../comment/comment.component";
 })
 export class CommentsComponent {
     comments = input<PostComment[]>()
+    postId = input<string>()
 }

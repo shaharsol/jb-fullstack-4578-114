@@ -1,6 +1,7 @@
 @for (comment of comments(); track comment.id) {
     <app-comment
         [comment]="comment"
+        [postId]="postId()"
     >
 
     </app-comment>
