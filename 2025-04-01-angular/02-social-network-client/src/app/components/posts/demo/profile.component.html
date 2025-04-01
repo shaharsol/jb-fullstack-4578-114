@@ -1,0 +1,31 @@
+<!-- one way binding -->
+<p>{{name}}</p>
+<p>current time: {{currentTime | date | allcaps}}</p>
+
+<!-- two way binding -->
+<input [(ngModel)]="address"/> 
+{{address}}
+
+<hr/>
+
+<input [(ngModel)]="strUsername"/> 
+<br/>
+{{strUsername}}
+<br/>
+{{strEmail}}
+
+<hr/> 
+
+<input [(ngModel)]="username"/> 
+<br/>
+{{username()}}
+<br/>
+{{email()}}
+
+<hr/> 
+<!-- event binding -->
+<button (click)="sayHi()">click me</button>
+
+<!-- property binding -->
+<button [disabled]="isButtonDisabled">click me</button> 
+

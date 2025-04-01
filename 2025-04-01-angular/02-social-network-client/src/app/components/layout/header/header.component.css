@@ -1,0 +1,21 @@
+p {
+    color: red;
+}
+
+.active {
+    color: green;
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+#header div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    
+}
