@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '../../../services/profile.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Draft } from '../../../models/post/draft.model';
 
 @Component({
   selector: 'app-edit',
@@ -12,7 +13,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class EditComponent implements OnInit{
     constructor (
         public activatedRoute: ActivatedRoute,
-        public profileService: ProfileService
+        public profileService: ProfileService,
+        public router: Router
     ) {}
     
     editForm = new FormGroup({
@@ -37,7 +39,15 @@ export class EditComponent implements OnInit{
     }
 
     async updatePost(){
-
+        try {
+            const updatedPost = await this.profileService.updatePost(
+                this.activatedRoute.snapshot.paramMap.get('postId')!, 
+                this.editForm.value as Draft
+            )
+            this.router.navigate(['/profile'])
+        } catch (e) {
+            alert(e)
+        }
     }
 
 
