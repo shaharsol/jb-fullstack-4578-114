@@ -27,7 +27,3 @@ const FurnitureSchema = new mongoose.Schema<Furniture>({
 })
 
 export const FurnitureModel = mongoose.model<Furniture>('Furniture', FurnitureSchema, 'furnitures')
-
-
-db.operations.insertOne({acocuntId: 'wert1234', type: 'loan', data: {amount: 100, interest: 12, paymanets: 4}})
-db.operations.insertOne({acocuntId: 'wert1234', type: 'deposit', data: {amount: 100}})
