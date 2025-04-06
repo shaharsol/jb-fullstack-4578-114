@@ -36,7 +36,7 @@
     "mongoose": {
         "host": "127.0.0.1",
         "port": 27017,
-        "database": "ikea"
+        "database": "transearly"
     },
     "dropbox": {
         "clientID": "0e0xiso4jxyha95",

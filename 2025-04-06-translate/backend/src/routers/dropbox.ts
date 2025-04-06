@@ -11,7 +11,7 @@ dropboxRouter.get('/callback', dropboxAuth.authenticate('dropbox-oauth2', {
     session: false,
     failureRedirect: 'http://localhost:5173/'
 }), function(req, res) {
-    // create jwt
+    // create jwt from req.user
     res.redirect('http://localhost:5173/')
 })
 
