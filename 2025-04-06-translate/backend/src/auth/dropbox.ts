@@ -13,7 +13,7 @@ passport.use(new Strategy(dropboxConfig, async function(accessToken: string, ref
         if(!user) {
             user = await UserModel.create({
                 name: `${profile.name.givenName} ${profile.name.familyName}`,
-                email: profile.emails[0].value,
+                email: profile.emails[0]?.value,
                 createdAt: Date.now(),
                 dropbox: {
                     id: profile.id,
@@ -22,12 +22,12 @@ passport.use(new Strategy(dropboxConfig, async function(accessToken: string, ref
             })
         }
 
-        done(null, user)
+        done(null, user.toObject())
 
     } catch (e) {
         
         done(e)
-        
+
     }
 }))
 
