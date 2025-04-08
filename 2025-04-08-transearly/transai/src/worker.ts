@@ -27,20 +27,11 @@ async function work() {
                 const payload = JSON.parse(Body!)
     
 
-                console.log(`converting ${payload.link} from docx to txt...`)
-                const result = await convertapi.convert('txt', { File: payload.link }, 'docx');
-                console.log(result.response)
-    
-                const newMessage = await sqsClient.send(new SendMessageCommand({
-                    QueueUrl: config.get('sqs.translateQueueUrl'),
-                    MessageBody: JSON.stringify({
-                        userId: payload.userId,
-                        link: (result.files[0].url)
-                    })
-                }))
 
-                console.log(`sent message to translate queue...`)
 
+
+
+                
                 await sqsClient.send(new DeleteMessageCommand({
                     QueueUrl: config.get<string>('sqs.docxToTxtQueueUrl'),
                     ReceiptHandle,
