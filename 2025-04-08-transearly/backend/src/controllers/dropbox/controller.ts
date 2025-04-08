@@ -18,7 +18,9 @@ export async function webhook(req: Request, res: Response, next: NextFunction) {
         if(user) {
             const dbx = new Dropbox({ accessToken: user.dropbox.accessToken })
             const delta = await dbx.filesListFolderContinue({ cursor: user.dropbox.cursor })
-            const promises = delta.result.entries.map(entry => dbx.filesGetTemporaryLink({path: entry.path_lower}))
+            const promises = delta.result.entries
+                .filter(entry => entry.path_lower.endsWith('.docx'))
+                .map(entry => dbx.filesGetTemporaryLink({path: entry.path_lower}))
             const results = await Promise.all(promises)
 
             const queueResults = await Promise.all(results.map(link => sqsClient.send(new SendMessageCommand({
