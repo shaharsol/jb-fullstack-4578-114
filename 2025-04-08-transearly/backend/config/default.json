@@ -3,7 +3,8 @@
         "port": "3000",
         "name": "my ikea",
         "secret": "MySecret",
-        "jwtSecret": "MyJwtSecret"
+        "jwtSecret": "MyJwtSecret",
+        "docxToTextQueueUrl": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/shaharsol-docx-to-txt"
     },
     "s3": {
         "bucket": "il.co.johnbryce.shaharsol",

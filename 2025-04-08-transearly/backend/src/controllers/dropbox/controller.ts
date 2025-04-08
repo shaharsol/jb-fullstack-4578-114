@@ -1,6 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { UserModel } from "../../models/user";
 import { Dropbox } from "dropbox";
+import sqsClient from "../../aws/sqs";
+import config from 'config'
+import { SendMessageCommand } from "@aws-sdk/client-sqs";
 
 export async function verify(req: Request, res: Response, next: NextFunction) {
     res.send(req.query.challenge)
@@ -18,9 +21,19 @@ export async function webhook(req: Request, res: Response, next: NextFunction) {
             const promises = delta.result.entries.map(entry => dbx.filesGetTemporaryLink({path: entry.path_lower}))
             const results = await Promise.all(promises)
 
-            
-            console.log(results)
+            const queueResults = await Promise.all(results.map(link => sqsClient.send(new SendMessageCommand({
+                QueueUrl: config.get('app.docxToTextQueueUrl'),
+                MessageBody: JSON.stringify({
+                    userId: user.id,
+                    link: link.result.link
+                })
+            }))))
+
+            console.log(queueResults)
+
         }
+
+        res.status(200).send()
     } catch (e) {
         next(e)
     }
