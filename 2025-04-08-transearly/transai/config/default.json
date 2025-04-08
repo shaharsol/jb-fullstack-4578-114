@@ -25,8 +25,8 @@
             "endpoint": "http://127.0.0.1:4566"
         }
     },
-    "convertApi": {
-        "secret": "secret_WTGyhWYF5uF9Vctr"
+    "openAI": {
+        "secret": "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"
     }
 }
 
