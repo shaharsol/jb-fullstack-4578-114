@@ -26,7 +26,18 @@
         }
     },
     "openAI": {
-        "secret": "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"
+        "secret": ""
+    },
+    "dropbox": {
+        "clientID": "0e0xiso4jxyha95",
+        "clientSecret": "x186qfgx52fir1n",
+        "callbackURL": "http://localhost:3000/dropbox/callback",
+        "apiVersion": "2"
+    },
+    "mongoose": {
+        "host": "127.0.0.1",
+        "port": 27017,
+        "database": "transearly"
     }
 }
 
