@@ -21,6 +21,7 @@
     "@aws-sdk/client-sqs": "^3.772.0",
     "@aws-sdk/lib-storage": "^3.772.0",
     "config": "^3.3.12",
+    "convertapi": "^1.15.0",
     "sharp": "^0.33.5"
   }
 }

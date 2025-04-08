@@ -24,5 +24,8 @@
             },
             "endpoint": "http://127.0.0.1:4566"
         }
+    },
+    "convertApi": {
+        "secret": "secret_WTGyhWYF5uF9Vctr"
     }
 }
