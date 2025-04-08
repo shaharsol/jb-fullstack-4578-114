@@ -1,4 +1,4 @@
-import { DeleteMessageCommand, ReceiveMessageCommand, SQSClient } from '@aws-sdk/client-sqs'
+import { DeleteMessageCommand, ReceiveMessageCommand, SendMessageCommand, SQSClient } from '@aws-sdk/client-sqs'
 import config from 'config'
 import ConvertAPI from 'convertapi';
 
@@ -18,7 +18,7 @@ async function work() {
             console.log('working...')
 
             const { Messages } = await sqsClient.send(new ReceiveMessageCommand({
-                QueueUrl: config.get<string>('sqs.queueUrl'),
+                QueueUrl: config.get<string>('sqs.docxToTxtQueueUrl'),
                 MaxNumberOfMessages: 1
             }))
             if (Messages) {
@@ -26,13 +26,25 @@ async function work() {
     
                 const payload = JSON.parse(Body!)
     
+                console.log(`converting ${payload.link} from docx to txt...`)
                 const result = await convertapi.convert('txt', { File: payload.link }, 'docx');
                 console.log(result.response)
     
+                const newMessage = await sqsClient.send(new SendMessageCommand({
+                    QueueUrl: config.get('app.translateQueueUrl'),
+                    MessageBody: JSON.stringify({
+                        userId: payload.user.id,
+                        link: (result.files[0].url)
+                    })
+                }))
+
+                console.log(`sent message to translate queue...`)
+
                 await sqsClient.send(new DeleteMessageCommand({
-                    QueueUrl: config.get<string>('sqs.queueUrl'),
+                    QueueUrl: config.get<string>('sqs.docxToTxtQueueUrl'),
                     ReceiptHandle,
                 }))
+                console.log(`deleted message from docx-to-txt queue`)
             }
     
     
