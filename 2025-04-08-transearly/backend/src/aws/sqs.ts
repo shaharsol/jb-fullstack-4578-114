@@ -12,14 +12,20 @@ if (!config.get<boolean>('sqs.isLocalstack')) delete sqsConfig.endpoint
 // init the client
 const sqsClient = new SQSClient(sqsConfig)
 export let queueUrl = ''
-export async function createAppQueueIfNotExist() {
+export async function createAppQueuesIfNotExist() {
     try {
-        const queue = await sqsClient.send(
+        const docxToTextQueue = await sqsClient.send(
             new CreateQueueCommand({
-                QueueName: config.get<string>('sqs.queueName')
+                QueueName: config.get<string>('sqs.docxToTextQueueName')
             })
         )
-        queueUrl = queue.QueueUrl
+        console.log(`docx to tx queue is ${docxToTextQueue.QueueUrl}`)
+        const translateQueue = await sqsClient.send(
+            new CreateQueueCommand({
+                QueueName: config.get<string>('sqs.translateQueueName')
+            })
+        )
+        console.log(`translate queue is ${translateQueue.QueueUrl}`)
     } catch (e) {
         // ignore
         console.log('Queue probably already exist')

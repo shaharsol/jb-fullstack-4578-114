@@ -20,7 +20,8 @@
     },
     "sqs": {
         "isLocalstack": true,
-        "queueName": "shaharsol-sn-queue",
+        "docxToTextQueueName": "shaharsol-docx-to-txt",
+        "translateQueueName": "shaharsol-translate",
         "connection": {
             "region": "us-east-1",
             "credentials": {

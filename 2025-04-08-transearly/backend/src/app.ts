@@ -7,6 +7,7 @@ import notFound from "./middlewares/not-found"
 import furnituresRouter from "./routers/furnitures"
 import dropboxRouter from "./routers/dropbox"
 import dropboxAuth from './auth/dropbox'
+import { createAppQueuesIfNotExist } from './aws/sqs'
 
 const app = express();
 
@@ -14,6 +15,7 @@ export async function start() {
 
     await connect()
 
+    await createAppQueuesIfNotExist()
     
     // middlewares
     app.use(cors()) // allow any client to use this server
