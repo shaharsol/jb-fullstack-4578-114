@@ -31,9 +31,9 @@ async function work() {
                 console.log(result.response)
     
                 const newMessage = await sqsClient.send(new SendMessageCommand({
-                    QueueUrl: config.get('app.translateQueueUrl'),
+                    QueueUrl: config.get('sqs.translateQueueUrl'),
                     MessageBody: JSON.stringify({
-                        userId: payload.user.id,
+                        userId: payload.userId,
                         link: (result.files[0].url)
                     })
                 }))
