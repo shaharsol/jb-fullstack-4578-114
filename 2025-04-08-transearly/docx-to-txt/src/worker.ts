@@ -26,8 +26,8 @@ async function work() {
     
                 const payload = JSON.parse(Body!)
     
-                    const result = await convertapi.convert('txt', { File: payload.link }, 'docx');
-                
+                const result = await convertapi.convert('txt', { File: payload.link }, 'docx');
+                console.log(result.response)
     
                 await sqsClient.send(new DeleteMessageCommand({
                     QueueUrl: config.get<string>('sqs.queueUrl'),
