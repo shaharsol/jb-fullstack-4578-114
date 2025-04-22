@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './App.css';
 import axios from 'axios'
+import { jwtDecode } from 'jwt-decode';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -68,16 +69,33 @@ function App() {
 
     const [searchParams] = useSearchParams(); 
     const [jwt, setJwt] = useState<string>('')
+    const [isPaying, setIsPaying] = useState<boolean>(false)
 
-    useEffect(() => {}, [
-        setJwt(localStorage.getItem('jwt') || '')
-    ])
+    useEffect(() => {
+        if (localStorage.getItem('jwt')) {
+            setJwt(localStorage.getItem('jwt')!)
+        }
+    }, 
+        
+    [])
 
     useEffect(() => {
         if(searchParams.get('jwt')) {
             localStorage.setItem('jwt', searchParams.get('jwt')!)
             setJwt(searchParams.get('jwt')!)
         }
+
+        if(searchParams.get('payment_intent')) {
+            (async () => {
+                if(jwt) {
+                    const decoded = jwtDecode(jwt) as any
+                    console.log(decoded)
+                    await axios.post(`http://localhost:3000/stripe/update-user-payment-intent/${decoded.id}/${searchParams.get('payment_intent')}`)
+                    setIsPaying(true)
+                }
+            })()
+        }
+        
     }, [searchParams])
 
 
@@ -88,11 +106,15 @@ function App() {
             </p>}
         
 
-        {jwt && <>
+        {jwt && !isPaying && <>
             <Elements stripe={stripePromise} options={{mode: 'payment', amount: 100, currency: 'usd'}}>
                 <CheckoutForm />
             </Elements>
 
+        </>}
+
+        {jwt && isPaying && <>
+            <p>u can now use the app...</p>
         </>}
     </>
   )
