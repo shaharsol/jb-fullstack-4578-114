@@ -1,0 +1,44 @@
+{
+    "s3": {
+        "bucket": "il.co.johnbryce.shaharsol",
+        "isLocalstack": true,
+        "connection": {
+            "region": "us-east-1",
+            "forcePathStyle": true,
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://127.0.0.1:4566"
+        }
+    },
+    "sqs": {
+        "isLocalstack": true,
+        "queueName": "shaharsol-sn-queue",
+        "translateQueueUrl": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/shaharsol-translate",
+        "connection": {
+            "region": "us-east-1",
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://127.0.0.1:4566"
+        }
+    },
+    "openAI": {
+        "secret": ""
+    },
+    "dropbox": {
+        "clientID": "0e0xiso4jxyha95",
+        "clientSecret": "x186qfgx52fir1n",
+        "callbackURL": "http://localhost:3000/dropbox/callback",
+        "apiVersion": "2"
+    },
+    "mongoose": {
+        "host": "127.0.0.1",
+        "port": 27017,
+        "database": "transearly"
+    }
+}
+
+  

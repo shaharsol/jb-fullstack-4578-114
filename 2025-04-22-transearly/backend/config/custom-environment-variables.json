@@ -1,0 +1,20 @@
+{
+    "app": {
+        "name": "APP_NAME",
+        "port": "APP_PORT",
+        "secret": "APP_SECRET"
+    },
+    "db": {
+        "password": "DB_PASSWORD"
+    },
+    "s3": {
+        "connection": {
+            "credentials": {
+                "secretAccessKey": "AWS_SECRET_ACCESS_KEY"
+            }
+        } 
+    },
+    "dropbox": {
+        "clientSecret": "DROPBOX_CLIENT_SECRET"
+    }
+}

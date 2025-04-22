@@ -1,0 +1,50 @@
+{
+    "app": {
+        "port": "3000",
+        "name": "my ikea",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret",
+        "docxToTextQueueUrl": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/shaharsol-docx-to-txt"
+    },
+    "s3": {
+        "bucket": "il.co.johnbryce.shaharsol",
+        "isLocalstack": true,
+        "connection": {
+            "region": "us-east-1",
+            "forcePathStyle": true,
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://127.0.0.1:4566"
+        }
+    },
+    "sqs": {
+        "isLocalstack": true,
+        "docxToTextQueueName": "shaharsol-docx-to-txt",
+        "translateQueueName": "shaharsol-translate",
+        "connection": {
+            "region": "us-east-1",
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://127.0.0.1:4566"
+        }
+    },
+    "io": {
+        "url": "ws://127.0.0.1:3003"
+    },
+    "mongoose": {
+        "host": "127.0.0.1",
+        "port": 27017,
+        "database": "transearly"
+    },
+    "dropbox": {
+        "clientID": "0e0xiso4jxyha95",
+        "clientSecret": "x186qfgx52fir1n",
+        "callbackURL": "http://localhost:3000/dropbox/callback",
+        "apiVersion": "2"
+    }
+
+}

@@ -1,0 +1,5 @@
+{
+    "openAI": {
+        "secret": "OPENAI_SECRET"
+    }
+}
