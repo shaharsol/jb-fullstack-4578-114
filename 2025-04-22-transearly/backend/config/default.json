@@ -45,6 +45,11 @@
         "clientSecret": "x186qfgx52fir1n",
         "callbackURL": "http://localhost:3000/dropbox/callback",
         "apiVersion": "2"
+    },
+    "stripe": {
+        "key": "pk_test_51MfOVTCMizDvBNeK8KuggydLpRzahq6hbeEgxYaWtEB1H3HtgdMz7loAT2tsbEujGARuDn8Reu1ewHxp1HoSqqpL00nMPTyJwQ",
+        "secret": "sk_test_51MfOVTCMizDvBNeK4F7m8iim0E11omzzJ0JIYKK8kZPSmFmkmVhwo5InjSlvPfcTlmSdC08C7256uaunP6OYMBu600taDc8xad"
+
     }
 
 }

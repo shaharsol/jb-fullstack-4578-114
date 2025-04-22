@@ -1,8 +1,8 @@
-import { useSearchParams } from 'react-router-dom';
-import './App.css'
-import { ReactEventHandler, useEffect, useState } from 'react';
 import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import './App.css';
 
 
 const CheckoutForm = () => {
@@ -31,7 +31,7 @@ const CheckoutForm = () => {
         method: 'POST',
       });
   
-      const {client_secret: clientSecret} = await res.json();
+      const {clientSecret} = await res.json();
   
       const {error} = await stripe!.confirmPayment({
         //`Elements` instance that was used to create the Payment Element
