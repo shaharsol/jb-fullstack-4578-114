@@ -69,21 +69,17 @@ function App() {
     const [searchParams] = useSearchParams(); 
     const [jwt, setJwt] = useState<string>('')
 
+    useEffect(() => {}, [
+        setJwt(localStorage.getItem('jwt') || '')
+    ])
+
     useEffect(() => {
         if(searchParams.get('jwt')) {
+            localStorage.setItem('jwt', searchParams.get('jwt')!)
             setJwt(searchParams.get('jwt')!)
         }
     }, [searchParams])
 
-    // const options = {
-    //     mode: 'payment',
-    //     amount: 1099,
-    //     currency: 'usd',
-    //     // Fully customizable with appearance API.
-    //     appearance: {
-    //       /*...*/
-    //     },
-    //   };
 
   return (
     <>
