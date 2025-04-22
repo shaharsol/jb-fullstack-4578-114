@@ -5,6 +5,7 @@ import errorLogger from "./middlewares/error/error-logger"
 import errorResponder from "./middlewares/error/error-responder"
 import notFound from "./middlewares/not-found"
 import furnituresRouter from "./routers/furnitures"
+import stripeRouter from "./routers/stripe"
 import dropboxRouter from "./routers/dropbox"
 import dropboxAuth from './auth/dropbox'
 import { createAppQueuesIfNotExist } from './aws/sqs'
@@ -24,6 +25,7 @@ export async function start() {
 
     app.use('/', furnituresRouter)
     app.use('/dropbox', dropboxAuth.initialize(), dropboxRouter)
+    app.use('/stripe', stripeRouter)
 
     // special notFound middleware
     app.use(notFound)

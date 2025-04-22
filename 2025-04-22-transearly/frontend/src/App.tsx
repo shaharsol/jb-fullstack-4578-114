@@ -3,7 +3,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './App.css';
-
+import axios from 'axios'
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -27,21 +27,24 @@ const CheckoutForm = () => {
       }
   
       // Create the PaymentIntent and obtain clientSecret from your server endpoint
-      const res = await fetch('/create-intent', {
-        method: 'POST',
-      });
+      const res = await axios.post('http://localhost:3000/stripe/payment-intent');
   
-      const {clientSecret} = await res.json();
+      const {paymentIntent} = await res.data;
   
       const {error} = await stripe!.confirmPayment({
         //`Elements` instance that was used to create the Payment Element
         elements,
-        clientSecret,
+        clientSecret: paymentIntent.client_secret,
         confirmParams: {
-          return_url: 'https://example.com/order/123/complete',
+          return_url: 'http://localhost:5173/payment-complete',
         },
       });
-  
+      if (error) {
+        // This point will only be reached if there is an immediate error when
+        // confirming the payment. Show error to your customer (for example, payment
+        // details incomplete)
+        setErrorMessage(error.message!);
+      } 
     };
   
     return (
